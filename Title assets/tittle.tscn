@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://qkdhgv6xeqes"]
+
+[node name="Tittle" type="Label"]
+offset_left = 564.0
+offset_top = 232.0
+offset_right = 661.0
+offset_bottom = 258.0
+text = "Hello Gamer"
