@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cob1qh3otlalt"]
+
+[ext_resource type="Script" path="res://UI/health_changed_label.gd" id="1_jqw2o"]
+
+[node name="HealthChangedLabel" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "1000"
+script = ExtResource("1_jqw2o")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.532
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
