@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://32qhrkuj66dc"]
+
+[ext_resource type="Script" path="res://Character/Damageable.gd" id="1_437jn"]
+[ext_resource type="Script" path="res://Character/player.gd" id="1_gxmkm"]
+[ext_resource type="Texture2D" uid="uid://ca1veod7350ch" path="res://Art/03-Pig/Idle (34x28).png" id="2_g2abw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw8ki"]
+size = Vector2(146, 198)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_gxmkm")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_g2abw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aw8ki")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("1_437jn")
+health = 50.0
