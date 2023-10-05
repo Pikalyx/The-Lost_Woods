@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=8 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
+[ext_resource type="PackedScene" uid="uid://cdn7q27whcfsp" path="res://Character/pig.tscn" id="3_bxd2q"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="3_j2hck"]
 [ext_resource type="PackedScene" uid="uid://blj1lwkpab2y5" path="res://UI/health_changed_manger.tscn" id="4_2jugk"]
 
@@ -1454,6 +1455,9 @@ process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="Pig" parent="." instance=ExtResource("3_bxd2q")]
+position = Vector2(472, 71)
 
 [node name="snail" parent="." instance=ExtResource("3_j2hck")]
 position = Vector2(134, 71)

@@ -1,11 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://32qhrkuj66dc"]
+[gd_scene load_steps=7 format=3 uid="uid://cdn7q27whcfsp"]
 
-[ext_resource type="Script" path="res://Character/Damageable.gd" id="1_437jn"]
-[ext_resource type="Script" path="res://Character/player.gd" id="1_gxmkm"]
+[ext_resource type="Script" path="res://Character/pig.gd" id="1_ds7ua"]
 [ext_resource type="Texture2D" uid="uid://ca1veod7350ch" path="res://Art/03-Pig/Idle (34x28).png" id="2_g2abw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw8ki"]
-size = Vector2(146, 198)
+size = Vector2(18, 17)
+
+[sub_resource type="Animation" id="Animation_cesoc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_oyuvj"]
 resource_name = "idle"
@@ -47,21 +61,6 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
-[sub_resource type="Animation" id="Animation_cesoc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8nm2v"]
 _data = {
 "RESET": SubResource("Animation_cesoc"),
@@ -69,22 +68,20 @@ _data = {
 }
 
 [node name="Enemy" type="CharacterBody2D"]
-script = ExtResource("1_gxmkm")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
+script = ExtResource("1_ds7ua")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_g2abw")
 hframes = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 5.5)
 shape = SubResource("RectangleShape2D_aw8ki")
+
+[node name="RayCast2D" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(-10, -5.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8nm2v")
 }
-
-[node name="Damageable" type="Node" parent="."]
-script = ExtResource("1_437jn")
-health = 50.0
