@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqdce4862tcop"]
+
+[ext_resource type="FontFile" uid="uid://cccwm5ryd6bf2" path="res://Melted Monster.ttf" id="1_ecc2j"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_hted8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rtt3"]
+bg_color = Color(0.164706, 0.160784, 0.188235, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydo3h"]
+bg_color = Color(0.0784314, 0.0784314, 0.0901961, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3ych"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_hted8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 641.0
+offset_bottom = 513.0
+color = Color(0.180392, 0, 0.309804, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 641.0
+offset_bottom = 513.0
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ecc2j")
+theme_override_font_sizes/font_size = 40
+text = "The Lost Woods"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 0
+
+[node name="NewGameButton" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_ecc2j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_8rtt3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydo3h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l3ych")
+text = "Start New Game"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 0
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_ecc2j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_8rtt3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydo3h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l3ych")
+text = "Settings/Instructions"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 0
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_ecc2j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_8rtt3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydo3h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l3ych")
+text = "Credits
+"
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer/NewGameButton" to="." method="_on_new_game_button_button_up"]
