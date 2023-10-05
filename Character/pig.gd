@@ -27,6 +27,6 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func detect_turn_around():
-	if not $CollisionShape2D/RayCast2D.is_colliding() and is_on_floor():
+	if not $RayCast2D.is_colliding() and is_on_floor():
 		facing_left= !facing_left
 		scale.x = -scale.x
