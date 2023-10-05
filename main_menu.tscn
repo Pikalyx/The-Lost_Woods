@@ -35,10 +35,8 @@ offset_bottom = 1307.0
 color = Color(0.180392, 0, 0.309804, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_left = -5.0
-offset_top = -2.0
-offset_right = 1916.0
-offset_bottom = 1074.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_bottom = 50
 
@@ -49,7 +47,7 @@ alignment = 1
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ecc2j")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 130
 text = "The Lost Woods"
 horizontal_alignment = 1
 
@@ -69,11 +67,12 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ecc2j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_8rtt3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ydo3h")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l3ych")
 text = "Start New Game"
+text_direction = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
@@ -87,7 +86,7 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ecc2j")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_8rtt3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ydo3h")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l3ych")
@@ -105,7 +104,7 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_ecc2j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_8rtt3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ydo3h")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l3ych")
