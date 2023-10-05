@@ -1,10 +1,21 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=8 format=3 uid="uid://b4aqd86pwf6h7"]
+=======
+[gd_scene load_steps=14 format=3 uid="uid://b4aqd86pwf6h7"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
 [ext_resource type="PackedScene" uid="uid://cdn7q27whcfsp" path="res://Character/pig.tscn" id="3_bxd2q"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="3_j2hck"]
+[ext_resource type="Script" path="res://DayNightTesting/daynightcycle.gd" id="3_ooe0t"]
 [ext_resource type="PackedScene" uid="uid://blj1lwkpab2y5" path="res://UI/health_changed_manger.tscn" id="4_2jugk"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightTesting/daynightcycle-gradient-texture.tres" id="4_2wotw"]
+[ext_resource type="Script" path="res://DayNightTesting/DayNightCycleUI.gd" id="7_nbp6l"]
+[ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="8_m3jou"]
+[ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="9_lpf1t"]
+[ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="10_lflav"]
+[ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="11_231cr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
@@ -1457,8 +1468,15 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
+<<<<<<< Updated upstream
 [node name="Pig" parent="." instance=ExtResource("3_bxd2q")]
 position = Vector2(472, 71)
+=======
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.219608, 0.27451, 0.572549, 1)
+script = ExtResource("3_ooe0t")
+gradient = ExtResource("4_2wotw")
+>>>>>>> Stashed changes
 
 [node name="snail" parent="." instance=ExtResource("3_j2hck")]
 position = Vector2(134, 71)
@@ -1472,3 +1490,43 @@ position = Vector2(420, 68)
 hit_state = NodePath("../snail/CharacterStateMachine/Hit")
 
 [node name="HealthChangedManger" parent="." instance=ExtResource("4_2jugk")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DayNightCycleUI" type="Node" parent="CanvasLayer"]
+script = ExtResource("7_nbp6l")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("8_m3jou")
+offset = Vector2(0, 80)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("9_lpf1t")
+offset = Vector2(0, 80)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("10_lflav")
+offset = Vector2(0, 80)
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("11_231cr")
+offset = Vector2(0, 80)
