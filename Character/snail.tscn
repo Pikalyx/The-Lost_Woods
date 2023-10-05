@@ -183,8 +183,5 @@ can_move = false
 wait_time = 0.307
 one_shot = true
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-20, -4)
-
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]
