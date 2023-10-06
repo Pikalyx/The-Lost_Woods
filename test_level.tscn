@@ -1483,15 +1483,16 @@ hit_state = NodePath("../snail/CharacterStateMachine/Hit")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+follow_viewport_scale = 0.75
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(20, 47)
 motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(20, 0)
+motion_mirroring = Vector2(500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("8_m3jou")
-offset = Vector2(0, 80)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(20, 47)
@@ -1500,7 +1501,6 @@ motion_mirroring = Vector2(500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("9_lpf1t")
-offset = Vector2(0, 80)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(20, 47)
@@ -1509,13 +1509,11 @@ motion_mirroring = Vector2(500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource("10_lflav")
-offset = Vector2(0, 80)
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(18, 46)
-motion_scale = Vector2(1, 0)
+motion_scale = Vector2(0.3, 0)
 motion_mirroring = Vector2(500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 texture = ExtResource("11_231cr")
-offset = Vector2(0, 80)
