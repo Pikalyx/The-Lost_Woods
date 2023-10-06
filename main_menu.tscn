@@ -1,0 +1,163 @@
+[gd_scene load_steps=10 format=3 uid="uid://do3rsr7idkevg"]
+
+[ext_resource type="FontFile" uid="uid://cccwm5ryd6bf2" path="res://Melted Monster.ttf" id="1_ecc2j"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_hted8"]
+[ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="3_1wgrd"]
+[ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="4_yb8cr"]
+[ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="5_tpn4b"]
+[ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="6_ch477"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rtt3"]
+bg_color = Color(0.164706, 0.160784, 0.188235, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydo3h"]
+bg_color = Color(0.0784314, 0.0784314, 0.0901961, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3ych"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_hted8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -221.0
+offset_top = -109.0
+offset_right = 2236.0
+offset_bottom = 1307.0
+color = Color(0.180392, 0, 0.309804, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ecc2j")
+theme_override_font_sizes/font_size = 150
+text = "The Lost Woods"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 650
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 650
+theme_override_constants/margin_bottom = 0
+
+[node name="NewGameButton" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_ecc2j")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_8rtt3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydo3h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l3ych")
+text = "Start New Game"
+text_direction = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 650
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 650
+theme_override_constants/margin_bottom = 0
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_ecc2j")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_8rtt3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydo3h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l3ych")
+text = "Settings/Instructions"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 650
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 650
+theme_override_constants/margin_bottom = 0
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_ecc2j")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_8rtt3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydo3h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l3ych")
+text = "Credits
+"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+follow_viewport_scale = 0.75
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1256, 826.333)
+scale = Vector2(7.02604, 7.76889)
+texture = ExtResource("3_1wgrd")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(756.667, 514.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("4_yb8cr")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(756.667, 514.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("5_tpn4b")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(18, 46)
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(758.667, 515.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("6_ch477")
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer/NewGameButton" to="." method="_on_new_game_button_button_up"]
