@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=13 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="3_j2hck"]
-[ext_resource type="Script" path="res://DayNightTesting/daynightcycle.gd" id="3_ooe0t"]
 [ext_resource type="PackedScene" uid="uid://blj1lwkpab2y5" path="res://UI/health_changed_manger.tscn" id="4_2jugk"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightTesting/daynightcycle-gradient-texture.tres" id="4_2wotw"]
 [ext_resource type="Script" path="res://DayNightTesting/daynightcycle.gd" id="7_nbp6l"]
@@ -1457,6 +1456,7 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(18, 46)
+zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -1464,7 +1464,7 @@ drag_vertical_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.219608, 0.27451, 0.572549, 1)
-script = ExtResource("3_ooe0t")
+script = ExtResource("7_nbp6l")
 gradient = ExtResource("4_2wotw")
 
 [node name="snail" parent="." instance=ExtResource("3_j2hck")]
@@ -1482,21 +1482,19 @@ hit_state = NodePath("../snail/CharacterStateMachine/Hit")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DayNightCycleUI" type="Node" parent="CanvasLayer"]
-script = ExtResource("7_nbp6l")
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
 motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(500, 0)
+motion_mirroring = Vector2(20, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("8_m3jou")
 offset = Vector2(0, 80)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
 motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(500, 0)
 
@@ -1505,6 +1503,7 @@ texture = ExtResource("9_lpf1t")
 offset = Vector2(0, 80)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
 motion_scale = Vector2(0.2, 0)
 motion_mirroring = Vector2(500, 0)
 
@@ -1513,6 +1512,7 @@ texture = ExtResource("10_lflav")
 offset = Vector2(0, 80)
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(18, 46)
 motion_scale = Vector2(1, 0)
 motion_mirroring = Vector2(500, 0)
 
