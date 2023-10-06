@@ -6,11 +6,11 @@
 [ext_resource type="Script" path="res://DayNightTesting/daynightcycle.gd" id="3_ooe0t"]
 [ext_resource type="PackedScene" uid="uid://blj1lwkpab2y5" path="res://UI/health_changed_manger.tscn" id="4_2jugk"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightTesting/daynightcycle-gradient-texture.tres" id="4_2wotw"]
-[ext_resource type="Script" path="res://DayNightTesting/DayNightCycleUI.gd" id="7_nbp6l"]
-[ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden's Forest/background4.png" id="8_m3jou"]
-[ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden's Forest/background3.png" id="9_lpf1t"]
-[ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden's Forest/background2.png" id="10_lflav"]
-[ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden's Forest/background1.png" id="11_231cr"]
+[ext_resource type="Script" path="res://DayNightTesting/daynightcycle.gd" id="7_nbp6l"]
+[ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="8_m3jou"]
+[ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="9_lpf1t"]
+[ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="10_lflav"]
+[ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="11_231cr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
