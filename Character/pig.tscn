@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdn7q27whcfsp"]
+[gd_scene load_steps=12 format=3 uid="uid://dewl86rgmtf4y"]
 
 [ext_resource type="Script" path="res://Character/pig.gd" id="1_ds7ua"]
 [ext_resource type="Texture2D" uid="uid://ca1veod7350ch" path="res://Art/03-Pig/Idle (34x28).png" id="2_g2abw"]
@@ -10,10 +10,15 @@ size = Vector2(18, 17)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w4oxj"]
 animation = &"run"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u62fd"]
+switch_mode = 1
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bubew"]
 states/Start/position = Vector2(187, 100)
 states/run/node = SubResource("AnimationNodeAnimation_w4oxj")
 states/run/position = Vector2(364, 100)
+transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_u62fd")]
 
 [sub_resource type="Animation" id="Animation_cesoc"]
 length = 0.001
