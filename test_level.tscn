@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=14 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
+[ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_axmyc"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="3_j2hck"]
 [ext_resource type="PackedScene" uid="uid://blj1lwkpab2y5" path="res://UI/health_changed_manger.tscn" id="4_2jugk"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightTesting/daynightcycle-gradient-texture.tres" id="4_2wotw"]
@@ -1462,6 +1463,9 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
+[node name="pig" parent="." instance=ExtResource("3_axmyc")]
+position = Vector2(66, 74)
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.219608, 0.27451, 0.572549, 1)
 script = ExtResource("7_nbp6l")
@@ -1492,8 +1496,8 @@ motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(64.6667, -42.5)
-scale = Vector2(1.36198, 1.28333)
+position = Vector2(77.3333, -37.1666)
+scale = Vector2(1.15625, 1.24778)
 texture = ExtResource("8_m3jou")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -1502,8 +1506,8 @@ motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(63.3334, -23.6666)
-scale = Vector2(1.30469, 1.24889)
+position = Vector2(70.6667, -16.3333)
+scale = Vector2(1.19792, 1.20222)
 texture = ExtResource("9_lpf1t")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
