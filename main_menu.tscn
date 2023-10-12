@@ -161,3 +161,5 @@ scale = Vector2(4.36198, 5.41333)
 texture = ExtResource("6_ch477")
 
 [connection signal="button_up" from="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer/NewGameButton" to="." method="_on_new_game_button_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer2/SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer3/CreditsButton" to="." method="_on_credits_button_button_up"]

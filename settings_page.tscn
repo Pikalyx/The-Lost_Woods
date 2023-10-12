@@ -1,0 +1,145 @@
+[gd_scene load_steps=10 format=3 uid="uid://b473gmlvx3tru"]
+
+[ext_resource type="Script" path="res://credits_page.gd" id="1_8ns7e"]
+[ext_resource type="FontFile" uid="uid://cccwm5ryd6bf2" path="res://Melted Monster.ttf" id="2_34450"]
+[ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="3_j04o7"]
+[ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="4_jxjjm"]
+[ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="5_b5iar"]
+[ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="6_ym1um"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1uvv"]
+bg_color = Color(0.164706, 0.160784, 0.188235, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34eca"]
+bg_color = Color(0.0784314, 0.0784314, 0.0901961, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0543"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8ns7e")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = -221.0
+offset_top = -109.0
+offset_right = 2236.0
+offset_bottom = 1307.0
+color = Color(0.180392, 0, 0.309804, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_34450")
+theme_override_font_sizes/font_size = 150
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer2/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 650
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 650
+theme_override_constants/margin_bottom = 0
+
+[node name="MuteButton" type="Button" parent="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_34450")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_t1uvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_34eca")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b0543")
+text = "Toggle Mute"
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer2/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 650
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 650
+theme_override_constants/margin_bottom = 0
+
+[node name="BackButton" type="Button" parent="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_34450")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_t1uvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_34eca")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b0543")
+text = "Back
+"
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+follow_viewport_scale = 0.75
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+position = Vector2(1256, 826.333)
+scale = Vector2(7.02604, 7.76889)
+texture = ExtResource("3_j04o7")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
+position = Vector2(756.667, 514.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("4_jxjjm")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground2"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer3"]
+position = Vector2(756.667, 514.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("5_b5iar")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground2"]
+position = Vector2(18, 46)
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer4"]
+position = Vector2(758.667, 515.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("6_ym1um")
+
+[connection signal="button_up" from="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3/MuteButton" to="." method="_on_mute_button_button_up"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer4/BackButton" to="." method="_on_back_button_pressed"]
