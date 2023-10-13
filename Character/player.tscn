@@ -413,7 +413,7 @@ graph_offset = Vector2(139.925, -46.9382)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfif4"]
 size = Vector2(28.25, 48)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_kxgl7")
 
