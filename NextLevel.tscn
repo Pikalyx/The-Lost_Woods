@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://chu334tsngh43"]
+
+[ext_resource type="Script" path="res://NextLevel.gd" id="1_nka77"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pncev"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_nka77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1007, 535)
+shape = SubResource("WorldBoundaryShape2D_pncev")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1012.75, 501)
+scale = Vector2(5.86328, 4.9375)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
