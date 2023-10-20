@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c06h0yv06ktmh"]
+[gd_scene load_steps=46 format=3 uid="uid://c06h0yv06ktmh"]
 
 [ext_resource type="Texture2D" uid="uid://2eeki0ddiyxg" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Character/StateDebugLabel.gd" id="11_etpgi"]
 [ext_resource type="Script" path="res://Character/Sword.gd" id="12_ge70g"]
 [ext_resource type="Script" path="res://Character/FacingCollisionShape2D.gd" id="13_okjnx"]
+[ext_resource type="PackedScene" uid="uid://ctvugfrqy6sco" path="res://pause_menu.tscn" id="14_px7vt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wja7b"]
 radius = 8.0
@@ -496,6 +497,9 @@ shape = SubResource("RectangleShape2D_lfif4")
 script = ExtResource("13_okjnx")
 facing_left_position = Vector2(-29, 2.08165e-12)
 facing_right_position = Vector2(29, 2.08165e-12)
+
+[node name="PauseMenu" parent="." instance=ExtResource("14_px7vt")]
+z_index = 100
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
