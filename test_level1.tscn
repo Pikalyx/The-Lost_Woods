@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=19 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_1tbo6"]
 [ext_resource type="PackedScene" uid="uid://bycd8bsoi3b3j" path="res://test_level_3.tscn" id="13_m181l"]
 [ext_resource type="Texture2D" uid="uid://b5h86yxmxoajq" path="res://icon.svg" id="14_ipw3x"]
+[ext_resource type="PackedScene" uid="uid://ng57pbulh0db" path="res://UI/hearts_container.tscn" id="15_b800s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
@@ -1647,5 +1648,11 @@ position = Vector2(-597, -48)
 position = Vector2(22.75, -14.75)
 scale = Vector2(0.589844, 0.394531)
 texture = ExtResource("14_ipw3x")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="hearts_container" parent="CanvasLayer2" instance=ExtResource("15_b800s")]
+offset_right = 200.0
+offset_bottom = 14.0
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -499,7 +499,6 @@ facing_left_position = Vector2(-29, 2.08165e-12)
 facing_right_position = Vector2(29, 2.08165e-12)
 
 [node name="PauseMenu" parent="." instance=ExtResource("14_px7vt")]
-z_index = 100
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
