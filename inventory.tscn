@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://s2quv54fv0p2"]
+
+[ext_resource type="Script" path="res://inventory.gd" id="1_klsk0"]
+[ext_resource type="Script" path="res://InvContainer.gd" id="2_hbbdh"]
+
+[sub_resource type="Animation" id="Animation_naefr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_d74yn"]
+resource_name = "TransIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -900), Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_3i0ds"]
+resource_name = "TransOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, 900)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5nxef"]
+_data = {
+"RESET": SubResource("Animation_naefr"),
+"TransIn": SubResource("Animation_d74yn"),
+"TransOut": SubResource("Animation_3i0ds")
+}
+
+[node name="Inventory" type="CanvasLayer"]
+offset = Vector2(2.08165e-12, 2.08165e-12)
+transform = Transform2D(1, 0, 0, 1, 2.08165e-12, 2.08165e-12)
+script = ExtResource("1_klsk0")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5nxef")
+}
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 632.0
+offset_top = 208.0
+offset_right = 1368.0
+offset_bottom = 764.0
+
+[node name="Title" type="Label" parent="."]
+offset_left = 872.0
+offset_top = 212.0
+offset_right = 1120.0
+offset_bottom = 292.0
+theme_override_font_sizes/font_size = 39
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1184.0
+offset_top = 228.0
+offset_right = 1352.0
+offset_bottom = 308.0
+theme_override_font_sizes/font_size = 25
+text = "Close"
+
+[node name="InvContainer" type="GridContainer" parent="."]
+offset_left = 696.0
+offset_top = 324.0
+offset_right = 1272.0
+offset_bottom = 660.0
+columns = 3
+script = ExtResource("2_hbbdh")
+
+[node name="Node" type="Node" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

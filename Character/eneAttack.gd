@@ -2,13 +2,10 @@ extends Area2D
 
 
 @export var damage : int = 10
-@export var player : Player
-@export var facing_shape : FacingCollisionShape2D
+#@export var facing_shape :  FacingCollisionShape2D
 
 func _ready():
-	monitoring = false
-	player.connect("facing_direction_changed" , _on_player_facing_direction_changed)
-	
+	pass
 
 
 func _on_body_entered(body):
