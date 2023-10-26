@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cktq32cpbgo35"]
+
+[ext_resource type="Script" path="res://slot.gd" id="1_1whjj"]
+[ext_resource type="Texture2D" uid="uid://uxjsmrmdbrun" path="res://Art/items/Cherries.png" id="1_i7ap5"]
+
+[node name="slot" type="Panel"]
+custom_minimum_size = Vector2(200, 200)
+offset_right = 200.0
+offset_bottom = 200.0
+script = ExtResource("1_1whjj")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(101, 98)
+scale = Vector2(7.1875, 6.375)
+texture = ExtResource("1_i7ap5")
+hframes = 17
