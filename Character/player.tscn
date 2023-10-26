@@ -450,7 +450,7 @@ jump_animation = "jump_start"
 attack_state = NodePath("../Attack")
 
 [node name="BufferTimer" type="Timer" parent="CharacterStateMachine/Ground"]
-wait_time = 0.05
+wait_time = 0.5
 one_shot = true
 autostart = true
 
