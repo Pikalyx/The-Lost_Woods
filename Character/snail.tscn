@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="4_6kq2u"]
 [ext_resource type="Script" path="res://Character/State.gd" id="5_durdt"]
 [ext_resource type="Script" path="res://Character/HitState.gd" id="6_7c7nt"]
-[ext_resource type="Script" path="res://Character/headbut.gd" id="8_g8h5l"]
-[ext_resource type="Script" path="res://Character/EnemyAttackA.gd" id="8_lx11g"]
+[ext_resource type="Script" path="res://Character/headbut.gd" id="8_3fd7y"]
+[ext_resource type="Script" path="res://Character/EnemyFacingA.gd" id="8_o7jaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46oo2"]
 size = Vector2(32, 23)
@@ -134,7 +134,7 @@ states/walk/node = SubResource("AnimationNodeAnimation_0gr2g")
 states/walk/position = Vector2(371, 85)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_fet42"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_dlsd6")]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_841k4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_av2qe"]
 size = Vector2(20, 23)
 
 [node name="snail" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
@@ -175,6 +175,7 @@ script = ExtResource("5_durdt")
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("5_durdt")
+can_move = false
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "return_state")]
 script = ExtResource("6_7c7nt")
@@ -189,14 +190,13 @@ one_shot = true
 
 [node name="headbut" type="Area2D" parent="." node_paths=PackedStringArray("facing_shape")]
 collision_mask = 2
-script = ExtResource("8_g8h5l")
-damage = 15
+script = ExtResource("8_3fd7y")
 facing_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="headbut"]
-position = Vector2(-9, 6)
-shape = SubResource("RectangleShape2D_841k4")
-script = ExtResource("8_lx11g")
+position = Vector2(-10, 6.5)
+shape = SubResource("RectangleShape2D_av2qe")
+script = ExtResource("8_o7jaa")
 
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]

@@ -2,12 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
-
-
 @export var speed : float = 200.0
 
-@export var max_health : float = 5.0
-var current_health: int = max_health
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
@@ -20,17 +16,9 @@ var direction : Vector2 = Vector2.ZERO
 
 signal facing_direction_changed(facing_right : bool)
 
-
-
 func _ready():
 	animation_tree.active = true
-	set_process(true)
-	
-func _process(delta):
-	if Input.is_action_pressed("ui_cancel"):
-		$PauseMenu.pause()
 
-	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -49,12 +37,6 @@ func _physics_process(delta):
 	update_animation_parameters()
 	update_facing_direction()
 	
-func _on_hurt_box_area_entered(area):
-	if area.name == "hitBox":
-		current_health -=1
-		if current_health < 0:
-			current_health = max_health
-		
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position",direction.x)
 

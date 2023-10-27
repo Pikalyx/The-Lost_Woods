@@ -1,11 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6h483oubrxks"]
+[gd_scene load_steps=14 format=3 uid="uid://c6h483oubrxks"]
 
 [ext_resource type="Script" path="res://Character/pig.gd" id="1_ds7ua"]
 [ext_resource type="Texture2D" uid="uid://bllurb2wra4uq" path="res://Art/03-Pig/Attack (34x28).png" id="2_ci43l"]
 [ext_resource type="Texture2D" uid="uid://ddd25sj5s8i6f" path="res://Art/03-Pig/Run (34x28).png" id="3_fj2nm"]
-[ext_resource type="Script" path="res://Character/Damageable.gd" id="4_7dbpa"]
-[ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="5_ejnrt"]
-[ext_resource type="Script" path="res://Character/walk.gd" id="6_8gnwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7aci"]
 size = Vector2(21, 16)
@@ -134,8 +131,6 @@ states/run/position = Vector2(355, 101)
 transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl")]
 
 [node name="pig" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 5
 script = ExtResource("1_ds7ua")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -157,13 +152,3 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-9, 0)
-
-[node name="Damageable" type="Node" parent="."]
-script = ExtResource("4_7dbpa")
-health = 40.0
-
-[node name="CharacterStateMachine" type="Node" parent="."]
-script = ExtResource("5_ejnrt")
-
-[node name="walk" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("6_8gnwv")
