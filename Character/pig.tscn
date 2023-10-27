@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6h483oubrxks"]
+[gd_scene load_steps=17 format=3 uid="uid://c6h483oubrxks"]
 
 [ext_resource type="Script" path="res://Character/pig.gd" id="1_ds7ua"]
 [ext_resource type="Texture2D" uid="uid://bllurb2wra4uq" path="res://Art/03-Pig/Attack (34x28).png" id="2_ci43l"]
 [ext_resource type="Texture2D" uid="uid://ddd25sj5s8i6f" path="res://Art/03-Pig/Run (34x28).png" id="3_fj2nm"]
+[ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="4_xqrb0"]
+[ext_resource type="Script" path="res://Character/Pig_Run.gd" id="5_ovyru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7aci"]
 size = Vector2(21, 16)
@@ -65,6 +67,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_no2rg"]
 resource_name = "run"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -123,12 +126,15 @@ advance_mode = 2
 switch_mode = 1
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f17j3"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kpgah"]
 states/attack/node = SubResource("AnimationNodeAnimation_5g2oi")
-states/attack/position = Vector2(495, 85)
+states/attack/position = Vector2(693, 100)
 states/run/node = SubResource("AnimationNodeAnimation_uhkl6")
 states/run/position = Vector2(355, 101)
-transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl")]
+transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl"), "attack", "End", SubResource("AnimationNodeStateMachineTransition_f17j3")]
 
 [node name="pig" type="CharacterBody2D"]
 collision_layer = 4
@@ -136,8 +142,8 @@ collision_mask = 5
 script = ExtResource("1_ds7ua")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ci43l")
-hframes = 5
+texture = ExtResource("3_fj2nm")
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 6)
@@ -154,3 +160,9 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-9, 0)
+
+[node name="CharacterStateMachine" type="Node" parent="."]
+script = ExtResource("4_xqrb0")
+
+[node name="Run" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("5_ovyru")
