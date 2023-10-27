@@ -1511,14 +1511,27 @@ gradient = ExtResource("4_2wotw")
 
 [node name="snail" parent="." instance=ExtResource("3_j2hck")]
 position = Vector2(134, 71)
+hit_state = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/HitState.gd"),"can_move":false,"damageable":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/Damageable.gd"),"health":20.0,"dead_animation_name":"dead")
+,"dead_state":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/State.gd"),"can_move":false)
+,"return_state":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/State.gd"))
+)
 
-[node name="snail2" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
+
+[node name="snail2" parent="." instance=ExtResource("3_j2hck")]
 position = Vector2(280, 71)
-hit_state = NodePath("../snail/CharacterStateMachine/Hit")
+hit_state = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/HitState.gd"),"can_move":false,"damageable":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/Damageable.gd"),"health":20.0,"dead_animation_name":"dead")
+,"dead_state":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/State.gd"),"can_move":false)
+,"return_state":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/State.gd"))
+)
 
-[node name="snail3" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
+
+[node name="snail3" parent="." instance=ExtResource("3_j2hck")]
 position = Vector2(420, 68)
-hit_state = NodePath("../snail/CharacterStateMachine/Hit")
+hit_state = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/HitState.gd"),"can_move":false,"damageable":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/Damageable.gd"),"health":20.0,"dead_animation_name":"dead")
+,"dead_state":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/State.gd"),"can_move":false)
+,"return_state":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Character/State.gd"))
+)
+
 
 [node name="HealthChangedManger" parent="." instance=ExtResource("4_2jugk")]
 
