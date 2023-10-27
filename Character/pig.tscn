@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6h483oubrxks"]
+[gd_scene load_steps=16 format=3 uid="uid://c6h483oubrxks"]
 
 [ext_resource type="Script" path="res://Character/pig.gd" id="1_ds7ua"]
 [ext_resource type="Texture2D" uid="uid://bllurb2wra4uq" path="res://Art/03-Pig/Attack (34x28).png" id="2_ci43l"]
@@ -130,6 +130,15 @@ states/run/node = SubResource("AnimationNodeAnimation_uhkl6")
 states/run/position = Vector2(355, 101)
 transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl")]
 
+[sub_resource type="Gradient" id="Gradient_xr7cp"]
+offsets = PackedFloat32Array(0, 0.745928)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3vdu6"]
+gradient = SubResource("Gradient_xr7cp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="pig" type="CharacterBody2D"]
 script = ExtResource("1_ds7ua")
 
@@ -138,6 +147,7 @@ texture = ExtResource("2_ci43l")
 hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2.5, 6)
 shape = SubResource("RectangleShape2D_n7aci")
 
@@ -152,3 +162,8 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-9, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(3, 6)
+color = Color(0.282353, 0.764706, 0.541176, 1)
+texture = SubResource("GradientTexture2D_3vdu6")
