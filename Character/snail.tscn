@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://da6eafhmdgdpx"]
+[gd_scene load_steps=18 format=3 uid="uid://da6eafhmdgdpx"]
 
 [ext_resource type="Script" path="res://Character/snail.gd" id="1_bwhs0"]
 [ext_resource type="Texture2D" uid="uid://ix0lf6ahqxbt" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png" id="1_cohpc"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="4_6kq2u"]
 [ext_resource type="Script" path="res://Character/State.gd" id="5_durdt"]
 [ext_resource type="Script" path="res://Character/HitState.gd" id="6_7c7nt"]
-[ext_resource type="Script" path="res://Character/headbut.gd" id="8_3fd7y"]
-[ext_resource type="Script" path="res://Character/EnemyFacingA.gd" id="8_o7jaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46oo2"]
 size = Vector2(32, 23)
@@ -134,9 +132,6 @@ states/walk/node = SubResource("AnimationNodeAnimation_0gr2g")
 states/walk/position = Vector2(371, 85)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_fet42"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_dlsd6")]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_av2qe"]
-size = Vector2(20, 23)
-
 [node name="snail" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
 position = Vector2(134, 81)
 collision_layer = 4
@@ -188,16 +183,5 @@ can_move = false
 wait_time = 0.307
 one_shot = true
 
-[node name="headbut" type="Area2D" parent="." node_paths=PackedStringArray("facing_shape")]
-collision_mask = 2
-script = ExtResource("8_3fd7y")
-facing_shape = NodePath("CollisionShape2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="headbut"]
-position = Vector2(-10, 6.5)
-shape = SubResource("RectangleShape2D_av2qe")
-script = ExtResource("8_o7jaa")
-
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]
-[connection signal="body_entered" from="headbut" to="headbut" method="_on_body_entered"]
