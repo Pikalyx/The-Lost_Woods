@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://uo7hbmwy4l1r"]
+[gd_scene load_steps=23 format=3 uid="uid://uo7hbmwy4l1r"]
 
 [ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_yie4n"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_mcw2p"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="11_rjfpu"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_7ml3d"]
 [ext_resource type="Texture2D" uid="uid://b5h86yxmxoajq" path="res://icon.svg" id="13_k7ank"]
+[ext_resource type="Script" path="res://Trailer.gd" id="14_q68uq"]
+[ext_resource type="AudioStream" uid="uid://bxwha4iphurq4" path="res://Sound/taco-bell-bong-sfx.mp3" id="15_ufwwg"]
+[ext_resource type="Script" path="res://JustVibing.gd" id="16_85xqd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_yie4n")
@@ -1445,6 +1448,15 @@ sources/0 = SubResource("TileSetAtlasSource_wqln0")
 [sub_resource type="CircleShape2D" id="CircleShape2D_s8u3g"]
 radius = 41.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yka83"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ajvbx"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4q4p"]
+size = Vector2(128, 125.156)
+
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1549,4 +1561,32 @@ position = Vector2(504, -46)
 scale = Vector2(0.523438, 0.40625)
 texture = ExtResource("13_k7ank")
 
+[node name="Trailer" type="Sprite2D" parent="."]
+position = Vector2(-319, 19)
+scale = Vector2(0.132813, 0.578125)
+texture = SubResource("CompressedTexture2D_yka83")
+script = ExtResource("14_q68uq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Trailer"]
+position = Vector2(2401.87, -32.8649)
+scale = Vector2(7.52938, 1.72973)
+stream = ExtResource("15_ufwwg")
+volume_db = -3.714
+
+[node name="JustVibing" type="Sprite2D" parent="."]
+position = Vector2(370, -40)
+scale = Vector2(0.351563, 0.351563)
+texture = SubResource("CompressedTexture2D_ajvbx")
+script = ExtResource("16_85xqd")
+move_speed = 50.0
+move_dir = Vector2(75, 75)
+
+[node name="Area2D" type="Area2D" parent="JustVibing"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JustVibing/Area2D"]
+position = Vector2(1.422, 0)
+shape = SubResource("RectangleShape2D_o4q4p")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="finished" from="Trailer/AudioStreamPlayer2D" to="Trailer" method="_on_audio_stream_player_2d_finished"]

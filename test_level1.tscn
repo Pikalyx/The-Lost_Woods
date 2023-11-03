@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=27 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -14,7 +14,12 @@
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_1tbo6"]
 [ext_resource type="PackedScene" uid="uid://bycd8bsoi3b3j" path="res://test_level_3.tscn" id="13_m181l"]
 [ext_resource type="Texture2D" uid="uid://b5h86yxmxoajq" path="res://icon.svg" id="14_ipw3x"]
+[ext_resource type="Script" path="res://Homer.gd" id="15_8xupj"]
 [ext_resource type="PackedScene" uid="uid://ng57pbulh0db" path="res://UI/hearts_container.tscn" id="15_b800s"]
+[ext_resource type="Texture2D" uid="uid://xqi3osfl2rhp" path="res://Art/TrapIdle.png" id="17_r3rbb"]
+[ext_resource type="Script" path="res://Trap.gd" id="17_ucia6"]
+[ext_resource type="Script" path="res://Trailer.gd" id="18_jx3y3"]
+[ext_resource type="AudioStream" uid="uid://bxwha4iphurq4" path="res://Sound/taco-bell-bong-sfx.mp3" id="20_8m5aa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
@@ -1542,6 +1547,15 @@ sources/0 = SubResource("TileSetAtlasSource_wqln0")
 [sub_resource type="CircleShape2D" id="CircleShape2D_2yq22"]
 radius = 31.1448
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqvul"]
+size = Vector2(68, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_py287"]
+size = Vector2(125.867, 123.259)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ldwni"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1644,10 +1658,21 @@ shape = SubResource("CircleShape2D_2yq22")
 [node name="test_level3" parent="Area2D" instance=ExtResource("13_m181l")]
 position = Vector2(-597, -48)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Homer" type="Sprite2D" parent="."]
 position = Vector2(22.75, -14.75)
 scale = Vector2(0.589844, 0.394531)
 texture = ExtResource("14_ipw3x")
+script = ExtResource("15_8xupj")
+
+[node name="Area2D2" type="Area2D" parent="Homer"]
+position = Vector2(-38.5695, 37.3862)
+scale = Vector2(1.69536, 2.53465)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Homer/Area2D2"]
+position = Vector2(24, -15)
+shape = SubResource("RectangleShape2D_aqvul")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -1655,4 +1680,37 @@ texture = ExtResource("14_ipw3x")
 offset_right = 200.0
 offset_bottom = 14.0
 
+[node name="Trap" type="Sprite2D" parent="."]
+position = Vector2(-420, 35)
+rotation = -1.5708
+scale = Vector2(0.9375, 0.421875)
+texture = ExtResource("17_r3rbb")
+hframes = 2
+vframes = 6
+script = ExtResource("17_ucia6")
+
+[node name="Area2D" type="Area2D" parent="Trap"]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trap/Area2D"]
+position = Vector2(2.13334, -2.37036)
+shape = SubResource("RectangleShape2D_py287")
+
+[node name="Trailer" type="Sprite2D" parent="."]
+position = Vector2(-319, 19)
+scale = Vector2(0.132813, 0.578125)
+texture = SubResource("CompressedTexture2D_ldwni")
+script = ExtResource("18_jx3y3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Trailer"]
+position = Vector2(2401.87, -32.8649)
+scale = Vector2(7.52938, 1.72973)
+stream = ExtResource("20_8m5aa")
+volume_db = -3.714
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Homer/Area2D2" to="Homer" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="Trap/Area2D" to="Trap" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Trap/Area2D" to="Trap" method="_on_area_2d_body_exited"]
+[connection signal="finished" from="Trailer/AudioStreamPlayer2D" to="Trailer" method="_on_audio_stream_player_2d_finished"]
