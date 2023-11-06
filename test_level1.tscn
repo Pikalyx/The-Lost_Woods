@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=20 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_1tbo6"]
 [ext_resource type="PackedScene" uid="uid://bycd8bsoi3b3j" path="res://test_level_3.tscn" id="13_m181l"]
 [ext_resource type="Texture2D" uid="uid://b5h86yxmxoajq" path="res://icon.svg" id="14_ipw3x"]
+[ext_resource type="Script" path="res://exit.gd" id="15_p6skj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
@@ -1478,6 +1479,9 @@ sources/0 = SubResource("TileSetAtlasSource_wqln0")
 [sub_resource type="CircleShape2D" id="CircleShape2D_2yq22"]
 radius = 31.1448
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmp8j"]
+size = Vector2(8974, 199.5)
+
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1581,8 +1585,18 @@ shape = SubResource("CircleShape2D_2yq22")
 position = Vector2(-597, -48)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(22.75, -14.75)
+position = Vector2(51, -27)
 scale = Vector2(0.589844, 0.394531)
 texture = ExtResource("14_ipw3x")
 
+[node name="exit" type="Area2D" parent="."]
+collision_mask = 6
+script = ExtResource("15_p6skj")
+damage = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit"]
+position = Vector2(442, 636.75)
+shape = SubResource("RectangleShape2D_qmp8j")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="exit" to="exit" method="_on_body_entered"]

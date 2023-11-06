@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://do3rsr7idkevg"]
+[gd_scene load_steps=37 format=3 uid="uid://do3rsr7idkevg"]
 
 [ext_resource type="FontFile" uid="uid://cccwm5ryd6bf2" path="res://Melted Monster.ttf" id="1_ecc2j"]
 [ext_resource type="Script" path="res://main_menu.gd" id="1_hted8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="4_yb8cr"]
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="5_tpn4b"]
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="6_ch477"]
+[ext_resource type="Texture2D" uid="uid://bluf7oonxc25e" path="res://Art/prac/TrapIdle.png" id="7_ye4k3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rtt3"]
 bg_color = Color(0.164706, 0.160784, 0.188235, 1)
@@ -27,6 +28,228 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6qge"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 0, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjidp"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 0, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tjei"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 117, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gb0s"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 117, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk1xc"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 234, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xick1"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 234, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17nk5"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 351, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pq6q"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 351, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_854cf"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 468, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgt8l"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 468, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wwkw"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 585, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwvhy"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 0, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dly05"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 0, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63mjv"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 117, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb3yr"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 117, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foftk"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 234, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jihn"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 234, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci3nm"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 351, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_468ld"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 351, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe1ti"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 468, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1diy"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(373, 468, 373, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awaoo"]
+atlas = ExtResource("7_ye4k3")
+region = Rect2(0, 585, 373, 117)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_28yup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6qge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjidp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tjei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gb0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk1xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xick1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17nk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pq6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_854cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgt8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wwkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwvhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dly05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63mjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb3yr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foftk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jihn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci3nm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_468ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe1ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1diy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awaoo")
+}],
+"loop": true,
+"name": &"lookout",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_0aqgy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_ye4k3")]
+}
+
+[sub_resource type="Animation" id="Animation_264gl"]
+resource_name = "lookout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_ye4k3"), ExtResource("7_ye4k3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q3yju"]
+_data = {
+"RESET": SubResource("Animation_0aqgy"),
+"lookout": SubResource("Animation_264gl")
+}
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_hted8")
@@ -159,6 +382,26 @@ motion_mirroring = Vector2(500, 0)
 position = Vector2(758.667, 515.333)
 scale = Vector2(4.36198, 5.41333)
 texture = ExtResource("6_ch477")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node"]
+position = Vector2(657, -312)
+sprite_frames = SubResource("SpriteFrames_28yup")
+animation = &"lookout"
+frame_progress = 0.980265
+
+[node name="Sprite2D" type="Sprite2D" parent="Node"]
+position = Vector2(3.08333, 0)
+scale = Vector2(0.77957, 1)
+texture = ExtResource("7_ye4k3")
+hframes = 11
+vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node"]
+libraries = {
+"": SubResource("AnimationLibrary_q3yju")
+}
 
 [connection signal="button_up" from="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer/NewGameButton" to="." method="_on_new_game_button_button_up"]
 [connection signal="button_up" from="MarginContainer/VBoxContainer2/VBoxContainer/MarginContainer2/SettingsButton" to="." method="_on_settings_button_button_up"]
