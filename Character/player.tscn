@@ -514,3 +514,4 @@ shape = SubResource("CapsuleShape2D_pnsei")
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
+[connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

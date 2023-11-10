@@ -57,12 +57,12 @@ func handleCollision():
 		print_debug(collider.name)
 
 func _on_hurt_box_area_entered(area):
-	if area.name == "hitbox":
+	if area.name == "hitBox":
 		current_health -=1
 		if current_health < 0:
 			current_health = max_health
 		healthChanged.emit(current_health)
-		print("hit")
+
 		
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position",direction.x)
