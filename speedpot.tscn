@@ -1,8 +1,16 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=8 format=3 uid="uid://c7vsimh4yw567"]
 
 [ext_resource type="PackedScene" uid="uid://dshpkbtwp2ngi" path="res://collectable.tscn" id="1_leprt"]
 [ext_resource type="Script" path="res://speedpot.gd" id="2_314qs"]
 [ext_resource type="Texture2D" uid="uid://cabx2mkxdanlj" path="res://Art/GUI Art/speedlogo.png" id="2_hadgx"]
+=======
+[gd_scene load_steps=8 format=3 uid="uid://0abdvjekaw6l"]
+
+[ext_resource type="PackedScene" uid="uid://pe0ir73kumay" path="res://collectable.tscn" id="1_leprt"]
+[ext_resource type="Script" path="res://speedpot.gd" id="2_314qs"]
+[ext_resource type="Texture2D" path="res://Art/GUI Art/speedlogo.png" id="2_hadgx"]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kc37e"]
 resource_local_to_scene = true
