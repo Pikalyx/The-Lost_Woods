@@ -125,7 +125,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kpgah"]
 states/attack/node = SubResource("AnimationNodeAnimation_5g2oi")
-states/attack/position = Vector2(495, 85)
+states/attack/position = Vector2(494.5, 85)
 states/run/node = SubResource("AnimationNodeAnimation_uhkl6")
 states/run/position = Vector2(355, 101)
 transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl")]
