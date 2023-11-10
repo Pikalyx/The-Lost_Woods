@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 class_name Player
 
-
+signal healthChanged
 
 @export var speed : float = 200.0
 
-@export var max_health : float = 5.0
+@export var max_health : float = 4.0
 var current_health: int = max_health
 
 @onready var sprite : Sprite2D = $Sprite2D
@@ -49,11 +49,20 @@ func _physics_process(delta):
 	update_animation_parameters()
 	update_facing_direction()
 	
+	
+func handleCollision():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		print_debug(collider.name)
+
 func _on_hurt_box_area_entered(area):
-	if area.name == "hitBox":
+	if area.name == "hitbox":
 		current_health -=1
 		if current_health < 0:
 			current_health = max_health
+		healthChanged.emit(current_health)
+		print("hit")
 		
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position",direction.x)
