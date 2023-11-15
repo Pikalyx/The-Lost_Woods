@@ -2,3 +2,4 @@
 .godot/
 *.exe
 *.import
+.DS_Store
