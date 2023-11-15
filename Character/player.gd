@@ -2,8 +2,13 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var speed : float = 200.0
+@export var normalspeed  = 200.0
 
+@export var dashspeed = 1200.0
+@export var dashlength = .1
+
+@onready var dash = $Dash
+@onready var cooldown = $Cooldown
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
@@ -23,7 +28,14 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	
+	if Input.is_action_just_pressed("dash"):
+		dash.start_dash(dashlength)
 
+	var speed = dashspeed if dash.is_dashing() else normalspeed
+	
+	
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_vector("left", "right", "up", "down")
