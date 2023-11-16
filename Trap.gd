@@ -1,6 +1,6 @@
 extends Sprite2D
 
-
+@onready var player = get_parent().get_node("Player")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	var hiProfPodder = Vector2(player.get_position())
@@ -10,7 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var player = get_parent().get_node("Player")
+	#var player = get_parent().get_node("Player")
 	pass
 func _on_area_2d_body_entered(body):
 	var violator = str(body)

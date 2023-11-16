@@ -3,6 +3,7 @@ extends Sprite2D
 var stalkOffset : float
 var windUp = true
 var directionCommit : float
+@onready var player = get_parent().get_node("Player")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AudioStreamPlayer2D.play()
@@ -12,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if windUp == true:
-		var player = get_parent().get_node("Player")
+		#var player = get_parent().get_node("Player")
 		if player.direction.x == 1:
 			stalkOffset = (player.get_position().x - 50)
 		elif player.direction.x == -1:

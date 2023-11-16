@@ -1,6 +1,7 @@
 extends Sprite2D
 
-
+@onready var player = get_parent().get_node("Player")
+@onready var damageable = $Damageable
 var cooldown = false
 var speed = 0
 var direction = Vector2(self.get_position())
@@ -15,7 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var player = get_parent().get_node("Player")
+	#var player = get_parent().get_node("Player")
 	if player != null:
 		if (player.get_position() - self.get_position()) <= fuckRadius and (player.get_position() - self.get_position()) >= -fuckRadius and cooldown == false:
 			look_at(player.get_position())
@@ -32,9 +33,10 @@ func _process(delta):
 		self.set_position(self.get_position() + (direction * speed))
 	
 	
-#func on_damageable_hit(node : Node , damage_amount : int, knockback_direction : Vector2):
-#	if node == player.Sword:
+func on_damageable_hit(node : Node , damage_amount : int, knockback_direction : Vector2):
+	print("Homer hit by ", node)
 
 
 func _on_area_2d_2_body_entered(body):
-	direction.x = -direction.x
+	#direction.x = -direction.x
+	pass
