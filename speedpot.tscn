@@ -2,7 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://pe0ir73kumay" path="res://collectable.tscn" id="1_leprt"]
 [ext_resource type="Script" path="res://speedpot.gd" id="2_314qs"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" path="res://Art/GUI Art/speedlogo.png" id="2_hadgx"]
+=======
+[ext_resource type="Texture2D" uid="uid://b7frxn35am3k6" path="res://Art/GUI Art/speedlogo.png" id="2_hadgx"]
+[ext_resource type="Resource" uid="uid://uwwy7fx715cj" path="res://Inventory/items/speedpot.tres" id="3_tuvd4"]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kc37e"]
 resource_local_to_scene = true
@@ -47,6 +52,10 @@ _data = {
 
 [node name="speedpot" instance=ExtResource("1_leprt")]
 script = ExtResource("2_314qs")
+<<<<<<< Updated upstream
+=======
+itemRes = ExtResource("3_tuvd4")
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1, 4)
