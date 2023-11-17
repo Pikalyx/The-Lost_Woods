@@ -67,13 +67,3 @@ func update_facing_direction():
 		
 	emit_signal("facing_direction_changed", !sprite.flip_h)
 
-@export var inventory: Inventory
-
-
-func _on_area_2d_area_entered(area):
-	if area.has_method("collect"):
-		area.collect()
-
-
-func _on_inventory_gui_closed():
-	pass # Replace with function body.

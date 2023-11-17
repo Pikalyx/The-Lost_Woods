@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="inventoryItem" load_steps=3 format=3 uid="uid://uwwy7fx715cj"]
-
-[ext_resource type="Script" path="res://Inventory/inventoryItem.gd" id="1_1xqsr"]
-[ext_resource type="Texture2D" uid="uid://cabx2mkxdanlj" path="res://Art/GUI Art/speedlogo.png" id="2_gecvj"]
-
-[resource]
-script = ExtResource("1_1xqsr")
-name = "speedpot"
-texture = ExtResource("2_gecvj")
