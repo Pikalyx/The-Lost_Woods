@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3brjnhw3gtte"]
 
-[ext_resource type="Texture2D" uid="uid://caro0cprr5ip7" path="res://InventoryRect.png" id="1_hv3tt"]
 [ext_resource type="Script" path="res://inventory_gui.gd" id="1_ojoor"]
+[ext_resource type="Texture2D" uid="uid://bmvpm16e6bgcp" path="res://Art/GUI Art/InventoryRect.png" id="2_jr3vc"]
 [ext_resource type="PackedScene" uid="uid://bqynjw3liqs88" path="res://slot_gui.tscn" id="2_xulpv"]
 
 [node name="InventoryGUI" type="Control"]
@@ -17,7 +17,7 @@ script = ExtResource("1_ojoor")
 layout_mode = 0
 offset_right = 102.0
 offset_bottom = 71.0
-texture = ExtResource("1_hv3tt")
+texture = ExtResource("2_jr3vc")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
