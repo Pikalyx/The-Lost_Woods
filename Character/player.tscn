@@ -1,7 +1,8 @@
-[gd_scene load_steps=46 format=3 uid="uid://c06h0yv06ktmh"]
+[gd_scene load_steps=51 format=3 uid="uid://c06h0yv06ktmh"]
 
 [ext_resource type="Texture2D" uid="uid://2eeki0ddiyxg" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
+[ext_resource type="Texture2D" uid="uid://bimb5j3xpuggd" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Dead/Dead-Sheet.png" id="2_gvyms"]
 [ext_resource type="Texture2D" uid="uid://vb3ol28ixgwr" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="3_688gr"]
 [ext_resource type="Texture2D" uid="uid://b0qg2l8dcld1x" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Run/Run-Sheet.png" id="3_glyhw"]
 [ext_resource type="Texture2D" uid="uid://50bb5qejs3vi" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="5_3p50q"]
@@ -11,9 +12,12 @@
 [ext_resource type="Script" path="res://Character/Attack.gd" id="10_lgji7"]
 [ext_resource type="Script" path="res://Character/LandingState.gd" id="10_whrg4"]
 [ext_resource type="Script" path="res://Character/StateDebugLabel.gd" id="11_etpgi"]
+[ext_resource type="Script" path="res://Character/State.gd" id="12_4kl6k"]
 [ext_resource type="Script" path="res://Character/Sword.gd" id="12_ge70g"]
 [ext_resource type="Script" path="res://Character/FacingCollisionShape2D.gd" id="13_okjnx"]
-[ext_resource type="PackedScene" uid="uid://ctvugfrqy6sco" path="res://pause_menu.tscn" id="14_px7vt"]
+[ext_resource type="Script" path="res://Character/Damageable.gd" id="16_s8spy"]
+[ext_resource type="PackedScene" uid="uid://4eos3ue7cevq" path="res://Character/dash.tscn" id="17_4k4vc"]
+[ext_resource type="PackedScene" uid="uid://dmrnatpifxwpy" path="res://Character/Cooldown.tscn" id="18_yhbrj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wja7b"]
 radius = 8.0
@@ -21,6 +25,18 @@ height = 44.0
 
 [sub_resource type="Animation" id="Animation_x03mx"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_cbswl"]
 resource_name = "attack1"
@@ -124,6 +140,45 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_yxmb0"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_gvyms")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_o7ekr"]
@@ -332,6 +387,7 @@ _data = {
 "RESET": SubResource("Animation_x03mx"),
 "attack1": SubResource("Animation_cbswl"),
 "attack2": SubResource("Animation_jl50a"),
+"dead": SubResource("Animation_yxmb0"),
 "double_jump": SubResource("Animation_o7ekr"),
 "idle": SubResource("Animation_74p83"),
 "jump_end": SubResource("Animation_onjsv"),
@@ -423,9 +479,8 @@ position = Vector2(2.08165e-12, 2)
 shape = SubResource("CapsuleShape2D_wja7b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_688gr")
+texture = ExtResource("2_gvyms")
 hframes = 8
-frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -464,6 +519,7 @@ landing_animation = "jump_end"
 script = ExtResource("10_whrg4")
 landing_animation_name = "jump_end"
 ground_state = NodePath("../Ground")
+can_move = false
 
 [node name="Attack" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("return_state")]
 script = ExtResource("10_lgji7")
@@ -473,6 +529,9 @@ can_move = false
 [node name="Timer" type="Timer" parent="CharacterStateMachine/Attack"]
 wait_time = 0.2
 one_shot = true
+
+[node name="dead" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("12_4kl6k")
 
 [node name="StateDebugLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
 offset_left = -37.0
@@ -497,7 +556,13 @@ script = ExtResource("13_okjnx")
 facing_left_position = Vector2(-29, 2.08165e-12)
 facing_right_position = Vector2(29, 2.08165e-12)
 
-[node name="PauseMenu" parent="." instance=ExtResource("14_px7vt")]
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("16_s8spy")
+health = 100.0
+
+[node name="Dash" parent="." instance=ExtResource("17_4k4vc")]
+
+[node name="Cooldown" parent="." instance=ExtResource("18_yhbrj")]
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
