@@ -24,11 +24,11 @@ func _process(delta):
 			cooldown = true
 			print("cooldown is ", cooldown, (player.get_position() - self.get_position()))
 			var angle = self.get_rotation()
-#			print(angle)
-#			if abs(angle) >= PI:
-#				$AnimatedSprite2D.flip_v = true
-#			else:
-#				$AnimatedSprite2D.flip_v = false
+			print(angle)
+			if abs(angle) >= PI/2:
+				$AnimatedSprite2D.flip_v = true
+			else:
+				$AnimatedSprite2D.flip_v = false
 			direction = Vector2(cos(angle), sin(angle))
 			speed = ramSpeed
 			self.set_position(self.get_position() + ((direction * speed) * delta))

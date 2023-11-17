@@ -1694,7 +1694,7 @@ inCloset = true
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("19_f8vpw")]
 position = Vector2(-193, -15)
-ramSpeed = 1.0
+ramSpeed = 5.0
 
 [node name="snail5" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
 position = Vector2(-1419, 276)

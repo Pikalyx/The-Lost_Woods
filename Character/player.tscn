@@ -519,7 +519,6 @@ landing_animation = "jump_end"
 script = ExtResource("10_whrg4")
 landing_animation_name = "jump_end"
 ground_state = NodePath("../Ground")
-can_move = false
 
 [node name="Attack" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("return_state")]
 script = ExtResource("10_lgji7")
