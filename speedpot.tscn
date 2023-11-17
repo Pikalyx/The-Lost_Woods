@@ -48,10 +48,7 @@ _data = {
 
 [node name="speedpot" instance=ExtResource("1_leprt")]
 script = ExtResource("2_314qs")
-<<<<<<< Updated upstream
-=======
 itemRes = ExtResource("3_tuvd4")
->>>>>>> Stashed changes
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1, 4)
