@@ -1,7 +1,7 @@
 extends Node2D
 
 func _on_new_game_button_button_up():
-	pass # Replace with function body.
+	pass
 
 
 func _on_credits_button_button_up():
