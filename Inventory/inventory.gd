@@ -4,7 +4,7 @@ class_name Inventory
 
 @export var items: Array[inventoryItem]
 
-
+signal updated
 
 
 func insert(item: inventoryItem):
