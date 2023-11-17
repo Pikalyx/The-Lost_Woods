@@ -9,3 +9,6 @@ func start_dash(dur):
 	
 func is_dashing():
 	return !timer.is_stopped()
+
+func _on_dashtimer_timeout():
+	pass # Replace with function body.

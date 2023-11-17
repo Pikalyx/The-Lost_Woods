@@ -8,7 +8,7 @@ class_name Player
 @export var dashlength = .1
 
 @onready var dash = $Dash
-@onready var cooldown = $Cooldown
+#@onready var cooldown = $Cooldown
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
@@ -22,6 +22,7 @@ var direction : Vector2 = Vector2.ZERO
 signal facing_direction_changed(facing_right : bool)
 
 func _ready():
+	#print(cooldown.is_on_cooldown())
 	animation_tree.active = true
 
 func _physics_process(delta):
@@ -30,8 +31,10 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	if Input.is_action_just_pressed("dash"):
-		dash.start_dash(dashlength)
-
+	#	if cooldown.is_on_cooldown():
+			dash.start_dash(dashlength)
+	#if dash._on_dashtimer_timeout():
+	#	cooldown.start_cooldown(1)
 	var speed = dashspeed if dash.is_dashing() else normalspeed
 	
 	
