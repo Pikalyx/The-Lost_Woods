@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xqi3osfl2rhp"
-path="res://.godot/imported/TrapIdle.png-0a07a0c54bd007151f21ff6a65d8723a.ctex"
+path="res://.godot/imported/TrapIdle.png-a65364cf523b116840a457d3903553b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/TrapIdle.png"
-dest_files=["res://.godot/imported/TrapIdle.png-0a07a0c54bd007151f21ff6a65d8723a.ctex"]
+source_file="res://Art/Sprites/Trap/TrapIdle.png"
+dest_files=["res://.godot/imported/TrapIdle.png-a65364cf523b116840a457d3903553b7.ctex"]
 
 [params]
 

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq2ualdr36npk"]
+
+[ext_resource type="Texture2D" uid="uid://b5h86yxmxoajq" path="res://icon.svg" id="1_ddbxx"]
+[ext_resource type="Script" path="res://Homer.gd" id="2_ueyt4"]
+[ext_resource type="Script" path="res://Character/Damageable.gd" id="3_4h4dp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqvul"]
+size = Vector2(68, 50)
+
+[node name="Homer" type="Sprite2D"]
+position = Vector2(22.75, -14.75)
+scale = Vector2(0.589844, 0.394531)
+texture = ExtResource("1_ddbxx")
+script = ExtResource("2_ueyt4")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(-38.5695, 37.3862)
+scale = Vector2(1.69536, 2.53465)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(24, -15)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_aqvul")
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("3_4h4dp")
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

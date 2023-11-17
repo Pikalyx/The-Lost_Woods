@@ -13,6 +13,7 @@ func _ready():
 
 func _on_body_entered(body):
 	for child in body.get_children():
+		print(body)
 		if child is Damageable:
 			print("Sword is hitting ", child)
 			var direction_to_damageable = (body.global_position - get_parent().global_position) 
