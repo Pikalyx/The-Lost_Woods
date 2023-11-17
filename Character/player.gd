@@ -72,7 +72,7 @@ func update_facing_direction():
 
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
-		area.collect()
+		area.collect(inventory)
 
 
 func _on_inventory_gui_closed():

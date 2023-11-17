@@ -14,13 +14,8 @@
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_1tbo6"]
 [ext_resource type="PackedScene" uid="uid://bycd8bsoi3b3j" path="res://test_level_3.tscn" id="13_m181l"]
 [ext_resource type="Texture2D" uid="uid://b5h86yxmxoajq" path="res://icon.svg" id="14_ipw3x"]
-<<<<<<< Updated upstream
-[ext_resource type="PackedScene" uid="uid://c7vsimh4yw567" path="res://speedpot.tscn" id="16_cqxmu"]
-[ext_resource type="PackedScene" uid="uid://dv2kvrd0q7vsc" path="res://health_flute.tscn" id="17_o4nr4"]
-=======
 [ext_resource type="PackedScene" uid="uid://0abdvjekaw6l" path="res://speedpot.tscn" id="16_cqxmu"]
-[ext_resource type="PackedScene" path="res://health_flute.tscn" id="17_o4nr4"]
->>>>>>> Stashed changes
+[ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="17_o4nr4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")

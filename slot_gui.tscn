@@ -1,14 +1,7 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=3 format=3 uid="uid://c4fi7san1qcw3"]
-
-[ext_resource type="Script" path="res://slot_gui.gd" id="1_34wj0"]
-[ext_resource type="Texture2D" uid="uid://cdh27qrdpc6jq" path="res://inventorySlot.png" id="1_kpnmb"]
-=======
 [gd_scene load_steps=3 format=3 uid="uid://bqynjw3liqs88"]
 
 [ext_resource type="Script" path="res://slot_gui.gd" id="1_34wj0"]
-[ext_resource type="Texture2D" path="res://inventorySlot.png" id="1_kpnmb"]
->>>>>>> Stashed changes
+[ext_resource type="Texture2D" uid="uid://cdh27qrdpc6jq" path="res://inventorySlot.png" id="1_kpnmb"]
 
 [node name="Slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)

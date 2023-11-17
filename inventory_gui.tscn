@@ -1,16 +1,8 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=4 format=3 uid="uid://bmib2xp3i17bc"]
+[gd_scene load_steps=4 format=3 uid="uid://b3brjnhw3gtte"]
 
 [ext_resource type="Texture2D" uid="uid://caro0cprr5ip7" path="res://InventoryRect.png" id="1_hv3tt"]
 [ext_resource type="Script" path="res://inventory_gui.gd" id="1_ojoor"]
-[ext_resource type="PackedScene" uid="uid://c4fi7san1qcw3" path="res://slot_gui.tscn" id="2_xulpv"]
-=======
-[gd_scene load_steps=4 format=3 uid="uid://b3brjnhw3gtte"]
-
-[ext_resource type="Texture2D" path="res://InventoryRect.png" id="1_hv3tt"]
-[ext_resource type="Script" path="res://inventory_gui.gd" id="1_ojoor"]
 [ext_resource type="PackedScene" uid="uid://bqynjw3liqs88" path="res://slot_gui.tscn" id="2_xulpv"]
->>>>>>> Stashed changes
 
 [node name="InventoryGUI" type="Control"]
 custom_minimum_size = Vector2(102, 70)
