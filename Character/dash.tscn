@@ -8,4 +8,7 @@ script = ExtResource("1_pjwg1")
 [node name="Dashtimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Cooldowntimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Dashtimer" to="." method="_on_dashtimer_timeout"]

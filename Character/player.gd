@@ -31,7 +31,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	if Input.is_action_just_pressed("dash"):
-	#	if cooldown.is_on_cooldown():
+		if dash.is_on_cooldown():
 			dash.start_dash(dashlength)
 	#if dash._on_dashtimer_timeout():
 	#	cooldown.start_cooldown(1)
