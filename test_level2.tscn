@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://uo7hbmwy4l1r"]
 
-[ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_yie4n"]
+[ext_resource type="Texture2D" uid="uid://bdjgim8d5q03e" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_yie4n"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_mcw2p"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_preoq"]
 [ext_resource type="Script" path="res://DayNightTesting/daynightcycle.gd" id="4_fommp"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="10_c30va"]
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="11_rjfpu"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_7ml3d"]
-[ext_resource type="Texture2D" uid="uid://b5h86yxmxoajq" path="res://icon.svg" id="13_k7ank"]
+[ext_resource type="Texture2D" uid="uid://co4eclsv6rcfh" path="res://icon.svg" id="13_k7ank"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_yie4n")
