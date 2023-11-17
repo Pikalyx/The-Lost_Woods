@@ -1,7 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqynjw3liqs88"]
 
 [ext_resource type="Script" path="res://slot_gui.gd" id="1_34wj0"]
+<<<<<<< Updated upstream
+=======
 [ext_resource type="Texture2D" uid="uid://d6nxjr1rv355" path="res://Art/GUI Art/inventorySlot.png" id="2_fobxx"]
+>>>>>>> Stashed changes
 
 [node name="Slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -11,7 +14,10 @@ offset_bottom = 20.0
 script = ExtResource("1_34wj0")
 
 [node name="background" type="Sprite2D" parent="."]
+<<<<<<< Updated upstream
+=======
 texture = ExtResource("2_fobxx")
+>>>>>>> Stashed changes
 centered = false
 vframes = 2
 
