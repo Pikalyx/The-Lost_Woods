@@ -1,4 +1,7 @@
 extends Area2D
 
-func collect():
+@export var itemRes: inventoryItem 
+
+func collect(inventory: Inventory):
+	inventory.insert(itemRes)
 	queue_free()

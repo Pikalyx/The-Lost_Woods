@@ -2,12 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://pe0ir73kumay" path="res://collectable.tscn" id="1_leprt"]
 [ext_resource type="Script" path="res://speedpot.gd" id="2_314qs"]
-[ext_resource type="Texture2D" uid="uid://b7frxn35am3k6" path="res://Art/GUI Art/speedlogo.png" id="2_hadgx"]
-[ext_resource type="Resource" uid="uid://uwwy7fx715cj" path="res://Inventory/items/speedpot.tres" id="3_tuvd4"]
+[ext_resource type="Texture2D" uid="uid://cnvnllvrtq7b5" path="res://Art/GUI Art/speedlogo.png" id="2_hadgx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kc37e"]
 resource_local_to_scene = true
 size = Vector2(17, 22)
+
+[sub_resource type="Animation" id="Animation_4arpu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_fk30h"]
 resource_name = "spin"
@@ -25,21 +39,6 @@ tracks/0/keys = {
 "values": [0.0, 6.28319]
 }
 
-[sub_resource type="Animation" id="Animation_4arpu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u3uvw"]
 _data = {
 "RESET": SubResource("Animation_4arpu"),
@@ -48,7 +47,6 @@ _data = {
 
 [node name="speedpot" instance=ExtResource("1_leprt")]
 script = ExtResource("2_314qs")
-itemRes = ExtResource("3_tuvd4")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1, 4)
