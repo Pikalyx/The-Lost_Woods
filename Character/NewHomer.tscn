@@ -196,6 +196,7 @@ script = ExtResource("1_il714")
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("2_3k6qj")
+health = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9.53674e-07, 0)

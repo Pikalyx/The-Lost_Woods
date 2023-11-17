@@ -132,8 +132,8 @@ states/run/position = Vector2(355, 101)
 transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl")]
 
 [node name="pig" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 7
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_ds7ua")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
