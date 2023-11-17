@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cibvhs4nlsshq"]
 
 [ext_resource type="Script" path="res://inventory_gui.gd" id="1_ojoor"]
-[ext_resource type="Texture2D" uid="uid://btq2lfe5s74r6" path="res://Art/GUI Art/InventoryRect.png" id="2_s2hcj"]
+[ext_resource type="Texture2D" uid="uid://dimn66tw6yprv" path="res://Art/GUI Art/InventoryRect.png" id="2_s2hcj"]
 [ext_resource type="PackedScene" uid="uid://bqynjw3liqs88" path="res://slot_gui.tscn" id="2_xulpv"]
 
 [node name="InventoryGUI" type="Control"]
