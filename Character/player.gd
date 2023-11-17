@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
+@export var max_health : float = 5.0
+@export var current_health = 5
 @export var normalspeed  = 200.0
 
 @export var dashspeed = 1200.0
