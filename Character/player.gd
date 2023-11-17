@@ -18,7 +18,13 @@ signal facing_direction_changed(facing_right : bool)
 
 func _ready():
 	animation_tree.active = true
+	set_process(true)
+	
+func _process(delta):
+	if Input.is_action_pressed("ui_cancel"):
+		$PauseMenu.pause()
 
+	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
