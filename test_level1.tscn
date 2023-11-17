@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=27 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://dp0x1cum7iuc7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -14,10 +14,13 @@
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_1tbo6"]
 [ext_resource type="PackedScene" uid="uid://bycd8bsoi3b3j" path="res://test_level_3.tscn" id="13_m181l"]
 [ext_resource type="PackedScene" uid="uid://ng57pbulh0db" path="res://UI/hearts_container.tscn" id="15_b800s"]
+[ext_resource type="Texture2D" uid="uid://dsnt1nssgbjq" path="res://Art/Sprites/Egg.png" id="15_tg11r"]
+[ext_resource type="AudioStream" uid="uid://b6y8ac3etjlb2" path="res://Sound/612642__newlocknew__heart-beat-2calm-rhythmblood-flows-in-the-veins6lrs.wav" id="17_cjk4u"]
 [ext_resource type="Script" path="res://Trailer.gd" id="18_jx3y3"]
 [ext_resource type="PackedScene" uid="uid://chy634t261mms" path="res://Character/trap.tscn" id="18_pdhsk"]
 [ext_resource type="PackedScene" uid="uid://o4tl2sknh1ud" path="res://Character/NewHomer.tscn" id="19_f8vpw"]
-[ext_resource type="AudioStream" uid="uid://bxwha4iphurq4" path="res://Sound/taco-bell-bong-sfx.mp3" id="20_8m5aa"]
+[ext_resource type="Texture2D" uid="uid://b5h86yxmxoajq" path="res://icon.svg" id="20_kvkda"]
+[ext_resource type="Script" path="res://ClosetDoor.gd" id="21_rhjv7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
@@ -1545,11 +1548,11 @@ sources/0 = SubResource("TileSetAtlasSource_wqln0")
 [sub_resource type="CircleShape2D" id="CircleShape2D_2yq22"]
 radius = 31.1448
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ldwni"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo22j"]
 size = Vector2(55.8668, 106.667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g757"]
+size = Vector2(130.273, 124.672)
 
 [node name="TestLevel" type="Node2D"]
 
@@ -1660,15 +1663,15 @@ offset_right = 200.0
 offset_bottom = 14.0
 
 [node name="Trailer" type="Sprite2D" parent="."]
-position = Vector2(-319, 19)
-scale = Vector2(0.132813, 0.578125)
-texture = SubResource("CompressedTexture2D_ldwni")
+position = Vector2(-337.235, -25)
+scale = Vector2(0.083, 0.095)
+texture = ExtResource("15_tg11r")
 script = ExtResource("18_jx3y3")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Trailer"]
 position = Vector2(2401.87, -32.8649)
 scale = Vector2(7.52938, 1.72973)
-stream = ExtResource("20_8m5aa")
+stream = ExtResource("17_cjk4u")
 volume_db = -3.714
 
 [node name="MonsterClosetDetector" type="Area2D" parent="."]
@@ -1683,7 +1686,7 @@ position = Vector2(-183.262, -2871.71)
 shape = SubResource("RectangleShape2D_bo22j")
 
 [node name="snail4" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
-position = Vector2(-1554, 216)
+position = Vector2(-1381, 275)
 hit_state = NodePath("../snail/CharacterStateMachine/Hit")
 inCloset = true
 
@@ -1693,6 +1696,62 @@ inCloset = true
 position = Vector2(-193, -15)
 ramSpeed = 1.0
 
+[node name="snail5" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
+position = Vector2(-1419, 276)
+hit_state = NodePath("../snail/CharacterStateMachine/Hit")
+inCloset = true
+
+[node name="snail6" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
+position = Vector2(-1298, 296)
+hit_state = NodePath("../snail/CharacterStateMachine/Hit")
+inCloset = true
+
+[node name="snail7" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
+position = Vector2(-1233, 296)
+hit_state = NodePath("../snail/CharacterStateMachine/Hit")
+inCloset = true
+
+[node name="snail8" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
+position = Vector2(-1342, 285)
+hit_state = NodePath("../snail/CharacterStateMachine/Hit")
+inCloset = true
+
+[node name="snail9" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
+position = Vector2(-1491, 238)
+hit_state = NodePath("../snail/CharacterStateMachine/Hit")
+inCloset = true
+
+[node name="snail10" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
+position = Vector2(-1459, 267)
+hit_state = NodePath("../snail/CharacterStateMachine/Hit")
+inCloset = true
+
+[node name="snail11" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
+position = Vector2(-1509, 212)
+hit_state = NodePath("../snail/CharacterStateMachine/Hit")
+inCloset = true
+
+[node name="ClosetDoor" type="Sprite2D" parent="."]
+position = Vector2(-1672, 209.279)
+scale = Vector2(0.184228, 0.433138)
+texture = ExtResource("20_kvkda")
+script = ExtResource("21_rhjv7")
+
+[node name="Area2D" type="Area2D" parent="ClosetDoor"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClosetDoor/Area2D"]
+position = Vector2(-0.000976563, -0.644501)
+shape = SubResource("RectangleShape2D_2g757")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="finished" from="Trailer/AudioStreamPlayer2D" to="Trailer" method="_on_audio_stream_player_2d_finished"]
 [connection signal="body_entered" from="MonsterClosetDetector" to="snail4" method="_on_monster_closet_detector_body_entered"]
+[connection signal="body_entered" from="MonsterClosetDetector" to="snail5" method="_on_monster_closet_detector_body_entered"]
+[connection signal="body_entered" from="MonsterClosetDetector" to="snail6" method="_on_monster_closet_detector_body_entered"]
+[connection signal="body_entered" from="MonsterClosetDetector" to="snail7" method="_on_monster_closet_detector_body_entered"]
+[connection signal="body_entered" from="MonsterClosetDetector" to="snail8" method="_on_monster_closet_detector_body_entered"]
+[connection signal="body_entered" from="MonsterClosetDetector" to="snail9" method="_on_monster_closet_detector_body_entered"]
+[connection signal="body_entered" from="MonsterClosetDetector" to="snail10" method="_on_monster_closet_detector_body_entered"]
+[connection signal="body_entered" from="MonsterClosetDetector" to="snail11" method="_on_monster_closet_detector_body_entered"]
+[connection signal="body_exited" from="MonsterClosetDetector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]

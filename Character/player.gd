@@ -66,4 +66,3 @@ func update_facing_direction():
 		sprite.flip_h = true
 		
 	emit_signal("facing_direction_changed", !sprite.flip_h)
-

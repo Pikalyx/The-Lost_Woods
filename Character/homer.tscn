@@ -21,7 +21,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2(24, -15)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_aqvul")
 
 [node name="Damageable" type="Node" parent="."]
