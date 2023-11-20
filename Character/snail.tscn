@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://da6eafhmdgdpx"]
+[gd_scene load_steps=19 format=3 uid="uid://da6eafhmdgdpx"]
 
 [ext_resource type="Script" path="res://Character/snail.gd" id="1_bwhs0"]
 [ext_resource type="Texture2D" uid="uid://ix0lf6ahqxbt" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png" id="1_cohpc"]
@@ -132,6 +132,10 @@ states/walk/node = SubResource("AnimationNodeAnimation_0gr2g")
 states/walk/position = Vector2(371, 85)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_fet42"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_dlsd6")]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s5y8"]
+radius = 14.0
+height = 34.0
+
 [node name="snail" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
 position = Vector2(134, 81)
 collision_layer = 4
@@ -158,6 +162,13 @@ script = ExtResource("2_6kf2s")
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_428ah")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="hitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+position = Vector2(-2, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0s5y8")
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "animation_tree", "current_state")]
 script = ExtResource("4_6kq2u")

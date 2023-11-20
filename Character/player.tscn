@@ -1,5 +1,6 @@
 [gd_scene load_steps=52 format=3 uid="uid://c06h0yv06ktmh"]
 
+
 [ext_resource type="Texture2D" uid="uid://bgod5rcxxheds" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
 [ext_resource type="Resource" uid="uid://f1mw6sqx12o1" path="res://Inventory/PlayerInventory.tres" id="2_hoe40"]
@@ -419,9 +420,10 @@ graph_offset = Vector2(139.925, -46.9382)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfif4"]
 size = Vector2(28.25, 48)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yqilh"]
-radius = 9.0
-height = 50.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pnsei"]
+radius = 12.0
+height = 44.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -514,9 +516,9 @@ facing_right_position = Vector2(29, 2.08165e-12)
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("15_bnyao")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_yqilh")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_pnsei")
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 script = ExtResource("17_jndb6")
@@ -535,7 +537,15 @@ grow_vertical = 2
 offset_right = 200.0
 offset_bottom = 14.0
 
+[node name="hurtBox" type="Area2D" parent="."]
+collision_layer = 4
+
+
+
+
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+
+[connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
+
