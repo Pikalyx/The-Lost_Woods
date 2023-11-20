@@ -1692,10 +1692,6 @@ inCloset = true
 
 [node name="Trap" parent="." instance=ExtResource("18_pdhsk")]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("19_f8vpw")]
-position = Vector2(-193, -15)
-ramSpeed = 5.0
-
 [node name="snail5" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_j2hck")]
 position = Vector2(-1419, 276)
 hit_state = NodePath("../snail/CharacterStateMachine/Hit")
@@ -1743,6 +1739,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClosetDoor/Area2D"]
 position = Vector2(-0.000976563, -0.644501)
 shape = SubResource("RectangleShape2D_2g757")
+
+[node name="HomerBody" parent="." instance=ExtResource("19_f8vpw")]
+position = Vector2(-188, -25)
+ramSpeed = 3.0
+fuckRadius = 100
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="finished" from="Trailer/AudioStreamPlayer2D" to="Trailer" method="_on_audio_stream_player_2d_finished"]

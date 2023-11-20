@@ -7,6 +7,7 @@ var speed = 0
 @export var ramSpeed: float
 var direction : Vector2
 @export var fuckRadius = 150
+@export var health = 0
 var origin = Vector2(self.get_position())
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,10 +32,12 @@ func _process(delta):
 				$AnimatedSprite2D.flip_v = false
 			direction = Vector2(cos(angle), sin(angle))
 			speed = ramSpeed
-			self.set_position(self.get_position() + ((direction * speed) * delta))
+			self.set_position(self.get_position() + ((direction * speed)))
 		elif ((player.get_position().x - self.get_position().x) >= fuckRadius or (player.get_position().x - self.get_position().x) <= -fuckRadius or (player.get_position().y - self.get_position().y) >= fuckRadius or (player.get_position().y - self.get_position().y) <= -fuckRadius) and cooldown == true:
 			cooldown = false
 			speed = 0
+			if health <= 0:
+				queue_free()
 			print("cooldown is ", cooldown, (player.get_position() - self.get_position()))
 		self.set_position(self.get_position() + (direction * speed))
 	$AnimatedSprite2D.play("Homering")
@@ -46,3 +49,4 @@ func _process(delta):
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	print("Homer hit by ", node)
 	direction.x = -direction.x
+	health -= 1

@@ -27,13 +27,14 @@ func _on_area_2d_body_entered(body):
 	if violator.begins_with("Player:<CharacterBody2D") == true and attacking == false:
 		print("Hey, that's the player! Facing ", player.sprite.flip_h)
 		if player.sprite.flip_h == facingRight:
-			attacking = true
-			offset = Vector2(0,-150)
-			play("Retract")
-			$Timer.start()
+			retract()
 		
 		
-
+func retract():
+	attacking = true
+	offset = Vector2(0,-125)
+	play("Retract")
+	$Timer.start()
 
 func _on_area_2d_body_exited(body):
 	var violateEnder = str(body)
@@ -48,3 +49,7 @@ func _on_timer_timeout():
 	if attacking == true:
 		play("Attack")
 	
+
+
+func _on_damageable_on_hit(node, damage_taken, knockback_direction):
+	retract() # Replace with function body.
