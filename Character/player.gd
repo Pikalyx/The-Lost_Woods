@@ -2,12 +2,16 @@ extends CharacterBody2D
 
 class_name Player
 
-
-
+@export var normalspeed  = 200.0
 @export var speed : float = 200.0
-
 @export var max_health : float = 5.0
 var current_health: int = max_health
+
+#@export var dashspeed = 1200.0
+#@export var dashlength = .1
+
+#@onready var dash = $Dash
+#@onready var cooldown = $Cooldown
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
@@ -20,22 +24,24 @@ var direction : Vector2 = Vector2.ZERO
 
 signal facing_direction_changed(facing_right : bool)
 
-
-
 func _ready():
+	#print(cooldown.is_on_cooldown())
 	animation_tree.active = true
-	set_process(true)
-	
-func _process(delta):
-	if Input.is_action_pressed("ui_cancel"):
-		$PauseMenu.pause()
 
-	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
+	
+#	if Input.is_action_just_pressed("dash"):
+#		if dash.is_on_cooldown():
+#			dash.start_dash(dashlength)
+	#if dash._on_dashtimer_timeout():
+	#	cooldown.start_cooldown(1)
+#	var speed = dashspeed if dash.is_dashing() else normalspeed
+	
+	
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -49,12 +55,6 @@ func _physics_process(delta):
 	update_animation_parameters()
 	update_facing_direction()
 	
-func _on_hurt_box_area_entered(area):
-	if area.name == "hitBox":
-		current_health -=1
-		if current_health < 0:
-			current_health = max_health
-		
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position",direction.x)
 
