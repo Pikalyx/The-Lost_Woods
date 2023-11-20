@@ -3,11 +3,14 @@ extends CharacterBody2D
 class_name Player
 
 @export var normalspeed  = 200.0
+@export var speed : float = 200.0
+@export var max_health : float = 5.0
+var current_health: int = max_health
 
-@export var dashspeed = 1200.0
-@export var dashlength = .1
+#@export var dashspeed = 1200.0
+#@export var dashlength = .1
 
-@onready var dash = $Dash
+#@onready var dash = $Dash
 #@onready var cooldown = $Cooldown
 
 @onready var sprite : Sprite2D = $Sprite2D
@@ -30,12 +33,12 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
-	if Input.is_action_just_pressed("dash"):
-		if dash.is_on_cooldown():
-			dash.start_dash(dashlength)
+#	if Input.is_action_just_pressed("dash"):
+#		if dash.is_on_cooldown():
+#			dash.start_dash(dashlength)
 	#if dash._on_dashtimer_timeout():
 	#	cooldown.start_cooldown(1)
-	var speed = dashspeed if dash.is_dashing() else normalspeed
+#	var speed = dashspeed if dash.is_dashing() else normalspeed
 	
 	
 	
