@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=22 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://n2r1p13h8jpe" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bycd8bsoi3b3j" path="res://test_level_3.tscn" id="13_m181l"]
 [ext_resource type="Texture2D" uid="uid://bsfy7ixo2u4w4" path="res://icon.svg" id="14_ipw3x"]
 [ext_resource type="PackedScene" uid="uid://0abdvjekaw6l" path="res://speedpot.tscn" id="16_cqxmu"]
+[ext_resource type="PackedScene" uid="uid://dqodgxxv4aaxb" path="res://NewTrap.tscn" id="17_gfjfj"]
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="17_o4nr4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
@@ -1664,5 +1665,9 @@ collision_mask = 2
 
 [node name="HealthFlute" parent="." instance=ExtResource("17_o4nr4")]
 position = Vector2(470, 77)
+
+[node name="Trap" parent="." instance=ExtResource("17_gfjfj")]
+position = Vector2(-370, 79)
+scale = Vector2(0.195, 0.195)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

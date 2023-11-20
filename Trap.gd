@@ -1,10 +1,12 @@
 extends AnimatedSprite2D
 
-@onready var player = get_parent().get_node("Player")
+@onready var player = get_parent().get_parent().get_node("Player")
 @export var facingRight : bool
 var attacking = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	offset = Vector2(0,0)
+	scale = Vector2(1, 1)
 	self.flip_h = facingRight
 	play("Idle")
 #	var hiProfPodder = Vector2(player.get_position())
@@ -19,6 +21,7 @@ func _process(delta):
 	if animation == "Attack" and frame == 40:
 		attacking = false
 		offset = Vector2(0,0)
+		scale = Vector2(1, 1)
 	#var player = get_parent().get_node("Player")
 	pass
 func _on_area_2d_body_entered(body):
@@ -32,7 +35,7 @@ func _on_area_2d_body_entered(body):
 		
 func retract():
 	attacking = true
-	offset = Vector2(0,-125)
+	offset = Vector2(8.715, -133.86)
 	play("Retract")
 	$Timer.start()
 
@@ -45,7 +48,8 @@ func _on_area_2d_body_exited(body):
 
 func _on_timer_timeout():
 	print("Ding!")
-	offset = Vector2(-75,-75)
+	scale = Vector2(2,2)
+	offset = Vector2(-181.18, -76.95)
 	if attacking == true:
 		play("Attack")
 	

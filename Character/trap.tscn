@@ -463,7 +463,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 10.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -546,7 +546,7 @@ size = Vector2(132.207, 874.699)
 position = Vector2(-436, 68)
 scale = Vector2(0.355, 0.355)
 sprite_frames = SubResource("SpriteFrames_e7rmp")
-animation = &"Idle"
+animation = &"Attack"
 script = ExtResource("3_qfn3m")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -563,8 +563,6 @@ shape = SubResource("RectangleShape2D_py287")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
