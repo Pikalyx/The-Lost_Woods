@@ -183,5 +183,6 @@ can_move = false
 wait_time = 0.307
 one_shot = true
 
+[connection signal="visibility_changed" from="Sprite2D" to="." method="_on_sprite_2d_visibility_changed"]
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]
