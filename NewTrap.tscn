@@ -795,14 +795,25 @@ position = Vector2(-4.5, -7)
 shape = SubResource("RectangleShape2D_oy1lx")
 
 [node name="AttackingArea2D" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/AttackingArea2D"]
 position = Vector2(-165, -86.1)
 polygon = PackedVector2Array(323, 114, -60, -217, -99, -204, -48, -145, -84, -56, -147, -91, -165, -57, -118, -21, -116, 63, -141, 82, -186, 79, -172, 116, -112, 126, -98, 155, -151, 205, -137, 226, -72, 192, 59, 199)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/AttackingArea2D"]
-position = Vector2(-532, -34.1)
+[node name="Eye" type="CharacterBody2D" parent="AnimatedSprite2D"]
+position = Vector2(-1, 1)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Eye"]
+position = Vector2(-531, -35.1)
 shape = SubResource("CircleShape2D_kn8pc")
+
+[node name="EyeDamageable" type="Node" parent="AnimatedSprite2D/Eye"]
+script = ExtResource("5_cw7j4")
+health = 50.0
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("5_cw7j4")
@@ -811,4 +822,5 @@ health = 50.0
 [connection signal="timeout" from="AnimatedSprite2D/Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
 [connection signal="body_entered" from="AnimatedSprite2D/IdleArea2D" to="AnimatedSprite2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/IdleArea2D" to="AnimatedSprite2D" method="_on_area_2d_body_exited"]
+[connection signal="on_hit" from="AnimatedSprite2D/Eye/EyeDamageable" to="AnimatedSprite2D" method="_on_eye_damageable_on_hit"]
 [connection signal="on_hit" from="Damageable" to="AnimatedSprite2D" method="_on_damageable_on_hit"]

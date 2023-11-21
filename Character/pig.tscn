@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6h483oubrxks"]
+[gd_scene load_steps=18 format=3 uid="uid://c6h483oubrxks"]
 
 [ext_resource type="Script" path="res://Character/pig.gd" id="1_ds7ua"]
 [ext_resource type="Texture2D" uid="uid://bllurb2wra4uq" path="res://Art/03-Pig/Attack (34x28).png" id="2_ci43l"]
@@ -115,10 +115,44 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_dlp6s"]
+resource_name = "hit"
+length = 1.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_h6e6k"]
+resource_name = "dead"
+length = 0.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4hf3w"]
 _data = {
 "RESET": SubResource("Animation_dd765"),
 "attack": SubResource("Animation_jasfp"),
+"dead": SubResource("Animation_h6e6k"),
+"hit": SubResource("Animation_dlp6s"),
 "run": SubResource("Animation_no2rg")
 }
 
@@ -142,6 +176,7 @@ states/attack/position = Vector2(495, 85)
 states/run/node = SubResource("AnimationNodeAnimation_uhkl6")
 states/run/position = Vector2(355, 101)
 transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl")]
+graph_offset = Vector2(0, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74653"]
 size = Vector2(20, 15)
@@ -152,7 +187,7 @@ script = ExtResource("1_ds7ua")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ci43l")
-hframes = 5
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 6)
@@ -182,4 +217,5 @@ position = Vector2(3, 5)
 shape = SubResource("RectangleShape2D_74653")
 debug_color = Color(0.964706, 0.164706, 0.239216, 0.419608)
 
+[connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

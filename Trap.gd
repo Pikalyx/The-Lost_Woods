@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 @onready var player = get_parent().get_parent().get_node("Player")
 @export var facingRight : bool
 var attacking = false
+@export var health = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	offset = Vector2(0,0)
@@ -18,10 +19,12 @@ func _ready():
 func _process(delta):
 	if self.is_playing() == false and attacking == false:
 		play("Idle")
-	if animation == "Attack" and frame == 40:
-		attacking = false
 		offset = Vector2(0,0)
 		scale = Vector2(1, 1)
+	if animation == "Attack" and frame == 40:
+		attacking = false
+	if health <= 0:
+		queue_free()
 	#var player = get_parent().get_node("Player")
 	pass
 func _on_area_2d_body_entered(body):
@@ -56,4 +59,11 @@ func _on_timer_timeout():
 
 
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
-	retract() # Replace with function body.
+	if attacking == false:
+		retract()
+	health -= 1
+
+
+func _on_eye_damageable_on_hit(node, damage_taken, knockback_direction):
+	attacking = false
+	self.stop()
