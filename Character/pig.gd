@@ -52,8 +52,10 @@ func _physics_process(delta):
 		state = "Idle"
 	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and state == "Hit":
 		state = "Idle"
-	print(state)
-	print($AnimationPlayer.current_animation)
+	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and state == "Dead":
+		queue_free()
+#	print(state)
+#	print($AnimationPlayer.current_animation)
 		#print("pig attack done")
 	
 	
