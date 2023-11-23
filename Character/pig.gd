@@ -55,7 +55,7 @@ func _physics_process(delta):
 	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and state == "Dead":
 		queue_free()
 #	print(state)
-#	print($AnimationPlayer.current_animation)
+	#print($AnimationPlayer.current_animation, ", ", $AnimationPlayer.current_animation_position, ", ", $AnimationPlayer.current_animation_length)
 		#print("pig attack done")
 	
 	

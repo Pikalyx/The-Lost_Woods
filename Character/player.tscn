@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c06h0yv06ktmh"]
+[gd_scene load_steps=53 format=3 uid="uid://c06h0yv06ktmh"]
 
 [ext_resource type="Texture2D" uid="uid://tr7u7uktbmre" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="17_jndb6"]
 [ext_resource type="PackedScene" uid="uid://b3brjnhw3gtte" path="res://inventory_gui.tscn" id="18_q01q2"]
 [ext_resource type="PackedScene" uid="uid://ng57pbulh0db" path="res://UI/hearts_container.tscn" id="19_y831m"]
+[ext_resource type="Script" path="res://Character/Dash.gd" id="20_vup2t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wja7b"]
 radius = 8.0
@@ -534,7 +535,17 @@ grow_vertical = 2
 offset_right = 200.0
 offset_bottom = 14.0
 
+[node name="Dash" type="Node2D" parent="."]
+script = ExtResource("20_vup2t")
+
+[node name="Dashtimer" type="Timer" parent="Dash"]
+one_shot = true
+
+[node name="Cooldowntimer" type="Timer" parent="Dash"]
+one_shot = true
+
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Dash/Dashtimer" to="Dash" method="_on_dashtimer_timeout"]

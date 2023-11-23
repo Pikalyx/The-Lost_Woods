@@ -780,6 +780,8 @@ shape = SubResource("RectangleShape2D_jgqha")
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_r63hh")
 animation = &"Idle"
+frame = 33
+frame_progress = 1.0
 script = ExtResource("3_34p0e")
 
 [node name="Timer" type="Timer" parent="AnimatedSprite2D"]

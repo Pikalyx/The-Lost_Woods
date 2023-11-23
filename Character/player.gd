@@ -7,6 +7,9 @@ class_name Player
 @export var max_health : float = 5.0
 var current_health: int = max_health
 
+@onready var dash = $Dash
+@export var dashspeed = 1200.0
+@export var dashlength = .1
 #@export var dashspeed = 1200.0
 #@export var dashlength = .1
 
@@ -33,12 +36,12 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
-#	if Input.is_action_just_pressed("dash"):
-#		if dash.is_on_cooldown():
-#			dash.start_dash(dashlength)
-	#if dash._on_dashtimer_timeout():
-	#	cooldown.start_cooldown(1)
-#	var speed = dashspeed if dash.is_dashing() else normalspeed
+	if Input.is_action_just_pressed("dash"):
+		if dash.is_on_cooldown():
+			dash.start_dash(dashlength)
+#	if dash._on_dashtimer_timeout():
+#		cooldown.start_cooldown(1)
+	var speed = dashspeed if dash.is_dashing() else normalspeed
 	
 	
 	
