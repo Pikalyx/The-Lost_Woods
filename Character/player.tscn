@@ -1,21 +1,25 @@
-[gd_scene load_steps=49 format=3 uid="uid://c06h0yv06ktmh"]
+[gd_scene load_steps=53 format=3 uid="uid://c06h0yv06ktmh"]
 
-[ext_resource type="Texture2D" uid="uid://2eeki0ddiyxg" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
+[ext_resource type="Texture2D" uid="uid://tr7u7uktbmre" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
-[ext_resource type="Texture2D" uid="uid://bimb5j3xpuggd" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Dead/Dead-Sheet.png" id="2_gvyms"]
-[ext_resource type="Texture2D" uid="uid://vb3ol28ixgwr" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="3_688gr"]
-[ext_resource type="Texture2D" uid="uid://b0qg2l8dcld1x" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Run/Run-Sheet.png" id="3_glyhw"]
-[ext_resource type="Texture2D" uid="uid://50bb5qejs3vi" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="5_3p50q"]
+[ext_resource type="Resource" uid="uid://f1mw6sqx12o1" path="res://Inventory/PlayerInventory.tres" id="2_hoe40"]
+[ext_resource type="Texture2D" uid="uid://diwb0ueaei1hy" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="3_688gr"]
+[ext_resource type="Texture2D" uid="uid://v0gp3ppy0n8n" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Run/Run-Sheet.png" id="3_glyhw"]
+[ext_resource type="Texture2D" uid="uid://cafdmm11ub51v" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="5_3p50q"]
 [ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="7_58kh6"]
 [ext_resource type="Script" path="res://Character/GroundState.gd" id="8_s4tl4"]
 [ext_resource type="Script" path="res://Character/AirState.gd" id="9_qlamh"]
 [ext_resource type="Script" path="res://Character/Attack.gd" id="10_lgji7"]
 [ext_resource type="Script" path="res://Character/LandingState.gd" id="10_whrg4"]
 [ext_resource type="Script" path="res://Character/StateDebugLabel.gd" id="11_etpgi"]
-[ext_resource type="Script" path="res://Character/State.gd" id="12_4kl6k"]
 [ext_resource type="Script" path="res://Character/Sword.gd" id="12_ge70g"]
 [ext_resource type="Script" path="res://Character/FacingCollisionShape2D.gd" id="13_okjnx"]
-[ext_resource type="Script" path="res://Character/Damageable.gd" id="16_s8spy"]
+[ext_resource type="PackedScene" uid="uid://ctvugfrqy6sco" path="res://pause_menu.tscn" id="14_px7vt"]
+[ext_resource type="Script" path="res://Character/hitbox.gd" id="15_bnyao"]
+[ext_resource type="Script" path="res://CanvasLayer.gd" id="17_jndb6"]
+[ext_resource type="PackedScene" uid="uid://b3brjnhw3gtte" path="res://inventory_gui.tscn" id="18_q01q2"]
+[ext_resource type="PackedScene" uid="uid://ng57pbulh0db" path="res://UI/hearts_container.tscn" id="19_y831m"]
+[ext_resource type="Script" path="res://Character/Dash.gd" id="20_vup2t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wja7b"]
 radius = 8.0
@@ -23,18 +27,6 @@ height = 44.0
 
 [sub_resource type="Animation" id="Animation_x03mx"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_cbswl"]
 resource_name = "attack1"
@@ -341,51 +333,11 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_yxmb0"]
-resource_name = "dead"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_gvyms")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e8k1f"]
 _data = {
 "RESET": SubResource("Animation_x03mx"),
 "attack1": SubResource("Animation_cbswl"),
 "attack2": SubResource("Animation_jl50a"),
-"dead": SubResource("Animation_yxmb0"),
 "double_jump": SubResource("Animation_o7ekr"),
 "idle": SubResource("Animation_74p83"),
 "jump_end": SubResource("Animation_onjsv"),
@@ -468,17 +420,23 @@ graph_offset = Vector2(139.925, -46.9382)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfif4"]
 size = Vector2(28.25, 48)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yqilh"]
+radius = 9.0
+height = 50.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_kxgl7")
+inventory = ExtResource("2_hoe40")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 2)
 shape = SubResource("CapsuleShape2D_wja7b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_gvyms")
+texture = ExtResource("3_688gr")
 hframes = 8
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -517,7 +475,6 @@ landing_animation = "jump_end"
 script = ExtResource("10_whrg4")
 landing_animation_name = "jump_end"
 ground_state = NodePath("../Ground")
-can_move = false
 
 [node name="Attack" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("return_state")]
 script = ExtResource("10_lgji7")
@@ -527,9 +484,6 @@ can_move = false
 [node name="Timer" type="Timer" parent="CharacterStateMachine/Attack"]
 wait_time = 0.2
 one_shot = true
-
-[node name="dead" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("12_4kl6k")
 
 [node name="StateDebugLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
 offset_left = -37.0
@@ -541,6 +495,7 @@ script = ExtResource("11_etpgi")
 state_machine = NodePath("../CharacterStateMachine")
 
 [node name="Sword" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape")]
+position = Vector2(2.08165e-12, 2.08165e-12)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("12_ge70g")
@@ -554,10 +509,43 @@ script = ExtResource("13_okjnx")
 facing_left_position = Vector2(-29, 2.08165e-12)
 facing_right_position = Vector2(29, 2.08165e-12)
 
-[node name="Damageable" type="Node" parent="."]
-script = ExtResource("16_s8spy")
-health = 100.0
+[node name="PauseMenu" parent="." instance=ExtResource("14_px7vt")]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("15_bnyao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_yqilh")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+script = ExtResource("17_jndb6")
+
+[node name="InventoryGUI" parent="CanvasLayer3" instance=ExtResource("18_q01q2")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 31.0
+offset_top = -35.0
+offset_right = 133.0
+offset_bottom = 35.0
+grow_vertical = 2
+
+[node name="hearts_container" parent="CanvasLayer3" instance=ExtResource("19_y831m")]
+offset_right = 200.0
+offset_bottom = 14.0
+
+[node name="Dash" type="Node2D" parent="."]
+script = ExtResource("20_vup2t")
+
+[node name="Dashtimer" type="Timer" parent="Dash"]
+one_shot = true
+
+[node name="Cooldowntimer" type="Timer" parent="Dash"]
+one_shot = true
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Dash/Dashtimer" to="Dash" method="_on_dashtimer_timeout"]
