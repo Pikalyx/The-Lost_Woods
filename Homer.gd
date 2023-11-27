@@ -24,8 +24,7 @@ func _process(delta):
 			look_at(player.get_position())
 			cooldown = true
 			print("cooldown is ", cooldown, (player.get_position() - self.get_position()))
-			var angle = self.get_rotation()
-			print(angle)
+			var angle = fmod(self.get_rotation(), 2 * PI)
 			if abs(angle) >= PI/2:
 				$AnimatedSprite2D.flip_v = true
 			else:
