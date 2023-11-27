@@ -195,7 +195,7 @@ states/hit/position = Vector2(535, 69)
 states/run/node = SubResource("AnimationNodeAnimation_uhkl6")
 states/run/position = Vector2(424, 146)
 transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_0daec")]
-graph_offset = Vector2(0, 16)
+graph_offset = Vector2(-32.8757, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74653"]
 size = Vector2(20, 15)
