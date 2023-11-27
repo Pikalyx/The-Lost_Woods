@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://da6eafhmdgdpx"]
 
 [ext_resource type="Script" path="res://Character/snail.gd" id="1_bwhs0"]
-[ext_resource type="Texture2D" uid="uid://ix0lf6ahqxbt" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png" id="1_cohpc"]
-[ext_resource type="Texture2D" uid="uid://kuy8e07spl22" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/Dead-Sheet.png" id="1_lm51u"]
+[ext_resource type="Texture2D" uid="uid://lvuuf83u4mqw" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png" id="1_cohpc"]
+[ext_resource type="Texture2D" uid="uid://b6lshgngflxon" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/Dead-Sheet.png" id="1_lm51u"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="2_6kf2s"]
 [ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="4_6kq2u"]
 [ext_resource type="Script" path="res://Character/State.gd" id="5_durdt"]
@@ -183,5 +183,6 @@ can_move = false
 wait_time = 0.307
 one_shot = true
 
+[connection signal="visibility_changed" from="Sprite2D" to="." method="_on_sprite_2d_visibility_changed"]
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]

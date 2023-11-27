@@ -14,8 +14,9 @@ func _process(delta):
 	
 func on_signal_health_changed(node : Node, amount_changed : int):
 	var label_instance : Label = health_changed_label.instantiate()
-	node.add_child(label_instance)
-	label_instance.text = str(amount_changed)
+	if node != null:
+		node.add_child(label_instance)
+		label_instance.text = str(amount_changed)
 	
 	if(amount_changed >= 0):
 		label_instance.modulate = heal_color
