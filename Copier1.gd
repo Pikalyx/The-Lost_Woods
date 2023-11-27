@@ -12,6 +12,7 @@ var sticking = false
 var currentPlayerFlip : bool
 var playerShakeCount = 0
 var shakeCooldown = false
+var stickOffset : Vector2
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -28,6 +29,8 @@ func _physics_process(delta):
 	if sticking == false:
 		if not is_on_floor():
 			velocity.y += gravity * delta
+			if is_on_wall_only():
+				direction = -direction
 			if player != null:
 				if ((player.get_position().x - self.get_position().x) <= fuckRadius and (player.get_position().x - self.get_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_position().y) <= fuckRadius and (player.get_position().y - self.get_position().y) >= -fuckRadius):
 					if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false:
@@ -61,9 +64,8 @@ func _physics_process(delta):
 		
 
 		move_and_slide()
-	else:
-		var stickOffset = Vector2(player.get_position() - self.get_position())
-		set_position((player.get_position() + stickOffset))
+	elif sticking == true:
+		set_position((player.get_position() - stickOffset))
 		
 		if player.sprite.flip_h != currentPlayerFlip:
 			playerShakeCount += 1
@@ -73,7 +75,7 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			shakeCooldown = true
 			$ShakeCooldownTimer.start()
-			
+		
 		move_and_slide()
 
 func _on_timer_timeout():
@@ -97,6 +99,7 @@ func _on_area_2d_body_entered(body):
 	if sticking == false and shakeCooldown == false and health > 0:
 		sticking = true
 		currentPlayerFlip = player.sprite.flip_h
+		stickOffset = Vector2(player.get_position() - self.get_position())
 		$StickTimer.start()
 
 

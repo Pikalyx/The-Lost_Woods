@@ -9,11 +9,17 @@ class_name AirState
 @export var landing_animation : String = "landing"
 
 var has_double_jumped = false
+var fromWall = false
 
 func state_process(delta):
 	if(character.is_on_floor()):
 		next_state = landing_state
-		
+	if (character.is_on_wall_only()) and character.velocity.y >= 0:
+		has_double_jumped = false
+		fromWall = true
+	if !character.is_on_wall_only() and fromWall == true:
+		has_double_jumped = false
+		fromWall = false
 		
 func state_input(event : InputEvent):
 	if(event.is_action_pressed("jump") && !has_double_jumped):
@@ -29,4 +35,7 @@ func double_jump():
 	character.velocity.y = double_jump_velocity
 	playback.travel(double_jump_animation)
 	#animated_sprite.play("jump_double")
-	has_double_jumped = true
+	if !character.is_on_wall_only():
+		has_double_jumped = true
+	elif character.is_on_wall_only() and character.velocity.y < 0:
+		has_double_jumped = true
