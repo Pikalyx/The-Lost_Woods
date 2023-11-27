@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b473gmlvx3tru"]
+[gd_scene load_steps=9 format=3 uid="uid://b473gmlvx3tru"]
 
 [ext_resource type="Script" path="res://credits_page.gd" id="1_8ns7e"]
-[ext_resource type="FontFile" uid="uid://cccwm5ryd6bf2" path="res://Melted Monster.ttf" id="2_34450"]
 [ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="3_j04o7"]
 [ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="4_jxjjm"]
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="5_b5iar"]
@@ -51,7 +50,6 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer2/VBoxContainer2"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_34450")
 theme_override_font_sizes/font_size = 150
 text = "Settings"
 horizontal_alignment = 1
@@ -71,7 +69,6 @@ theme_override_constants/margin_bottom = 0
 [node name="MuteButton" type="Button" parent="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("2_34450")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_t1uvv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_34eca")
@@ -89,7 +86,6 @@ theme_override_constants/margin_bottom = 0
 [node name="BackButton" type="Button" parent="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer4"]
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("2_34450")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_t1uvv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_34eca")
