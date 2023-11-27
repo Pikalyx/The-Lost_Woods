@@ -486,6 +486,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="StateDebugLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+visible = false
 offset_left = -37.0
 offset_top = -47.0
 offset_right = 75.0
@@ -508,8 +509,6 @@ shape = SubResource("RectangleShape2D_lfif4")
 script = ExtResource("13_okjnx")
 facing_left_position = Vector2(-29, 2.08165e-12)
 facing_right_position = Vector2(29, 2.08165e-12)
-
-[node name="PauseMenu" parent="." instance=ExtResource("14_px7vt")]
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("15_bnyao")
@@ -534,6 +533,8 @@ grow_vertical = 2
 [node name="hearts_container" parent="CanvasLayer3" instance=ExtResource("19_y831m")]
 offset_right = 200.0
 offset_bottom = 14.0
+
+[node name="PauseMenu" parent="CanvasLayer3" instance=ExtResource("14_px7vt")]
 
 [node name="Dash" type="Node2D" parent="."]
 script = ExtResource("20_vup2t")
