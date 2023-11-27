@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=21 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://cvhorgx8xi0u" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="11_231cr"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_1tbo6"]
 [ext_resource type="PackedScene" uid="uid://bycd8bsoi3b3j" path="res://test_level_3.tscn" id="13_m181l"]
-[ext_resource type="Texture2D" uid="uid://x60pyj766qpv" path="res://icon.svg" id="14_ipw3x"]
 [ext_resource type="PackedScene" uid="uid://0abdvjekaw6l" path="res://speedpot.tscn" id="16_cqxmu"]
 [ext_resource type="PackedScene" uid="uid://dqodgxxv4aaxb" path="res://NewTrap.tscn" id="17_gfjfj"]
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="17_o4nr4"]
@@ -1649,11 +1648,6 @@ shape = SubResource("CircleShape2D_2yq22")
 
 [node name="test_level3" parent="Area2D" instance=ExtResource("13_m181l")]
 position = Vector2(-597, -48)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(22.75, -14.75)
-scale = Vector2(0.589844, 0.394531)
-texture = ExtResource("14_ipw3x")
 
 [node name="speedpot" parent="." instance=ExtResource("16_cqxmu")]
 position = Vector2(345, 71)
