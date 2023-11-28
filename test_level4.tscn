@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://davhx6ntg147k"]
+[gd_scene load_steps=13 format=3 uid="uid://davhx6ntg147k"]
 
 [ext_resource type="Texture2D" uid="uid://be3b8f05m4wwm" path="res://level 4/oak_woods_tileset.png" id="1_u1v4v"]
 [ext_resource type="Texture2D" uid="uid://dbwydg5jejewv" path="res://level 4/sign.png" id="2_c1tcb"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://87vy7ikhdtyq" path="res://level 4/grass_1.png" id="6_0iajm"]
 [ext_resource type="Texture2D" uid="uid://0egporjbe4pu" path="res://level 4/fence_2.png" id="7_dovtw"]
 [ext_resource type="Texture2D" uid="uid://botxokbirw6gn" path="res://level 4/rock_1.png" id="8_6dh7a"]
+[ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="9_gsab6"]
+[ext_resource type="Script" path="res://moving_platform.gd" id="10_g60oi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbpwq"]
 texture = ExtResource("1_u1v4v")
@@ -1383,3 +1385,10 @@ texture = ExtResource("8_6dh7a")
 [node name="Grass6" type="Sprite2D" parent="Grass4/Grass5/Rock1"]
 position = Vector2(85, 5)
 texture = ExtResource("6_0iajm")
+
+[node name="MovingPlatform" parent="." instance=ExtResource("9_gsab6")]
+position = Vector2(699, 227)
+script = ExtResource("10_g60oi")
+distance = Vector2(36, 46)
+phase_offset = 0.18
+debug = false
