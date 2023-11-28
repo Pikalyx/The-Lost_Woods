@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpgodi5f7rtb7"
-path="res://.godot/imported/bounceCoin .png-61911b6b6600d5e9ee9ea6f454fd95dd.ctex"
+uid="uid://dm0fdarhgbmyn"
+path="res://.godot/imported/TrapIdle2.png-c37808374b1bf7045d3b808c26c34289.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/GUI Art/bounceCoin .png"
-dest_files=["res://.godot/imported/bounceCoin .png-61911b6b6600d5e9ee9ea6f454fd95dd.ctex"]
+source_file="res://Art/GUI Art/TrapIdle2.png"
+dest_files=["res://.godot/imported/TrapIdle2.png-c37808374b1bf7045d3b808c26c34289.ctex"]
 
 [params]
 
