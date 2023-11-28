@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6h483oubrxks"]
+[gd_scene load_steps=24 format=3 uid="uid://c6h483oubrxks"]
 
 [ext_resource type="Script" path="res://Character/pig.gd" id="1_ds7ua"]
 [ext_resource type="Texture2D" uid="uid://bllurb2wra4uq" path="res://Art/03-Pig/Attack (34x28).png" id="2_ci43l"]
@@ -171,6 +171,9 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5g2oi"]
 animation = &"attack"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_12uqx"]
+animation = &"dead"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_alawv"]
 animation = &"hit"
 
@@ -187,14 +190,22 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0daec"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qt7tf"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uawvl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kyovs"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kpgah"]
 states/attack/node = SubResource("AnimationNodeAnimation_5g2oi")
 states/attack/position = Vector2(675, 160)
+states/dead/node = SubResource("AnimationNodeAnimation_12uqx")
+states/dead/position = Vector2(628.124, 52.5)
 states/hit/node = SubResource("AnimationNodeAnimation_alawv")
 states/hit/position = Vector2(535, 69)
 states/run/node = SubResource("AnimationNodeAnimation_uhkl6")
 states/run/position = Vector2(424, 146)
-transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_0daec")]
+transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_vkr3p"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_wwenl"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_0daec"), "Start", "dead", SubResource("AnimationNodeStateMachineTransition_qt7tf"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_uawvl"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_kyovs")]
 graph_offset = Vector2(-32.8757, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74653"]
