@@ -45,9 +45,10 @@ func _physics_process(delta):
 					velocity.x = movement_speed
 			
 			move_and_slide()
-	if health <= 0:
+	if health <= 0 and state != "Dead":
 		state = "Dead"
 		$AnimationPlayer.play("dead")
+		#print($AnimationPlayer.current_animation, ", ", $AnimationPlayer.current_animation_position, ", ", $AnimationPlayer.current_animation_length)
 	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and state == "Attacking":
 		state = "Idle"
 	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and state == "Hit":

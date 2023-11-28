@@ -33,6 +33,7 @@ func on_exit():
 
 func double_jump():
 	character.velocity.y = double_jump_velocity
+	
 	playback.travel(double_jump_animation)
 	#animated_sprite.play("jump_double")
 	if !character.is_on_wall_only():
