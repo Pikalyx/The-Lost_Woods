@@ -1,9 +1,10 @@
-extends Sprite2D
+extends CharacterBody2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hide() # Replace with function body.
+	hide()
+	$CollisionShape2D.disabled = true # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,4 +13,6 @@ func _process(delta):
 
 
 func _on_monster_closet_detector_body_exited(body):
-	show() # Replace with function body.
+	show()
+	$CollisionShape2D.disabled = false
+	print($CollisionShape2D.disabled)
