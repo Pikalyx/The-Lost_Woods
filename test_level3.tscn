@@ -1,15 +1,15 @@
 [gd_scene load_steps=16 format=3 uid="uid://davhx6ntg147k"]
 
-[ext_resource type="Texture2D" uid="uid://bp6coqi7g137r" path="res://level 3/background_layer_1.png" id="1_gafwj"]
-[ext_resource type="Texture2D" uid="uid://dpnsyrv472rcm" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
-[ext_resource type="Texture2D" uid="uid://de1csxfmcym7s" path="res://level 3/sign.png" id="2_hatpp"]
-[ext_resource type="Texture2D" uid="uid://hqmo5rhtlt18" path="res://level 3/background_layer_2.png" id="2_uy1fl"]
-[ext_resource type="Texture2D" uid="uid://bwevdij1xdwb" path="res://level 3/rock_3.png" id="3_7pfqq"]
-[ext_resource type="Texture2D" uid="uid://c7bof367tq6ry" path="res://level 3/background_layer_3.png" id="3_kwmpn"]
-[ext_resource type="Texture2D" uid="uid://x5yhihji8m5k" path="res://level 3/grass_3.png" id="4_timii"]
-[ext_resource type="Texture2D" uid="uid://cbriri73wam4b" path="res://level 3/grass_2.png" id="5_x6t6b"]
-[ext_resource type="Texture2D" uid="uid://c62w0b21qvuio" path="res://level 3/grass_1.png" id="6_q3fki"]
-[ext_resource type="Texture2D" uid="uid://bo6h4643wtxil" path="res://level 3/fence_2.png" id="7_hh7xc"]
+[ext_resource type="Texture2D" uid="uid://cnfvqckg5yjto" path="res://level 3/background_layer_1.png" id="1_gafwj"]
+[ext_resource type="Texture2D" uid="uid://be3b8f05m4wwm" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
+[ext_resource type="Texture2D" uid="uid://dbwydg5jejewv" path="res://level 3/sign.png" id="2_hatpp"]
+[ext_resource type="Texture2D" uid="uid://s6f8bvrnk6ln" path="res://level 3/background_layer_2.png" id="2_uy1fl"]
+[ext_resource type="Texture2D" uid="uid://3ru6k75td3sm" path="res://level 3/rock_3.png" id="3_7pfqq"]
+[ext_resource type="Texture2D" uid="uid://b2rwqn5gwo6yp" path="res://level 3/background_layer_3.png" id="3_kwmpn"]
+[ext_resource type="Texture2D" uid="uid://dku2ppoxctx54" path="res://level 3/grass_3.png" id="4_timii"]
+[ext_resource type="Texture2D" uid="uid://b080xkkjqum2s" path="res://level 3/grass_2.png" id="5_x6t6b"]
+[ext_resource type="Texture2D" uid="uid://87vy7ikhdtyq" path="res://level 3/grass_1.png" id="6_q3fki"]
+[ext_resource type="Texture2D" uid="uid://0egporjbe4pu" path="res://level 3/fence_2.png" id="7_hh7xc"]
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="9_7veqo"]
 [ext_resource type="Script" path="res://moving_platform.gd" id="10_4kfja"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
@@ -847,18 +847,23 @@ texture = ExtResource("1_hsu8m")
 7:14/0 = 0
 7:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:14/0/physics_layer_0/angular_velocity = 0.0
+7:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.3125, -8, 8, -8, 8, 8, 0.0625, 8)
 8:14/0 = 0
 8:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:14/0/physics_layer_0/angular_velocity = 0.0
+8:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:14/0 = 0
 9:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:14/0/physics_layer_0/angular_velocity = 0.0
+9:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:14/0 = 0
 10:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:14/0/physics_layer_0/angular_velocity = 0.0
+10:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:14/0 = 0
 11:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:14/0/physics_layer_0/angular_velocity = 0.0
+11:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:14/0 = 0
 13:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 13:14/0/physics_layer_0/angular_velocity = 0.0
@@ -1409,4 +1414,7 @@ phase_offset = 0.394
 debug = false
 
 [node name="Player" parent="." instance=ExtResource("13_agutb")]
-position = Vector2(276.527, 792.436)
+offset_left = 276.527
+offset_top = 792.436
+offset_right = 276.527
+offset_bottom = 792.436
