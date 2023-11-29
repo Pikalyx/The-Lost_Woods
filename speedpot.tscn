@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://pe0ir73kumay" path="res://collectable.tscn" id="1_leprt"]
 [ext_resource type="Script" path="res://speedpot.gd" id="2_314qs"]
-[ext_resource type="Texture2D" uid="uid://cl0aywwy2lb4r" path="res://Art/GUI Art/speedlogo.png" id="2_hadgx"]
+[ext_resource type="Texture2D" uid="uid://ic2iyeb7uu3b" path="res://Art/GUI Art/speedlogo.png" id="2_hadgx"]
 [ext_resource type="Resource" uid="uid://uwwy7fx715cj" path="res://Inventory/items/speedpot.tres" id="3_hmjmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kc37e"]

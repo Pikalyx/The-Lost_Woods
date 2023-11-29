@@ -34,9 +34,11 @@ func _ready():
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
+	if is_on_wall_only() and velocity.y >= 0:
+		velocity.y = 0
+	elif not is_on_floor():
 		velocity.y += gravity * delta
-	
+	#print("Am I on a wall? That's ", self.is_on_wall())
 	if Input.is_action_just_pressed("dash"):
 		if dash.is_on_cooldown():
 			dash.start_dash(dashlength)
