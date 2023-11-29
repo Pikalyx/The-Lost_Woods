@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b473gmlvx3tru"]
 
-[ext_resource type="Script" path="res://settings_page.gd" id="1_klqy0"]
+[ext_resource type="Script" path="res://credits_page.gd" id="1_8ns7e"]
 [ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="3_j04o7"]
 [ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="4_jxjjm"]
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="5_b5iar"]
@@ -28,7 +28,7 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_klqy0")
+script = ExtResource("1_8ns7e")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false
@@ -40,11 +40,7 @@ color = Color(0.180392, 0, 0.309804, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_right = 1920.0
-<<<<<<< Updated upstream
-offset_bottom = 978.0
-=======
-offset_bottom = 981.0
->>>>>>> Stashed changes
+offset_bottom = 1080.0
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_bottom = 50
 
@@ -142,4 +138,4 @@ scale = Vector2(4.36198, 5.41333)
 texture = ExtResource("6_ym1um")
 
 [connection signal="button_up" from="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3/MuteButton" to="." method="_on_mute_button_button_up"]
-[connection signal="button_up" from="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer4/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer4/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://chv2bq7qykksp"]
 
 [ext_resource type="PackedScene" uid="uid://pe0ir73kumay" path="res://collectable.tscn" id="1_b8xlk"]
-[ext_resource type="Texture2D" uid="uid://dmq736gawypr6" path="res://Art/GUI Art/healthlogo.png" id="2_caghj"]
+[ext_resource type="Texture2D" uid="uid://eqqokewj1bt7" path="res://Art/GUI Art/healthlogo.png" id="2_caghj"]
 [ext_resource type="Resource" uid="uid://dm0l2lukuog13" path="res://Inventory/items/HealthFlute.tres" id="2_q6l4i"]
 
 [node name="HealthFlute" instance=ExtResource("1_b8xlk")]
