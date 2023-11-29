@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=22 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://cskiq1mi1y7m0" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -1657,7 +1657,6 @@ texture = ExtResource("14_ipw3x")
 [node name="ClosetDoor" type="CharacterBody2D" parent="."]
 position = Vector2(-1668, 208)
 script = ExtResource("16_ysd5o")
-
 
 [node name="closet_collision" type="CollisionShape2D" parent="ClosetDoor"]
 position = Vector2(1.5, 1.5)
