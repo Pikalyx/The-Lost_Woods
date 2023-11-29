@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c06h0yv06ktmh"]
+[gd_scene load_steps=53 format=3 uid="uid://c06h0yv06ktmh"]
 
 [ext_resource type="Texture2D" uid="uid://nlaysy2srsjo" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Character/AirState.gd" id="9_qlamh"]
 [ext_resource type="Script" path="res://Character/Attack.gd" id="10_lgji7"]
 [ext_resource type="Script" path="res://Character/LandingState.gd" id="10_whrg4"]
+[ext_resource type="Script" path="res://Character/StateDebugLabel.gd" id="11_etpgi"]
 [ext_resource type="Script" path="res://Character/Sword.gd" id="12_ge70g"]
 [ext_resource type="Script" path="res://Character/FacingCollisionShape2D.gd" id="13_okjnx"]
 [ext_resource type="PackedScene" uid="uid://ctvugfrqy6sco" path="res://pause_menu.tscn" id="14_px7vt"]
@@ -484,7 +485,6 @@ can_move = false
 wait_time = 0.2
 one_shot = true
 
-<<<<<<< Updated upstream
 [node name="StateDebugLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
 offset_left = -37.0
 offset_top = -47.0
@@ -494,8 +494,6 @@ text = "State:"
 script = ExtResource("11_etpgi")
 state_machine = NodePath("../CharacterStateMachine")
 
-=======
->>>>>>> Stashed changes
 [node name="Sword" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape")]
 position = Vector2(2.08165e-12, 2.08165e-12)
 collision_layer = 0

@@ -41,7 +41,7 @@ color = Color(0.180392, 0, 0.309804, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_right = 1920.0
-offset_bottom = 975.0
+offset_bottom = 1080.0
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_bottom = 50
 
@@ -51,7 +51,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer2/VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
+theme_override_fonts/font = ExtResource("1_ne32y")
+theme_override_font_sizes/font_size = 150
 text = "Credits"
 horizontal_alignment = 1
 
@@ -61,7 +62,7 @@ size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "[center]Cameron Schriver 
 Carter Ezell
