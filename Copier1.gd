@@ -56,9 +56,9 @@ func _physics_process(delta):
 							var copy = copier.instantiate()
 							if closetStink == true:
 								copy.set_global_position(self.get_global_position() + Vector2(1668, -208))
+								copy.closet_child()
 							else:
 								copy.set_global_position(self.get_global_position())
-							copy.closet_child()
 							print(self.get_global_position())
 							#copy.set_owner(get_parent())
 							get_parent().add_child(copy)

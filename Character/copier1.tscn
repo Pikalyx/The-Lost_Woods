@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bbvnsfn0mbkvl" path="res://Art/AmberBounce.png" id="2_0f2nq"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="3_m46nf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdwi3"]
-size = Vector2(24, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xj85a"]
+radius = 12.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwt2y"]
-size = Vector2(24, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4knb"]
+radius = 12.0
 
 [sub_resource type="Animation" id="Animation_oqf3w"]
 resource_name = "Bounce"
@@ -59,7 +59,7 @@ texture = ExtResource("2_0f2nq")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mdwi3")
+shape = SubResource("CircleShape2D_xj85a")
 
 [node name="CopyTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -74,7 +74,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_jwt2y")
+shape = SubResource("CircleShape2D_h4knb")
 
 [node name="StickTimer" type="Timer" parent="."]
 wait_time = 2.0
