@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqldvyq4r1i3p"]
+[gd_scene load_steps=11 format=3 uid="uid://cqldvyq4r1i3p"]
 
 [ext_resource type="Texture2D" uid="uid://d10y75u7kp4ct" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_mfgw6"]
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="2_3nagc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="4_8egnn"]
 [ext_resource type="Texture2D" uid="uid://dn7pf4p8s36p3" path="res://Art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="5_wpimw"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="6_tyiym"]
+[ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="7_v7yn8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mmj3h"]
 texture = ExtResource("1_mfgw6")
@@ -1499,3 +1500,5 @@ scale = Vector2(0.25, 0.25)
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+
+[node name="Node2D" parent="." instance=ExtResource("7_v7yn8")]
