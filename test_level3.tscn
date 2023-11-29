@@ -1,14 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://davhx6ntg147k"]
+[gd_scene load_steps=13 format=3 uid="uid://davhx6ntg147k"]
 
-[ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="1_3sfwv"]
-[ext_resource type="Texture2D" uid="uid://br1xe5dx7louq" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
-[ext_resource type="Texture2D" uid="uid://kuxi76of14ea" path="res://level 3/sign.png" id="2_hatpp"]
-[ext_resource type="Texture2D" uid="uid://ic2a8jyptjjm" path="res://level 3/rock_3.png" id="3_7pfqq"]
-[ext_resource type="Texture2D" uid="uid://ct3k3j5xf5pj5" path="res://level 3/grass_3.png" id="4_timii"]
-[ext_resource type="Texture2D" uid="uid://53se84et4kop" path="res://level 3/grass_2.png" id="5_x6t6b"]
-[ext_resource type="Texture2D" uid="uid://jhwth68vn6vw" path="res://level 3/grass_1.png" id="6_q3fki"]
-[ext_resource type="Texture2D" uid="uid://b7yj817bl2na8" path="res://level 3/fence_2.png" id="7_hh7xc"]
-[ext_resource type="Texture2D" uid="uid://bd0w2kt4eib8o" path="res://level 3/rock_1.png" id="8_cl5tb"]
+[ext_resource type="Texture2D" uid="uid://be3b8f05m4wwm" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
+[ext_resource type="Texture2D" uid="uid://dbwydg5jejewv" path="res://level 3/sign.png" id="2_hatpp"]
+[ext_resource type="Texture2D" uid="uid://3ru6k75td3sm" path="res://level 3/rock_3.png" id="3_7pfqq"]
+[ext_resource type="Texture2D" uid="uid://dku2ppoxctx54" path="res://level 3/grass_3.png" id="4_timii"]
+[ext_resource type="Texture2D" uid="uid://b080xkkjqum2s" path="res://level 3/grass_2.png" id="5_x6t6b"]
+[ext_resource type="Texture2D" uid="uid://87vy7ikhdtyq" path="res://level 3/grass_1.png" id="6_q3fki"]
+[ext_resource type="Texture2D" uid="uid://0egporjbe4pu" path="res://level 3/fence_2.png" id="7_hh7xc"]
+[ext_resource type="Texture2D" uid="uid://botxokbirw6gn" path="res://level 3/rock_1.png" id="8_cl5tb"]
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="9_7veqo"]
 [ext_resource type="Script" path="res://moving_platform.gd" id="10_4kfja"]
 
@@ -1332,9 +1331,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vbpwq")
 
 [node name="test_level4" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_3sfwv")]
-position = Vector2(-23, 55)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
