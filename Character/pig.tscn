@@ -271,6 +271,7 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-9, 0)
+target_position = Vector2(0, 35)
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("4_vqjy2")
