@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="10_lflav"]
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="11_231cr"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_1tbo6"]
-[ext_resource type="PackedScene" uid="uid://cqldvyq4r1i3p" path="res://test_level3.tscn" id="13_m181l"]
+[ext_resource type="PackedScene" uid="uid://cqldvyq4r1i3p" path="res://test_level4.tscn" id="13_m181l"]
 [ext_resource type="Texture2D" uid="uid://wmqoxk68hdwv" path="res://icon.svg" id="14_ipw3x"]
 [ext_resource type="PackedScene" uid="uid://c8dfjty2mx5jh" path="res://Character/copier1.tscn" id="15_aqxfj"]
 [ext_resource type="Script" path="res://ClosetDoor.gd" id="16_ysd5o"]

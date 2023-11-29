@@ -7,6 +7,7 @@ class_name AirState
 @export var double_jump_velocity : float = -150
 @export var double_jump_animation : String = "double_jump"
 @export var landing_animation : String = "landing"
+@export var jump_animation : String = "jump_start"
 
 var has_double_jumped = false
 var fromWall = false
@@ -18,6 +19,7 @@ func state_process(delta):
 		has_double_jumped = false
 		fromWall = true
 	if !character.is_on_wall_only() and fromWall == true:
+		playback.travel(jump_animation)
 		has_double_jumped = false
 		fromWall = false
 		

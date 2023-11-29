@@ -45,7 +45,7 @@ func _process(delta):
 				direction = Vector2(cos(angle), sin(angle))
 				speed = ramSpeed
 				self.set_position(self.get_position() + ((direction * speed)))
-			elif (((player.get_position().x - self.get_global_position().x) >= fuckRadius or (player.get_position().x - self.get_global_position().x) <= -fuckRadius or (player.get_position().y - self.get_global_position().y) >= fuckRadius or ((player.get_position().y - self.get_global_position().y) <= -fuckRadius) and cooldown == true) or ((attackTopCorner.x - self.get_global_position().x) >= fuckRadius or (attackBottomCorner.x - self.get_global_position().x) <= -fuckRadius or (attackTopCorner.y - self.get_global_position().y) >= fuckRadius or (attackBottomCorner.y - self.get_global_position().y) <= -fuckRadius) and cooldown == true):
+			elif (((player.get_position().x - self.get_global_position().x) >= fuckRadius or (player.get_position().x - self.get_global_position().x) <= -fuckRadius or (player.get_position().y - self.get_global_position().y) >= fuckRadius or ((player.get_position().y - self.get_global_position().y) <= -fuckRadius) and cooldown == true) or ((attackTopCorner.x - self.get_global_position().x) >= fuckRadius or (attackBottomCorner.x - self.get_global_position().x) <= -fuckRadius or (attackTopCorner.y - self.get_global_position().y) >= fuckRadius or (attackBottomCorner.y - self.get_global_position().y) <= -fuckRadius)) and cooldown == true:
 				cooldown = false
 				speed = 0
 				if health <= 0:
