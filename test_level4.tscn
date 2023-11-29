@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqldvyq4r1i3p"]
+[gd_scene load_steps=10 format=3 uid="uid://cqldvyq4r1i3p"]
 
 [ext_resource type="Texture2D" uid="uid://d10y75u7kp4ct" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_mfgw6"]
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="2_3nagc"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="3_up7x5"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="4_8egnn"]
 [ext_resource type="Texture2D" uid="uid://dn7pf4p8s36p3" path="res://Art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="5_wpimw"]
+[ext_resource type="Script" path="res://NextLevel.gd" id="6_tyiym"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mmj3h"]
 texture = ExtResource("1_mfgw6")
@@ -1442,6 +1443,8 @@ texture = ExtResource("1_mfgw6")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mmj3h")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qb88"]
+
 [node name="test_level3" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1477,6 +1480,17 @@ scale = Vector2(3, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("5_wpimw")
+
+[node name="Area2D" type="Area2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(206.603, -14.9693)
+script = ExtResource("6_tyiym")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/ParallaxLayer/Area2D"]
+shape = SubResource("CircleShape2D_7qb88")
+
+[node name="pig" parent="ParallaxBackground/ParallaxLayer/Area2D" instance=ExtResource("4_8egnn")]
+position = Vector2(-382.603, -29.0307)
+scale = Vector2(0.25, 0.25)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 
