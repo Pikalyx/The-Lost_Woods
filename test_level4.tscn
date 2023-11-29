@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cqldvyq4r1i3p"]
 
-[ext_resource type="Texture2D" uid="uid://1nwcggksyqht" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_mfgw6"]
+[ext_resource type="Texture2D" uid="uid://d10y75u7kp4ct" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_mfgw6"]
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="2_3nagc"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="3_up7x5"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="4_8egnn"]
@@ -1471,8 +1471,6 @@ position = Vector2(597, -113)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2(500, -150)
 transform = Transform2D(1, 0, 0, 1, 500, -150)
-scroll_offset = Vector2(100, 0)
-scroll_base_offset = Vector2(20, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 scale = Vector2(3, 3)
