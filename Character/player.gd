@@ -6,7 +6,7 @@ class_name Player
 @export var speed : float = 200.0
 @export var max_health : float = 5.0
 var current_health: int = max_health
-
+signal healthChanged
 @onready var dash = $Dash
 @export var dashspeed = 1200.0
 @export var dashlength = .1
@@ -59,7 +59,7 @@ func _physics_process(delta):
 		update_animation_parameters()
 		update_facing_direction()
 	else:
-		pass
+		SceneTransition.change_scene_to_file("res://Game_Over.tscn")
 #		if notDead:
 #			$AnimationPlayer.play("dead")
 #			notDead = false
@@ -87,6 +87,7 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
+		print(self, "just collided with ", area )
 
 
 func _on_inventory_gui_closed():
@@ -95,3 +96,8 @@ func _on_inventory_gui_closed():
 
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	current_health -= damage_taken
+	healthChanged.emit(current_health)
+
+func _on_area_2d_body_entered(body):
+	pass
+	
