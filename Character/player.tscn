@@ -1,11 +1,11 @@
 [gd_scene load_steps=52 format=3 uid="uid://c06h0yv06ktmh"]
 
-[ext_resource type="Texture2D" uid="uid://q83isyqwcgo2" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
+[ext_resource type="Texture2D" uid="uid://nlaysy2srsjo" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
 [ext_resource type="Resource" uid="uid://f1mw6sqx12o1" path="res://Inventory/PlayerInventory.tres" id="2_hoe40"]
-[ext_resource type="Texture2D" uid="uid://bkxw5gyhepwp2" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="3_688gr"]
-[ext_resource type="Texture2D" uid="uid://dhh5yr2c7tn7h" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Run/Run-Sheet.png" id="3_glyhw"]
-[ext_resource type="Texture2D" uid="uid://bplnrb4ninpub" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="5_3p50q"]
+[ext_resource type="Texture2D" uid="uid://bmuxrttm61v1i" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="3_688gr"]
+[ext_resource type="Texture2D" uid="uid://bnuv0hho2uulb" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Run/Run-Sheet.png" id="3_glyhw"]
+[ext_resource type="Texture2D" uid="uid://c6ntrriw0eorq" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="5_3p50q"]
 [ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="7_58kh6"]
 [ext_resource type="Script" path="res://Character/GroundState.gd" id="8_s4tl4"]
 [ext_resource type="Script" path="res://Character/AirState.gd" id="9_qlamh"]
@@ -433,9 +433,9 @@ position = Vector2(2.08165e-12, 2)
 shape = SubResource("CapsuleShape2D_wja7b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_688gr")
-hframes = 8
-frame = 7
+texture = ExtResource("5_3p50q")
+hframes = 15
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -486,7 +486,6 @@ one_shot = true
 
 <<<<<<< Updated upstream
 [node name="StateDebugLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
-visible = false
 offset_left = -37.0
 offset_top = -47.0
 offset_right = 75.0
@@ -512,6 +511,8 @@ script = ExtResource("13_okjnx")
 facing_left_position = Vector2(-29, 2.08165e-12)
 facing_right_position = Vector2(29, 2.08165e-12)
 
+[node name="PauseMenu" parent="." instance=ExtResource("14_px7vt")]
+
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("15_bnyao")
 
@@ -535,8 +536,6 @@ grow_vertical = 2
 [node name="hearts_container" parent="CanvasLayer3" instance=ExtResource("19_y831m")]
 offset_right = 200.0
 offset_bottom = 14.0
-
-[node name="PauseMenu" parent="CanvasLayer3" instance=ExtResource("14_px7vt")]
 
 [node name="Dash" type="Node2D" parent="."]
 script = ExtResource("20_vup2t")
