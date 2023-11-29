@@ -40,7 +40,7 @@ color = Color(0.180392, 0, 0.309804, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 978.0
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_bottom = 50
 

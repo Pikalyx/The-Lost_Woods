@@ -1661,6 +1661,7 @@ script = ExtResource("16_ysd5o")
 [node name="closet_collision" type="CollisionShape2D" parent="ClosetDoor"]
 position = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_ausj1")
+collision_mask = 2
 
 [node name="monster_closet_detector" type="Area2D" parent="ClosetDoor"]
 collision_layer = 0
