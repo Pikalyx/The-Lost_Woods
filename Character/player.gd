@@ -7,6 +7,7 @@ class_name Player
 @export var max_health : float = 5.0
 var current_health: int = max_health
 signal healthChanged
+var clingSlide = false
 @onready var dash = $Dash
 @export var dashspeed = 1200.0
 @export var dashlength = .1
@@ -32,8 +33,12 @@ func _ready():
 func _physics_process(delta):
 	# Add the gravity.
 	if current_health > 0:
-		if is_on_wall_only() and velocity.y >= 0:
+		if is_on_wall_only() and velocity.y >= 0 and clingSlide == false:
 			velocity.y = 0
+			if $ClingTimer.is_stopped():
+				$ClingTimer.start()
+		elif is_on_wall_only() and velocity.y >= 0 and clingSlide == true:
+			velocity.y += (gravity/5) * delta
 		elif not is_on_floor():
 			velocity.y += gravity * delta
 		#print("Am I on a wall? That's ", self.is_on_wall())
@@ -44,8 +49,6 @@ func _physics_process(delta):
 	#		cooldown.start_cooldown(1)
 		var speed = dashspeed if dash.is_dashing() else normalspeed
 		
-		
-		
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		direction = Input.get_vector("left", "right", "up", "down")
@@ -54,7 +57,9 @@ func _physics_process(delta):
 			velocity.x = direction.x * speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
-
+		if is_on_floor():
+			clingSlide = false
+			$ClingTimer.stop()
 		move_and_slide()
 		update_animation_parameters()
 		update_facing_direction()
@@ -87,7 +92,7 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
-		print(self, "just collided with ", area )
+		#print(self, "just collided with ", area )
 
 
 func _on_inventory_gui_closed():
@@ -101,3 +106,8 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 func _on_area_2d_body_entered(body):
 	pass
 	
+
+
+func _on_cling_timer_timeout():
+	clingSlide = true
+	print("Slidin!") # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=25 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://dvk1qkow4pbsi" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://c8dfjty2mx5jh" path="res://Character/copier1.tscn" id="15_aqxfj"]
 [ext_resource type="Script" path="res://ClosetDoor.gd" id="16_ysd5o"]
 [ext_resource type="PackedScene" uid="uid://o4tl2sknh1ud" path="res://Character/NewHomer.tscn" id="17_8k6ed"]
+[ext_resource type="Script" path="res://LevelTransitionArea.gd" id="18_b4hh7"]
+[ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="19_vx56n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
@@ -1547,6 +1549,9 @@ radius = 31.1448
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ausj1"]
 size = Vector2(39, 49)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ifnow"]
+radius = 28.5422
+
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1694,5 +1699,20 @@ position = Vector2(-364, 8)
 position = Vector2(339, -25)
 ramSpeed = 1.0
 
+[node name="CarterLevel1Transition" type="Area2D" parent="."]
+position = Vector2(-1056.48, 258.13)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("18_b4hh7")
+targetLevel = "res://carter_level_1.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CarterLevel1Transition"]
+position = Vector2(6.48083, 4.86987)
+shape = SubResource("CircleShape2D_ifnow")
+
+[node name="Node2D" parent="." instance=ExtResource("19_vx56n")]
+position = Vector2(-4708, -83)
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]
+[connection signal="body_entered" from="CarterLevel1Transition" to="CarterLevel1Transition" method="_on_body_entered"]

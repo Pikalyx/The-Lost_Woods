@@ -608,6 +608,10 @@ one_shot = true
 script = ExtResource("21_yaka7")
 health = 50.0
 
+[node name="ClingTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
@@ -615,3 +619,4 @@ health = 50.0
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Dash/Dashtimer" to="Dash" method="_on_dashtimer_timeout"]
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
+[connection signal="timeout" from="ClingTimer" to="." method="_on_cling_timer_timeout"]

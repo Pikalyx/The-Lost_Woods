@@ -49,15 +49,16 @@ func _on_monster_closet_detector_body_exited(body):
 
 
 func _on_area_2d_body_entered(body):
-	for child in body.get_children():
-		if child is Damageable:
-			print(self, " is hitting ", child)
-			var direction_to_damageable = (body.global_position - get_parent().global_position) 
-			var direction_sign = sign(direction_to_damageable.x)
-			
-			if(direction_sign > 0):
-				child.hit(damage, Vector2.RIGHT)
-			elif(direction_sign < 0):
-				child.hit(damage, Vector2.LEFT)
-			else:
-				child.hit(damage, Vector2.ZERO) # Replace with function body.
+	if $Damageable.health > 0:
+		for child in body.get_children():
+			if child is Damageable:
+				print(self, " is hitting ", child)
+				var direction_to_damageable = (body.global_position - get_parent().global_position) 
+				var direction_sign = sign(direction_to_damageable.x)
+				
+				if(direction_sign > 0):
+					child.hit(damage, Vector2.RIGHT)
+				elif(direction_sign < 0):
+					child.hit(damage, Vector2.LEFT)
+				else:
+					child.hit(damage, Vector2.ZERO) # Replace with function body.

@@ -7,8 +7,9 @@ var speed = 0
 @export var ramSpeed: float
 var direction : Vector2
 @export var fuckRadius = 150
-@export var health = 0
+@export var health = 40
 @export var inCloset : bool
+@export var damage = 1
 var origin = Vector2(self.get_position())
 var attackTopCorner : Vector2
 var attackBottomCorner : Vector2
@@ -59,8 +60,23 @@ func _process(delta):
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	print("Homer hit by ", node)
 	direction.x = -direction.x
-	health -= 1
+	health -= damage_taken
 
 func _on_monster_closet_detector_body_exited(body):
 	show()
 	inCloset = false
+
+
+func _on_area_2d_body_entered(body):
+	for child in body.get_children():
+		if child is Damageable:
+			print(self, " is hitting ", child)
+			var direction_to_damageable = (body.global_position - get_parent().global_position) 
+			var direction_sign = sign(direction_to_damageable.x)
+			
+			if(direction_sign > 0):
+				child.hit(damage, Vector2.RIGHT)
+			elif(direction_sign < 0):
+				child.hit(damage, Vector2.LEFT)
+			else:
+				child.hit(damage, Vector2.ZERO) # Replace with function body.
