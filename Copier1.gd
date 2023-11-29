@@ -14,6 +14,7 @@ var playerShakeCount = 0
 var shakeCooldown = false
 var stickOffset : Vector2
 var closetStink : bool
+var reachVertex = false
 @export var inCloset : bool
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -33,7 +34,7 @@ func _ready():
 		var playerSeek = get_parent().get_parent().get_node("Player")
 		if playerSeek != null:
 			player = playerSeek
-		else:
+		else: 
 			player = get_parent().get_parent().get_parent().get_node("Player")
 
 func _physics_process(delta):
@@ -44,6 +45,9 @@ func _physics_process(delta):
 				velocity.y += gravity * delta
 				if is_on_wall_only():
 					direction = -direction
+				if velocity.y >= 0 and reachVertex == false:
+					reachVertex = true
+					#$AnimationPlayer.play_backwards("Bounce")
 				if player != null:
 					if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius):
 						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false:
@@ -61,7 +65,9 @@ func _physics_process(delta):
 
 			# Handle Jump.
 			if is_on_floor():
+				reachVertex = false
 				velocity.y = JUMP_VELOCITY
+				$AnimationPlayer.play("Bounce")
 				if player != null and shakeCooldown == false:
 					
 					if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius):
