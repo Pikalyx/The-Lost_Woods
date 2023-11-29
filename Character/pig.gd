@@ -84,7 +84,7 @@ func _on_area_2d_body_entered(body):
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	state = "Hit"
 	$AnimationPlayer.play("hit")
-	health -= 1 # Replace with function body.
+	health -= damage_taken # Replace with function body.
 	
 func _on_monster_closet_detector_body_exited(body):
 	show()

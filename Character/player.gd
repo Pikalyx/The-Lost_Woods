@@ -10,8 +10,6 @@ var current_health: int = max_health
 @onready var dash = $Dash
 @export var dashspeed = 1200.0
 @export var dashlength = .1
-#@export var dashspeed = 1200.0
-#@export var dashlength = .1
 
 #@onready var dash = $Dash
 #@onready var cooldown = $Cooldown
@@ -33,32 +31,40 @@ func _ready():
 
 func _physics_process(delta):
 	# Add the gravity.
-	if is_on_wall_only() and velocity.y >= 0:
-		velocity.y = 0
-	elif not is_on_floor():
-		velocity.y += gravity * delta
-	#print("Am I on a wall? That's ", self.is_on_wall())
-	if Input.is_action_just_pressed("dash"):
-		if dash.is_on_cooldown():
-			dash.start_dash(dashlength)
-#	if dash._on_dashtimer_timeout():
-#		cooldown.start_cooldown(1)
-	var speed = dashspeed if dash.is_dashing() else normalspeed
-	
-	
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	direction = Input.get_vector("left", "right", "up", "down")
-	
-	if direction.x != 0 && state_machine.check_if_can_move():
-		velocity.x = direction.x * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+	if current_health > 0:
+		if is_on_wall_only() and velocity.y >= 0:
+			velocity.y = 0
+		elif not is_on_floor():
+			velocity.y += gravity * delta
+		#print("Am I on a wall? That's ", self.is_on_wall())
+		if Input.is_action_just_pressed("dash"):
+			if dash.is_on_cooldown():
+				dash.start_dash(dashlength)
+	#	if dash._on_dashtimer_timeout():
+	#		cooldown.start_cooldown(1)
+		var speed = dashspeed if dash.is_dashing() else normalspeed
+		
+		
+		
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		direction = Input.get_vector("left", "right", "up", "down")
+		
+		if direction.x != 0 && state_machine.check_if_can_move():
+			velocity.x = direction.x * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
 
-	move_and_slide()
-	update_animation_parameters()
-	update_facing_direction()
+		move_and_slide()
+		update_animation_parameters()
+		update_facing_direction()
+	else:
+		pass
+#		if notDead:
+#			$AnimationPlayer.play("dead")
+#			notDead = false
+#		if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+#			queue_free()
 	
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position",direction.x)
@@ -82,3 +88,7 @@ func _on_area_2d_area_entered(area):
 
 func _on_inventory_gui_closed():
 	pass # Replace with function body.
+
+
+func _on_damageable_on_hit(node, damage_taken, knockback_direction):
+	current_health -= damage_taken
