@@ -64,12 +64,13 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
-text = "Gameplay Developers: [all] 
-Mechanics: Name Name
-Level Design: Name Name
-Menus: Joshua Castro
-Audio: Name Name
-Graphs: Name Name"
+text = "[center]Cameron Schriver 
+Carter Ezell
+Diego Corsino
+Gabriel Munoz
+Giovanni Sanchez
+Joshua Castro
+Luke Dukette[/center]"
 fit_content = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer2/VBoxContainer2/VBoxContainer"]
