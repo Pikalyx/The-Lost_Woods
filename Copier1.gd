@@ -14,7 +14,7 @@ var currentPlayerFlip : bool
 var playerShakeCount = 0
 var shakeCooldown = false
 var stickOffset : Vector2
-var closetStink : bool
+var closetStink = false
 var reachVertex = false
 var hostBody = Node2D
 @export var inCloset : bool
