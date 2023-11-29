@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://davhx6ntg147k"]
+[gd_scene load_steps=17 format=3 uid="uid://davhx6ntg147k"]
 
 [ext_resource type="Texture2D" uid="uid://bp6coqi7g137r" path="res://level 3/background_layer_1.png" id="1_gafwj"]
 [ext_resource type="Texture2D" uid="uid://dpnsyrv472rcm" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="9_7veqo"]
 [ext_resource type="Script" path="res://moving_platform.gd" id="10_4kfja"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
+[ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="14_813t7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbpwq"]
 texture = ExtResource("1_hsu8m")
@@ -1418,3 +1419,7 @@ position = Vector2(137.195, 779.52)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
+
+[node name="death Fall" parent="." instance=ExtResource("14_813t7")]
+position = Vector2(-7, 407)
+scale = Vector2(3, 3)
