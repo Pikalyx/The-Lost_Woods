@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=21 format=3 uid="uid://b4aqd86pwf6h7"]
 
-[ext_resource type="Texture2D" uid="uid://cskiq1mi1y7m0" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
+[ext_resource type="Texture2D" uid="uid://cvhorgx8xi0u" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_axmyc"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="3_j2hck"]
@@ -12,8 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="10_lflav"]
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="11_231cr"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_1tbo6"]
-[ext_resource type="PackedScene" uid="uid://cqldvyq4r1i3p" path="res://test_level3.tscn" id="13_m181l"]
-[ext_resource type="Texture2D" uid="uid://wmqoxk68hdwv" path="res://icon.svg" id="14_ipw3x"]
+[ext_resource type="PackedScene" uid="uid://cqldvyq4r1i3p" path="res://test_level4.tscn" id="13_m181l"]
 [ext_resource type="PackedScene" uid="uid://c8dfjty2mx5jh" path="res://Character/copier1.tscn" id="15_aqxfj"]
 [ext_resource type="Script" path="res://ClosetDoor.gd" id="16_ysd5o"]
 [ext_resource type="PackedScene" uid="uid://o4tl2sknh1ud" path="res://Character/NewHomer.tscn" id="17_8k6ed"]
@@ -1648,11 +1647,6 @@ shape = SubResource("CircleShape2D_2yq22")
 
 [node name="test_level3" parent="Area2D" instance=ExtResource("13_m181l")]
 position = Vector2(-597, -48)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(22.75, -14.75)
-scale = Vector2(0.589844, 0.394531)
-texture = ExtResource("14_ipw3x")
 
 [node name="ClosetDoor" type="CharacterBody2D" parent="."]
 position = Vector2(-1668, 208)
