@@ -27,6 +27,7 @@ var direction : Vector2 = Vector2.ZERO
 
 signal facing_direction_changed(facing_right : bool)
 
+
 func _ready():
 	#print(cooldown.is_on_cooldown())
 	animation_tree.active = true
@@ -74,7 +75,11 @@ func update_facing_direction():
 
 @export var inventory: Inventory
 
-
+func _process(delta):
+	if Input.is_action_pressed("ui_cancel"):
+		$CanvasLayer3/PauseMenu.pause()
+		
+		
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
