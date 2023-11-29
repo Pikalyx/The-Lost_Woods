@@ -27,16 +27,17 @@ var direction : Vector2 = Vector2.ZERO
 
 signal facing_direction_changed(facing_right : bool)
 
-
 func _ready():
 	#print(cooldown.is_on_cooldown())
 	animation_tree.active = true
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
+	if is_on_wall_only() and velocity.y >= 0:
+		velocity.y = 0
+	elif not is_on_floor():
 		velocity.y += gravity * delta
-	
+	#print("Am I on a wall? That's ", self.is_on_wall())
 	if Input.is_action_just_pressed("dash"):
 		if dash.is_on_cooldown():
 			dash.start_dash(dashlength)
@@ -73,11 +74,7 @@ func update_facing_direction():
 
 @export var inventory: Inventory
 
-func _process(delta):
-	if Input.is_action_pressed("ui_cancel"):
-		$CanvasLayer3/PauseMenu.pause()
-		
-		
+
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)

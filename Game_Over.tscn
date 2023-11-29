@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://b63oyeeqegp6q"]
+
+[ext_resource type="Texture2D" uid="uid://b06tbaf830ici" path="res://Art/GUI Art/Play Button.png" id="1_f6x2p"]
+[ext_resource type="Script" path="res://Game_Over.gd" id="1_il0v3"]
+[ext_resource type="Texture2D" uid="uid://htj5heakbj0a" path="res://Art/GUI Art/Pressed Play Button.png" id="2_3wbm7"]
+[ext_resource type="Texture2D" uid="uid://dx7guousarju0" path="res://Art/GUI Art/Quit Button.png" id="3_u40mb"]
+[ext_resource type="Texture2D" uid="uid://dgdoj41716x13" path="res://Art/GUI Art/Pressed Quit Button.png" id="4_l35d0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_48gsf"]
+font_size = 130
+
+[node name="Game_Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_il0v3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1914.0
+offset_bottom = 985.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_48gsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(700, 100)
+layout_direction = 2
+layout_mode = 2
+
+[node name="play" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_f6x2p")
+texture_pressed = ExtResource("2_3wbm7")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+
+[node name="quit" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("3_u40mb")
+texture_pressed = ExtResource("4_l35d0")
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/quit" to="." method="_on_quit_button_up"]

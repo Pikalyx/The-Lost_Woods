@@ -1,26 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfnbi16mn7inf"]
+[gd_scene load_steps=10 format=3 uid="uid://bfnbi16mn7inf"]
 
 [ext_resource type="Script" path="res://credits_page.gd" id="1_l1ddm"]
+[ext_resource type="FontFile" uid="uid://cccwm5ryd6bf2" path="res://Melted Monster.ttf" id="1_ne32y"]
 [ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="2_6vhyi"]
 [ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="3_8lp15"]
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="4_3x6o7"]
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="5_5jpaq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ang5x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1uvv"]
 bg_color = Color(0.164706, 0.160784, 0.188235, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3gug"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34eca"]
 bg_color = Color(0.0784314, 0.0784314, 0.0901961, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjc46"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0543"]
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -40,7 +41,7 @@ color = Color(0.180392, 0, 0.309804, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_right = 1920.0
-offset_bottom = 1002.0
+offset_bottom = 1080.0
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_bottom = 50
 
@@ -50,7 +51,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer2/VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
+theme_override_fonts/font = ExtResource("1_ne32y")
+theme_override_font_sizes/font_size = 150
 text = "Credits"
 horizontal_alignment = 1
 
@@ -60,7 +62,7 @@ size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "[center]Cameron Schriver 
 Carter Ezell
@@ -79,13 +81,14 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 650
 theme_override_constants/margin_bottom = 0
 
-[node name="BackButton2" type="Button" parent="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3"]
+[node name="BackButton" type="Button" parent="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 focus_mode = 0
+theme_override_fonts/font = ExtResource("1_ne32y")
 theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_ang5x")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l3gug")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cjc46")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t1uvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_34eca")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b0543")
 text = "Back
 "
 
@@ -133,4 +136,4 @@ position = Vector2(758.667, 515.333)
 scale = Vector2(4.36198, 5.41333)
 texture = ExtResource("5_5jpaq")
 
-[connection signal="button_up" from="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3/BackButton2" to="." method="_on_back_button_2_button_up"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3/BackButton" to="." method="_on_back_button_pressed"]
