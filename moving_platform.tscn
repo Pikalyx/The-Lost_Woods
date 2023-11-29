@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://sqhxvgq16tsh"]
 
-[ext_resource type="Texture2D" uid="uid://be3b8f05m4wwm" path="res://level 4/oak_woods_tileset.png" id="1_gx7db"]
+[ext_resource type="Texture2D" uid="uid://be3b8f05m4wwm" path="res://level 3/oak_woods_tileset.png" id="1_bju7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cscfo"]
 size = Vector2(70, 20)
@@ -11,6 +11,6 @@ size = Vector2(70, 20)
 shape = SubResource("RectangleShape2D_cscfo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_gx7db")
+texture = ExtResource("1_bju7h")
 region_enabled = true
 region_rect = Rect2(120, 216, 72, 25)
