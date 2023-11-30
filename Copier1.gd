@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var fuckRadius = 150
-@export var health = 2
+@export var health = 20
 @export var damage = 1
 var copier : PackedScene
 const SPEED = 50
@@ -17,6 +17,7 @@ var stickOffset : Vector2
 var closetStink = false
 var reachVertex = false
 var hostBody = Node2D
+@onready var oldModulate = $Sprite2D.modulate
 @export var inCloset : bool
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -52,7 +53,7 @@ func _physics_process(delta):
 					#$AnimationPlayer.play_backwards("Bounce")
 				if player != null:
 					if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius):
-						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false:
+						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false and $RecoilTimer.is_stopped() == true:
 							var copy = copier.instantiate()
 							if closetStink == true:
 								copy.set_global_position(self.get_global_position() + Vector2(1668, -208))
@@ -80,8 +81,6 @@ func _physics_process(delta):
 							direction = 1
 				if health <= 0:
 					queue_free()
-			# Get the input direction and handle the movement/deceleration.
-			# As good practice, you should replace UI actions with custom gameplay actions.
 			
 			
 			
@@ -90,9 +89,14 @@ func _physics_process(delta):
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 			
+#			if $RecoilTimer.is_stopped() == false:
+#				$Sprite2D.modulate = Color(0.5,0,0)
+#			else:
+#				$Sprite2D.modulate = oldModulate
 
 			move_and_slide()
 		elif sticking == true:
+			#$Sprite2D.modulate = oldModulate
 			set_global_position((player.get_position() - stickOffset))
 			if $AttackTimer.is_stopped():
 				$AttackTimer.start()
@@ -117,7 +121,8 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	if sticking == false:
 		velocity.y = JUMP_VELOCITY
 		direction = -direction
-		health -= 1
+		health -= damage_taken
+		$RecoilTimer.start()
 
 
 func _on_stick_timer_timeout():

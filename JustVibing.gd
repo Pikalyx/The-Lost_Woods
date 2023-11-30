@@ -1,4 +1,4 @@
-extends Sprite2D
+extends CharacterBody2D
 
 @export var move_speed : float
 @export var move_dir : Vector2
@@ -13,7 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	global_position = global_position.move_toward(target_pos, move_speed * delta)
+	global_position = global_position.move_toward(move_dir, move_speed * delta)
 	
 	if global_position == target_pos:
 		if global_position == start_pos:
