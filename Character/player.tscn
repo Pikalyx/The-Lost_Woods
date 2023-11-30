@@ -1,12 +1,12 @@
-[gd_scene load_steps=57 format=3 uid="uid://c06h0yv06ktmh"]
+[gd_scene load_steps=64 format=3 uid="uid://c06h0yv06ktmh"]
 
-[ext_resource type="Texture2D" uid="uid://q83isyqwcgo2" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
+[ext_resource type="Texture2D" uid="uid://dtrvp57ywx3yy" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
 [ext_resource type="Resource" uid="uid://f1mw6sqx12o1" path="res://Inventory/PlayerInventory.tres" id="2_hoe40"]
-[ext_resource type="Texture2D" uid="uid://bkxw5gyhepwp2" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="3_688gr"]
-[ext_resource type="Texture2D" uid="uid://dfyws8ru4b5wi" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Dead/Dead-Sheet.png" id="3_a4glp"]
-[ext_resource type="Texture2D" uid="uid://dhh5yr2c7tn7h" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Run/Run-Sheet.png" id="3_glyhw"]
-[ext_resource type="Texture2D" uid="uid://bplnrb4ninpub" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="5_3p50q"]
+[ext_resource type="Texture2D" uid="uid://c7t1noff54hy2" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="3_688gr"]
+[ext_resource type="Texture2D" uid="uid://csyr660qxu1m3" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Dead/Dead-Sheet.png" id="3_a4glp"]
+[ext_resource type="Texture2D" uid="uid://cfhgo1yywiw6l" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Run/Run-Sheet.png" id="3_glyhw"]
+[ext_resource type="Texture2D" uid="uid://dna047gbm58v7" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="5_3p50q"]
 [ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="7_58kh6"]
 [ext_resource type="Script" path="res://Character/GroundState.gd" id="8_s4tl4"]
 [ext_resource type="Script" path="res://Character/AirState.gd" id="9_qlamh"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Character/StateDebugLabel.gd" id="11_etpgi"]
 [ext_resource type="Script" path="res://Character/Sword.gd" id="12_ge70g"]
 [ext_resource type="Script" path="res://Character/FacingCollisionShape2D.gd" id="13_okjnx"]
+[ext_resource type="Script" path="res://Character/DeadState.gd" id="13_pbjj5"]
 [ext_resource type="PackedScene" uid="uid://ctvugfrqy6sco" path="res://pause_menu.tscn" id="14_px7vt"]
 [ext_resource type="Script" path="res://Character/hitbox.gd" id="15_bnyao"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="17_jndb6"]
@@ -459,13 +460,25 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_in4bh"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p0512"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1w1iu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v0eql"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ske0h"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fugdg"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_elvjc"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1tni3"]
 states/attack1/node = SubResource("AnimationNodeAnimation_nibnj")
 states/attack1/position = Vector2(295.53, 186.739)
 states/attack2/node = SubResource("AnimationNodeAnimation_178r3")
 states/attack2/position = Vector2(479.53, 184.489)
 states/dead/node = SubResource("AnimationNodeAnimation_38rbw")
-states/dead/position = Vector2(744.925, 172)
+states/dead/position = Vector2(722.925, 75)
 states/double_jump/node = SubResource("AnimationNodeAnimation_e6tv0")
 states/double_jump/position = Vector2(545.098, -6.27999)
 states/jump_end/node = SubResource("AnimationNodeAnimation_vlben")
@@ -474,8 +487,8 @@ states/jump_start/node = SubResource("AnimationNodeAnimation_lnc6a")
 states/jump_start/position = Vector2(349.312, -6.01624)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_m7qqg")
 states/move/position = Vector2(351.375, 99.875)
-transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_jn6ya"), "move", "jump_start", SubResource("AnimationNodeStateMachineTransition_ohsoc"), "jump_start", "jump_end", SubResource("AnimationNodeStateMachineTransition_6j8hr"), "jump_end", "move", SubResource("AnimationNodeStateMachineTransition_pl41e"), "jump_start", "double_jump", SubResource("AnimationNodeStateMachineTransition_a6ggh"), "double_jump", "jump_end", SubResource("AnimationNodeStateMachineTransition_dm0bx"), "move", "attack1", SubResource("AnimationNodeStateMachineTransition_cvfwa"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_im0x1"), "attack1", "move", SubResource("AnimationNodeStateMachineTransition_543q8"), "attack2", "move", SubResource("AnimationNodeStateMachineTransition_in4bh")]
-graph_offset = Vector2(33.925, 28.4419)
+transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_jn6ya"), "move", "jump_start", SubResource("AnimationNodeStateMachineTransition_ohsoc"), "jump_start", "jump_end", SubResource("AnimationNodeStateMachineTransition_6j8hr"), "jump_end", "move", SubResource("AnimationNodeStateMachineTransition_pl41e"), "jump_start", "double_jump", SubResource("AnimationNodeStateMachineTransition_a6ggh"), "double_jump", "jump_end", SubResource("AnimationNodeStateMachineTransition_dm0bx"), "move", "attack1", SubResource("AnimationNodeStateMachineTransition_cvfwa"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_im0x1"), "attack1", "move", SubResource("AnimationNodeStateMachineTransition_543q8"), "attack2", "move", SubResource("AnimationNodeStateMachineTransition_in4bh"), "jump_end", "dead", SubResource("AnimationNodeStateMachineTransition_p0512"), "attack2", "dead", SubResource("AnimationNodeStateMachineTransition_1w1iu"), "attack1", "dead", SubResource("AnimationNodeStateMachineTransition_v0eql"), "move", "dead", SubResource("AnimationNodeStateMachineTransition_ske0h"), "jump_start", "dead", SubResource("AnimationNodeStateMachineTransition_fugdg"), "double_jump", "dead", SubResource("AnimationNodeStateMachineTransition_elvjc")]
+graph_offset = Vector2(33.925, -8.45868)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfif4"]
 size = Vector2(28.25, 48)
@@ -484,9 +497,10 @@ size = Vector2(28.25, 48)
 radius = 9.0
 height = 50.0
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("dead_state") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_kxgl7")
+dead_state = NodePath("CharacterStateMachine/Dead")
 inventory = ExtResource("2_hoe40")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -544,7 +558,12 @@ can_move = false
 wait_time = 0.2
 one_shot = true
 
+[node name="Dead" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("dead_state")]
+script = ExtResource("13_pbjj5")
+dead_state = NodePath(".")
+
 [node name="StateDebugLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+visible = false
 offset_left = -37.0
 offset_top = -47.0
 offset_right = 75.0
@@ -579,6 +598,8 @@ shape = SubResource("CapsuleShape2D_yqilh")
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 script = ExtResource("17_jndb6")
 
+[node name="PauseMenu" parent="CanvasLayer3" instance=ExtResource("14_px7vt")]
+
 [node name="InventoryGUI" parent="CanvasLayer3" instance=ExtResource("18_q01q2")]
 anchors_preset = 4
 anchor_top = 0.5
@@ -610,8 +631,10 @@ health = 50.0
 wait_time = 2.0
 one_shot = true
 
+[connection signal="healthChanged" from="." to="CharacterStateMachine/Dead" method="_on_player_health_changed"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Dead" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
