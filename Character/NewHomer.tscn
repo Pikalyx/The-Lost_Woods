@@ -177,7 +177,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Homering",
-"speed": 24.0
+"speed": 30.0
 }, {
 "frames": [],
 "loop": true,
@@ -216,12 +216,17 @@ shape = SubResource("RectangleShape2D_4dvn7")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -1)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_kdu7p")
 
+[node name="LookTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="LookTimer" to="." method="_on_look_timer_timeout"]
