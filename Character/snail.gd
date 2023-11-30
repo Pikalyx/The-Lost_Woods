@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var inCloset : bool
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
 @export var dead_animation_name : String = "dead"
+@export var damage = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -45,3 +46,19 @@ func _on_monster_closet_detector_body_exited(body):
 	show()
 	inCloset = false # Replace with function body.
 
+
+
+func _on_area_2d_body_entered(body):
+	if $Damageable.health > 0:
+		for child in body.get_children():
+			if child is Damageable:
+				print(self, " is hitting ", child)
+				var direction_to_damageable = (body.global_position - get_parent().global_position) 
+				var direction_sign = sign(direction_to_damageable.x)
+				
+				if(direction_sign > 0):
+					child.hit(damage, Vector2.RIGHT)
+				elif(direction_sign < 0):
+					child.hit(damage, Vector2.LEFT)
+				else:
+					child.hit(damage, Vector2.ZERO) # Replace with function body.

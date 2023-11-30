@@ -1,11 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://o4tl2sknh1ud"]
+[gd_scene load_steps=31 format=3 uid="uid://o4tl2sknh1ud"]
 
 [ext_resource type="Script" path="res://Homer.gd" id="1_il714"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="2_3k6qj"]
 [ext_resource type="Texture2D" uid="uid://i5bleot3pdnu" path="res://Art/Sprites/Homering.png" id="3_jovwi"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvn7"]
-size = Vector2(64, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcmst"]
 atlas = ExtResource("3_jovwi")
@@ -188,12 +185,26 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvn7"]
+size = Vector2(64, 50)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdu7p"]
+radius = 19.0
+height = 58.0
+
 [node name="HomerBody" type="CharacterBody2D"]
 disable_mode = 2
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_il714")
 health = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 1)
+scale = Vector2(0.13, 0.13)
+sprite_frames = SubResource("SpriteFrames_d31a2")
+animation = &"Homering"
+flip_h = true
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("2_3k6qj")
@@ -203,11 +214,14 @@ health = 50.0
 position = Vector2(-9.53674e-07, 0)
 shape = SubResource("RectangleShape2D_4dvn7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, 1)
-scale = Vector2(0.13, 0.13)
-sprite_frames = SubResource("SpriteFrames_d31a2")
-animation = &"Homering"
-flip_h = true
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_kdu7p")
 
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

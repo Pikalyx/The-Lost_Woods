@@ -1,25 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8dfjty2mx5jh"]
+[gd_scene load_steps=9 format=3 uid="uid://c8dfjty2mx5jh"]
 
 [ext_resource type="Script" path="res://Copier1.gd" id="1_dwlc0"]
+[ext_resource type="Texture2D" uid="uid://bbvnsfn0mbkvl" path="res://Art/AmberBounce.png" id="2_0f2nq"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="3_m46nf"]
-[ext_resource type="Texture2D" uid="uid://wmqoxk68hdwv" path="res://icon.svg" id="3_n3kxk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdwi3"]
-size = Vector2(24, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xj85a"]
+radius = 12.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwt2y"]
-size = Vector2(24, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4knb"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_oqf3w"]
+resource_name = "Bounce"
+length = 0.266673
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_jonyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1kvn3"]
+_data = {
+"Bounce": SubResource("Animation_oqf3w"),
+"RESET": SubResource("Animation_jonyl")
+}
 
 [node name="Copier1" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_dwlc0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.185, 0.185)
-texture = ExtResource("3_n3kxk")
+position = Vector2(1, 17)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("2_0f2nq")
+hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mdwi3")
+shape = SubResource("CircleShape2D_xj85a")
 
 [node name="CopyTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -34,7 +74,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_jwt2y")
+shape = SubResource("CircleShape2D_h4knb")
 
 [node name="StickTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -43,8 +83,18 @@ wait_time = 2.0
 wait_time = 6.0
 one_shot = true
 
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1kvn3")
+}
+
 [connection signal="timeout" from="CopyTimer" to="." method="_on_timer_timeout"]
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="StickTimer" to="." method="_on_stick_timer_timeout"]
 [connection signal="timeout" from="ShakeCooldownTimer" to="." method="_on_shake_cooldown_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

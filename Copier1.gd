@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var fuckRadius = 150
 @export var health = 2
+@export var damage = 1
 var copier : PackedScene
 const SPEED = 50
 const JUMP_VELOCITY = -300.0
@@ -13,7 +14,9 @@ var currentPlayerFlip : bool
 var playerShakeCount = 0
 var shakeCooldown = false
 var stickOffset : Vector2
-var closetStink : bool
+var closetStink = false
+var reachVertex = false
+var hostBody = Node2D
 @export var inCloset : bool
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -33,7 +36,7 @@ func _ready():
 		var playerSeek = get_parent().get_parent().get_node("Player")
 		if playerSeek != null:
 			player = playerSeek
-		else:
+		else: 
 			player = get_parent().get_parent().get_parent().get_node("Player")
 
 func _physics_process(delta):
@@ -44,15 +47,18 @@ func _physics_process(delta):
 				velocity.y += gravity * delta
 				if is_on_wall_only():
 					direction = -direction
+				if velocity.y >= 0 and reachVertex == false:
+					reachVertex = true
+					#$AnimationPlayer.play_backwards("Bounce")
 				if player != null:
 					if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius):
 						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false:
 							var copy = copier.instantiate()
 							if closetStink == true:
 								copy.set_global_position(self.get_global_position() + Vector2(1668, -208))
+								copy.closet_child()
 							else:
 								copy.set_global_position(self.get_global_position())
-							copy.closet_child()
 							print(self.get_global_position())
 							#copy.set_owner(get_parent())
 							get_parent().add_child(copy)
@@ -61,7 +67,9 @@ func _physics_process(delta):
 
 			# Handle Jump.
 			if is_on_floor():
+				reachVertex = false
 				velocity.y = JUMP_VELOCITY
+				$AnimationPlayer.play("Bounce")
 				if player != null and shakeCooldown == false:
 					
 					if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius):
@@ -86,11 +94,13 @@ func _physics_process(delta):
 			move_and_slide()
 		elif sticking == true:
 			set_global_position((player.get_position() - stickOffset))
-			
+			if $AttackTimer.is_stopped():
+				$AttackTimer.start()
 			if player.sprite.flip_h != currentPlayerFlip:
 				playerShakeCount += 1
 				currentPlayerFlip = player.sprite.flip_h
 			if playerShakeCount == 5:
+				$AttackTimer.stop()
 				sticking = false
 				velocity.y = JUMP_VELOCITY
 				shakeCooldown = true
@@ -120,6 +130,7 @@ func _on_area_2d_body_entered(body):
 		sticking = true
 		currentPlayerFlip = player.sprite.flip_h
 		stickOffset = Vector2(player.get_position() - self.get_global_position())
+		hostBody = body
 		$StickTimer.start()
 
 
@@ -133,3 +144,20 @@ func _on_monster_closet_detector_body_exited(body):
 func closet_child():
 	inCloset = false
 	closetStink = true
+
+
+func _on_attack_timer_timeout():
+	print("Glorp!")
+	if health > 0 and inCloset != true:
+		for child in hostBody.get_children():
+			if child is Damageable:
+				print(self, " is hitting ", child)
+				var direction_to_damageable = (hostBody.global_position - get_parent().global_position) 
+				var direction_sign = sign(direction_to_damageable.x)
+
+				if(direction_sign > 0):
+					child.hit(damage, Vector2.RIGHT)
+				elif(direction_sign < 0):
+					child.hit(damage, Vector2.LEFT)
+				else:
+					child.hit(damage, Vector2.ZERO)
