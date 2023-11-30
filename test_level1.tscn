@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://b4aqd86pwf6h7"]
 
-[ext_resource type="Texture2D" uid="uid://cvhorgx8xi0u" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
+[ext_resource type="Texture2D" uid="uid://45gv7nhe7870" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_axmyc"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="3_j2hck"]
@@ -1680,7 +1680,6 @@ inCloset = true
 
 [node name="HomerBody" parent="ClosetDoor" instance=ExtResource("17_8k6ed")]
 position = Vector2(370, -4)
-ramSpeed = 1.0
 inCloset = true
 
 [node name="Copier1" parent="." instance=ExtResource("15_aqxfj")]
@@ -1688,7 +1687,7 @@ position = Vector2(-364, 8)
 
 [node name="HomerBody" parent="." instance=ExtResource("17_8k6ed")]
 position = Vector2(339, -25)
-ramSpeed = 1.0
+health = 40
 
 [node name="CarterLevel1Transition" type="Area2D" parent="."]
 position = Vector2(-1056.48, 258.13)
@@ -1715,6 +1714,7 @@ position = Vector2(-4708, -83)
 
 [node name="HomerBody2" parent="." instance=ExtResource("17_8k6ed")]
 position = Vector2(-150.206, 0.517029)
+health = 40
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]

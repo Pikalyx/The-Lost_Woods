@@ -7,7 +7,7 @@ var speed = 0
 @export var ramSpeed = 200
 var direction : Vector2
 @export var fuckRadius = 200
-@export var health = 51
+@export var health = 40
 @export var inCloset : bool
 @export var damage = 1
 @export var deflectDamage = 5
