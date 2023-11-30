@@ -4,7 +4,9 @@ class_name Player
 
 @export var normalspeed  = 200.0
 @export var speed : float = 200.0
-@export var max_health : float = 5.0
+@export var max_health : float = PlayerVars.h
+
+
 var current_health: int = max_health
 signal healthChanged(cur)
 var clingSlide = false
@@ -31,6 +33,9 @@ var direction : Vector2 = Vector2.ZERO
 
 signal facing_direction_changed(facing_right : bool)
 
+func setMaxHealth(max: int):
+	max_health = max
+	
 func _ready():
 	animation_tree.active = true
 	heartsContainer.setMaxHearts(max_health)
