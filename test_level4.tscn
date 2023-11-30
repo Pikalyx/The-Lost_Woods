@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqldvyq4r1i3p"]
+[gd_scene load_steps=14 format=3 uid="uid://cqldvyq4r1i3p"]
 
 [ext_resource type="Texture2D" uid="uid://c7ti6bnmsuhts" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_mfgw6"]
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="2_3nagc"]
+[ext_resource type="Script" path="res://moving_platform.gd" id="3_l10sw"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="3_up7x5"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="4_8egnn"]
 [ext_resource type="Texture2D" uid="uid://c3fejfqv07grj" path="res://Art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="5_wpimw"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="6_tyiym"]
 [ext_resource type="Texture2D" uid="uid://mok23gsvb80h" path="res://Parallax/Garden_s Forest/pushes.png" id="7_i3gcf"]
 [ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="7_v7yn8"]
+[ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="10_a7l70"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mmj3h"]
 texture = ExtResource("1_mfgw6")
@@ -1446,6 +1448,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mmj3h")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7qb88"]
+radius = 30.4503
 
 [node name="test_level3" type="Node2D"]
 
@@ -1457,18 +1460,30 @@ layer_0/tile_data = PackedInt32Array(131066, 131072, 0, 196602, 65536, 1, 131067
 
 [node name="MovingPlatform" parent="." instance=ExtResource("2_3nagc")]
 position = Vector2(226, -307)
+script = ExtResource("3_l10sw")
+distance = Vector2(35, 45)
+phase_offset = 0.87
+debug = false
+
+[node name="MovingPlatform3" parent="." instance=ExtResource("2_3nagc")]
+position = Vector2(344.921, -429.461)
+script = ExtResource("3_l10sw")
+distance = Vector2(35, 45)
+phase_offset = 0.62
+debug = false
 
 [node name="MovingPlatform2" parent="." instance=ExtResource("2_3nagc")]
 position = Vector2(91, -86)
-
-[node name="MovingPlatform2" parent="MovingPlatform2" instance=ExtResource("2_3nagc")]
-position = Vector2(253.921, -343.461)
+script = ExtResource("3_l10sw")
+distance = Vector2(35, 46)
+phase_offset = 0.32
+debug = false
 
 [node name="Player" parent="." instance=ExtResource("3_up7x5")]
 position = Vector2(-18.3296, -52.4011)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 
 [node name="pig" parent="." instance=ExtResource("4_8egnn")]
 position = Vector2(308, -189)
@@ -1495,7 +1510,7 @@ position = Vector2(206.603, -14.9693)
 script = ExtResource("6_tyiym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/ParallaxLayer/Area2D"]
-position = Vector2(66.397, -8.0307)
+position = Vector2(57.0637, -8.0307)
 shape = SubResource("CircleShape2D_7qb88")
 
 [node name="pig" parent="ParallaxBackground/ParallaxLayer/Area2D" instance=ExtResource("4_8egnn")]
@@ -1512,16 +1527,20 @@ position = Vector2(92.8333, -88.3334)
 scale = Vector2(1.36263, 1.60889)
 texture = ExtResource("7_i3gcf")
 
-[node name="Area2D" type="Area2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(206.603, -14.9693)
+[node name="pig3" parent="." instance=ExtResource("4_8egnn")]
+position = Vector2(220, -327)
+scale = Vector2(0.75, 0.75)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(618.809, -44.9079)
+scale = Vector2(3, 3)
 script = ExtResource("6_tyiym")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/ParallaxLayer2/Area2D"]
-position = Vector2(67.0637, -8.0307)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(223.064, -57.364)
 shape = SubResource("CircleShape2D_7qb88")
 
-[node name="pig" parent="ParallaxBackground/ParallaxLayer2/Area2D" instance=ExtResource("4_8egnn")]
-position = Vector2(-257.27, -85.364)
-scale = Vector2(0.25, 0.25)
-
 [node name="Node2D" parent="." instance=ExtResource("7_v7yn8")]
+
+[node name="HealthFlute" parent="." instance=ExtResource("10_a7l70")]
+position = Vector2(521, -463)

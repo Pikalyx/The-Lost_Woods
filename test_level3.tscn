@@ -1440,6 +1440,6 @@ debug = false
 [node name="MovingPlatform2" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(2002, 366)
 script = ExtResource("10_4kfja")
-distance = Vector2(36, 46)
+distance = Vector2(35.76, 46)
 phase_offset = 0.518
 debug = false
