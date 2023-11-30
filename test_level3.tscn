@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://davhx6ntg147k"]
+[gd_scene load_steps=18 format=3 uid="uid://davhx6ntg147k"]
 
 [ext_resource type="Texture2D" uid="uid://bdxsliy7s0pj8" path="res://level 3/background_layer_1.png" id="1_gafwj"]
 [ext_resource type="Texture2D" uid="uid://c7eysr7o15ihm" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://moving_platform.gd" id="10_4kfja"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
 [ext_resource type="PackedScene" uid="uid://0abdvjekaw6l" path="res://speedpot.tscn" id="14_1a6e8"]
+[ext_resource type="PackedScene" uid="uid://dwutqlu1rwlt1" path="res://boss.tscn" id="15_8usa2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbpwq"]
 texture = ExtResource("1_hsu8m")
@@ -1446,3 +1447,5 @@ phase_offset = 0.518
 debug = false
 
 [node name="speedpot" parent="." instance=ExtResource("14_1a6e8")]
+
+[node name="Boss" parent="." instance=ExtResource("15_8usa2")]

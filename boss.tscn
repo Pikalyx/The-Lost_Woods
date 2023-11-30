@@ -289,10 +289,11 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_862yf"]
 
-[node name="Boss" type="CharacterBody2D"]
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_jkhpn")
+hit_state = NodePath("CharacterStateMachine/Hit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 27)
@@ -322,9 +323,13 @@ script = ExtResource("7_cba7c")
 
 [node name="dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("7_cba7c")
+can_move = false
 
-[node name="Hit" type="Node" parent="CharacterStateMachine"]
+[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "return_state")]
 script = ExtResource("8_u0uuj")
+damageable = NodePath("../../Damageable")
+dead_state = NodePath("../dead")
+return_state = NodePath("../walk")
 
 [node name="Timer" type="Timer" parent="CharacterStateMachine/Hit"]
 
