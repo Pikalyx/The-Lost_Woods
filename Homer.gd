@@ -36,6 +36,8 @@ func _process(delta):
 		if player != null:
 			if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius) and cooldown == false and ramming == false:
 				look_at(player.get_position())
+				$AnimatedSprite2D.frame = 11
+				$AnimatedSprite2D.pause()
 				var angle = fmod(self.get_rotation(), 2 * PI)
 				if abs(angle) >= PI/2:
 					$AnimatedSprite2D.flip_v = true
@@ -55,7 +57,7 @@ func _process(delta):
 					$AnimatedSprite2D.flip_v = false
 				direction = Vector2(cos(angle), sin(angle))
 				speed = ramSpeed
-				$AnimatedSprite2D.frame = 11
+				$AnimatedSprite2D.frame = 1
 				$AnimatedSprite2D.play("Homering")
 				#self.set_position(self.get_position() + (direction * speed))
 			elif (player.get_position().x - self.get_global_position().x >= fuckRadius or player.get_position().x - self.get_global_position().x <= -fuckRadius or player.get_position().y - self.get_global_position().y >= fuckRadius or player.get_position().y - self.get_global_position().y <= -fuckRadius or origin.x - self.get_global_position().x >= fuckRadius or origin.x - self.get_global_position().x <= -fuckRadius or origin.y - self.get_global_position().y >= fuckRadius or origin.y - self.get_global_position().y <= -fuckRadius) and cooldown == true and ramming == true :

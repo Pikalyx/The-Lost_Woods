@@ -8,7 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_left=true
 var state = "Idle"
 @export var inCloset : bool
-@export var health = 3
+@export var health = 30
 @export var damage = 1
 func _ready():
 	if inCloset == true:
