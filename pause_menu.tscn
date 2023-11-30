@@ -45,11 +45,13 @@ layout_mode = 2
 [node name="ResButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
 text = "Resume"
 
 [node name="ControlsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
 text = "Controls
 "
 
@@ -63,4 +65,5 @@ horizontal_alignment = 1
 [node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
 text = "Quit"
