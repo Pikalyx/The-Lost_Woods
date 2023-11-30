@@ -14,6 +14,7 @@ var clingSlide = false
 @export var dead_state : State
 @export var dead_animation_node : String = "dead"
 
+@onready var heartsContainer = $CanvasLayer3/hearts_container
 #@onready var dash = $Dash
 #@onready var cooldown = $Cooldown
 
@@ -31,6 +32,9 @@ signal facing_direction_changed(facing_right : bool)
 func _ready():
 	#print(cooldown.is_on_cooldown())
 	animation_tree.active = true
+	heartsContainer.setMaxHearts(max_health)
+	heartsContainer.updateHearts(current_health)
+	healthChanged.connect(heartsContainer.updateHearts)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -106,9 +110,6 @@ func _on_inventory_gui_closed():
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	current_health -= damage_taken
 	healthChanged.emit(current_health)
-
-func _on_area_2d_body_entered(body):
-	pass
 	
 
 
