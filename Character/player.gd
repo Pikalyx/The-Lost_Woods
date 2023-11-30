@@ -130,7 +130,7 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 		current_health -= damage_taken
 		healthChanged.emit(current_health)
 		$RecoilTimer.start()
-	  score -= 1
+		score -= 1
 
 
 func _on_cling_timer_timeout():

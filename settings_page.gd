@@ -9,8 +9,10 @@ func _on_back_button_pressed():
 func _on_mute_button_button_up():
 	var bus_idx = AudioServer.get_bus_index("Master")
 	if(AudioServer.is_bus_mute(bus_idx)):
+		print("unmute")
 		AudioServer.set_bus_mute(bus_idx, false)
 	else: 
+		print("mute")
 		AudioServer.set_bus_mute(bus_idx, true)
 
 
