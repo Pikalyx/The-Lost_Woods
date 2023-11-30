@@ -10,8 +10,6 @@ class_name Player
 var current_health: int = max_health
 signal healthChanged(cur)
 var clingSlide = false
-var colorAdjust = 0
-@onready var defaultModulate = $Sprite2D.modulate
 @onready var dash = $Dash
 @export var dashspeed = 1200.0
 @export var dashlength = .1
@@ -37,6 +35,7 @@ func setMaxHealth(max: int):
 	max_health = max
 	
 func _ready():
+	#print(cooldown.is_on_cooldown())
 	animation_tree.active = true
 	heartsContainer.setMaxHearts(max_health)
 	heartsContainer.updateHearts(current_health)
@@ -60,13 +59,7 @@ func _physics_process(delta):
 	#	if dash._on_dashtimer_timeout():
 	#		cooldown.start_cooldown(1)
 		var speed = dashspeed if dash.is_dashing() else normalspeed
-		if $RecoilTimer.is_stopped() == false:
-			colorAdjust += 0.1
-			$Sprite2D.modulate = Color(colorAdjust,0,0)
-			if colorAdjust >= 5:
-				colorAdjust = 0
-		else:
-			$Sprite2D.modulate = defaultModulate
+		
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		direction = Input.get_vector("left", "right", "up", "down")
@@ -82,7 +75,7 @@ func _physics_process(delta):
 		update_animation_parameters()
 		update_facing_direction()
 	else:
-		$Sprite2D.modulate = defaultModulate
+		pass
 		#SceneTransition.change_scene_to_file("res://Game_Over.tscn")
 		#$AnimationPlayer.play("dead")
 #		if notDead:
@@ -124,11 +117,9 @@ func _on_inventory_gui_closed():
 
 
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
-	if $RecoilTimer.is_stopped() == true:
-		current_health -= damage_taken
-		healthChanged.emit(current_health)
-		$RecoilTimer.start()
-
+	current_health -= damage_taken
+	healthChanged.emit(current_health)
+	
 
 
 func _on_cling_timer_timeout():
