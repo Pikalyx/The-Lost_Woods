@@ -133,4 +133,4 @@ position = Vector2(758.667, 515.333)
 scale = Vector2(4.36198, 5.41333)
 texture = ExtResource("5_5jpaq")
 
-[connection signal="pressed" from="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="button_up" from="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3/BackButton" to="." method="_on_back_button_button_up"]
