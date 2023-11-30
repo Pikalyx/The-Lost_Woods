@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(512, 256)
+custom_minimum_size = Vector2(1024, 512)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
@@ -35,7 +35,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 40
 text = "Pause"
 horizontal_alignment = 1
 
@@ -46,6 +46,19 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 text = "Resume"
+
+[node name="ControlsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Controls
+"
+
+[node name="ControlsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Move: WASD | Jump: Space | Attack: F | Inventory: E | Dash: Shift | Pause: Escape"
+horizontal_alignment = 1
 
 [node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
