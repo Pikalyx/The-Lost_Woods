@@ -1,31 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfnbi16mn7inf"]
+[gd_scene load_steps=8 format=3 uid="uid://bfnbi16mn7inf"]
 
 [ext_resource type="Script" path="res://credits_page.gd" id="1_l1ddm"]
+[ext_resource type="Texture2D" uid="uid://54r4v15rwyo3" path="res://Art/GUI Art/back button.png" id="2_2gff5"]
 [ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="2_6vhyi"]
 [ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="3_8lp15"]
+[ext_resource type="Texture2D" uid="uid://c0721c1nqgxmt" path="res://Art/GUI Art/pressed back button.png" id="3_pu4hk"]
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="4_3x6o7"]
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="5_5jpaq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1uvv"]
-bg_color = Color(0.164706, 0.160784, 0.188235, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34eca"]
-bg_color = Color(0.0784314, 0.0784314, 0.0901961, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0543"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l1ddm")
@@ -79,15 +60,12 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 650
 theme_override_constants/margin_bottom = 0
 
-[node name="BackButton" type="Button" parent="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3"]
+[node name="BackButton" type="TextureButton" parent="MarginContainer2/VBoxContainer2/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_t1uvv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_34eca")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_b0543")
-text = "Back
-"
+texture_normal = ExtResource("2_2gff5")
+texture_pressed = ExtResource("3_pu4hk")
+stretch_mode = 3
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
