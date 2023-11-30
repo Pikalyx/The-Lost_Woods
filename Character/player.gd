@@ -6,11 +6,13 @@ class_name Player
 @export var speed : float = 200.0
 @export var max_health : float = 5.0
 var current_health: int = max_health
-signal healthChanged
+signal healthChanged(cur)
 var clingSlide = false
 @onready var dash = $Dash
 @export var dashspeed = 1200.0
 @export var dashlength = .1
+@export var dead_state : State
+@export var dead_animation_node : String = "dead"
 
 #@onready var dash = $Dash
 #@onready var cooldown = $Cooldown
@@ -64,7 +66,9 @@ func _physics_process(delta):
 		update_animation_parameters()
 		update_facing_direction()
 	else:
-		SceneTransition.change_scene_to_file("res://Game_Over.tscn")
+		pass
+		#SceneTransition.change_scene_to_file("res://Game_Over.tscn")
+		#$AnimationPlayer.play("dead")
 #		if notDead:
 #			$AnimationPlayer.play("dead")
 #			notDead = false
