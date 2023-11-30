@@ -9,7 +9,7 @@ func _on_settings_button_button_up():
 
 
 func _on_texture_button_button_up():
-	SceneTransition.change_scene_to_file("res://test_level1.tscn")
+	get_tree().change_scene_to_file("res://difficulty.tscn")
 
 
 func _on_quit_button_button_up():
