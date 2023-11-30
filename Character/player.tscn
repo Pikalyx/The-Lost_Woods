@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://c06h0yv06ktmh"]
+[gd_scene load_steps=65 format=3 uid="uid://c06h0yv06ktmh"]
 
 [ext_resource type="Texture2D" uid="uid://q83isyqwcgo2" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ng57pbulh0db" path="res://UI/hearts_container.tscn" id="19_y831m"]
 [ext_resource type="Script" path="res://Character/Dash.gd" id="20_vup2t"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="21_yaka7"]
+[ext_resource type="Script" path="res://Character/Timer.gd" id="22_l6u8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wja7b"]
 radius = 8.0
@@ -613,6 +614,15 @@ grow_vertical = 2
 [node name="hearts_container" parent="CanvasLayer3" instance=ExtResource("19_y831m")]
 offset_right = 200.0
 offset_bottom = 14.0
+
+[node name="Timer" type="Label" parent="CanvasLayer3"]
+offset_left = 17.0
+offset_top = 64.0
+offset_right = 153.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 40
+text = "Time: "
+script = ExtResource("22_l6u8f")
 
 [node name="Dash" type="Node2D" parent="."]
 script = ExtResource("20_vup2t")
