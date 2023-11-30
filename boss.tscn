@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dwutqlu1rwlt1"]
+[gd_scene load_steps=31 format=3 uid="uid://dwutqlu1rwlt1"]
 
 [ext_resource type="Texture2D" uid="uid://dn408qm2pkrmh" path="res://boss_demon_slime_FREE_v1.0/individual sprites/02_demon_walk/demon_walk_1-Sheet.png" id="1_1btff"]
 [ext_resource type="Script" path="res://boss.gd" id="1_jkhpn"]
@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cwcadp3rjwhah" path="res://boss_demon_slime_FREE_v1.0/individual sprites/01_demon_idle/demon_idle_1-Sheet.png" id="2_lwt7c"]
 [ext_resource type="Texture2D" uid="uid://cg1xgn6j11ujj" path="res://boss_demon_slime_FREE_v1.0/individual sprites/03_demon_cleave/demon_cleave_1-Sheet.png" id="3_7fryd"]
 [ext_resource type="Texture2D" uid="uid://b30jgnfsfwuwb" path="res://boss_demon_slime_FREE_v1.0/individual sprites/05_demon_death/demon_death_1-Sheet.png" id="4_0b0wm"]
-[ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="6_hmfbm"]
-[ext_resource type="Script" path="res://State.gd" id="7_cba7c"]
-[ext_resource type="Script" path="res://BossHit.gd" id="8_u0uuj"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="9_xktyf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8y45c"]
@@ -293,7 +290,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_jkhpn")
-hit_state = NodePath("CharacterStateMachine/Hit")
+hit_state = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 27)
@@ -312,27 +309,6 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_64yqr")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "animation_tree", "current_state")]
-script = ExtResource("6_hmfbm")
-character = NodePath("..")
-animation_tree = NodePath("../AnimationTree")
-current_state = NodePath("walk")
-
-[node name="walk" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("7_cba7c")
-
-[node name="dead" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("7_cba7c")
-can_move = false
-
-[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "return_state")]
-script = ExtResource("8_u0uuj")
-damageable = NodePath("../../Damageable")
-dead_state = NodePath("../dead")
-return_state = NodePath("../walk")
-
-[node name="Timer" type="Timer" parent="CharacterStateMachine/Hit"]
-
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("9_xktyf")
 
@@ -341,5 +317,4 @@ script = ExtResource("9_xktyf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_862yf")
 
-[connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
