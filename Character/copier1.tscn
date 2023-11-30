@@ -92,10 +92,6 @@ libraries = {
 "": SubResource("AnimationLibrary_1kvn3")
 }
 
-[node name="RecoilTimer" type="Timer" parent="."]
-wait_time = 1.5
-one_shot = true
-
 [connection signal="timeout" from="CopyTimer" to="." method="_on_timer_timeout"]
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
