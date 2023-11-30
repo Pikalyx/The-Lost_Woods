@@ -2,6 +2,7 @@ extends Node
 
 @export var h : float
 @export var t : float
+@export var s : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,9 @@ func setH(health: float):
 func setT(time: float):
 	t = time
 
+func setS(score: float):
+	s = score
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
