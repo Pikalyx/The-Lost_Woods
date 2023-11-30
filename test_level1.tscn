@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=26 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://dvk1qkow4pbsi" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://o4tl2sknh1ud" path="res://Character/NewHomer.tscn" id="17_8k6ed"]
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="17_e5pbr"]
 [ext_resource type="Script" path="res://LevelTransitionArea.gd" id="18_b4hh7"]
+[ext_resource type="Script" path="res://JustVibing.gd" id="19_u7kdq"]
 [ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="19_vx56n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
@@ -1551,6 +1552,9 @@ size = Vector2(39, 49)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ifnow"]
 radius = 28.5422
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwt3o"]
+size = Vector2(56.1699, 28.1228)
+
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1680,7 +1684,6 @@ inCloset = true
 
 [node name="HomerBody" parent="ClosetDoor" instance=ExtResource("17_8k6ed")]
 position = Vector2(370, -4)
-ramSpeed = 1.0
 inCloset = true
 
 [node name="Copier1" parent="." instance=ExtResource("15_aqxfj")]
@@ -1688,7 +1691,7 @@ position = Vector2(-364, 8)
 
 [node name="HomerBody" parent="." instance=ExtResource("17_8k6ed")]
 position = Vector2(339, -25)
-ramSpeed = 1.0
+health = 51
 
 [node name="CarterLevel1Transition" type="Area2D" parent="."]
 position = Vector2(-1056.48, 258.13)
@@ -1714,7 +1717,17 @@ position = Vector2(534, -1)
 position = Vector2(-4708, -83)
 
 [node name="HomerBody2" parent="." instance=ExtResource("17_8k6ed")]
-position = Vector2(-150.206, 0.517029)
+position = Vector2(-263, -87)
+
+[node name="Pacer" type="CharacterBody2D" parent="."]
+position = Vector2(-2134.17, 92.8772)
+script = ExtResource("19_u7kdq")
+move_speed = 100.0
+move_dir = Vector2(-2400, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pacer"]
+position = Vector2(0.169922, 0.122833)
+shape = SubResource("RectangleShape2D_qwt3o")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]
