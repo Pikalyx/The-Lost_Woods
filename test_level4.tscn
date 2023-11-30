@@ -1483,7 +1483,7 @@ debug = false
 position = Vector2(-18.3296, -52.4011)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
+zoom = Vector2(2.6, 2.6)
 
 [node name="pig" parent="." instance=ExtResource("4_8egnn")]
 position = Vector2(308, -189)
@@ -1501,8 +1501,8 @@ scale = Vector2(3, 3)
 motion_scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(100, -26)
-scale = Vector2(1.41667, 1.19118)
+position = Vector2(31.8337, -26.0003)
+scale = Vector2(1.7007, 1.19118)
 texture = ExtResource("5_wpimw")
 
 [node name="Area2D" type="Area2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -1523,8 +1523,8 @@ scale = Vector2(3, 3)
 motion_scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(92.8333, -88.3334)
-scale = Vector2(1.36263, 1.60889)
+position = Vector2(9.99998, -84.8333)
+scale = Vector2(2.27083, 3.17444)
 texture = ExtResource("7_i3gcf")
 
 [node name="pig3" parent="." instance=ExtResource("4_8egnn")]
