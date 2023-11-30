@@ -6,13 +6,15 @@ class_name Player
 @export var speed : float = 200.0
 @export var max_health : float = 5.0
 var current_health: int = max_health
-
+signal healthChanged(cur)
+var clingSlide = false
 @onready var dash = $Dash
 @export var dashspeed = 1200.0
 @export var dashlength = .1
-#@export var dashspeed = 1200.0
-#@export var dashlength = .1
+@export var dead_state : State
+@export var dead_animation_node : String = "dead"
 
+@onready var heartsContainer = $CanvasLayer3/hearts_container
 #@onready var dash = $Dash
 #@onready var cooldown = $Cooldown
 
@@ -30,35 +32,52 @@ signal facing_direction_changed(facing_right : bool)
 func _ready():
 	#print(cooldown.is_on_cooldown())
 	animation_tree.active = true
+	heartsContainer.setMaxHearts(max_health)
+	heartsContainer.updateHearts(current_health)
+	healthChanged.connect(heartsContainer.updateHearts)
 
 func _physics_process(delta):
 	# Add the gravity.
-	if is_on_wall_only() and velocity.y >= 0:
-		velocity.y = 0
-	elif not is_on_floor():
-		velocity.y += gravity * delta
-	#print("Am I on a wall? That's ", self.is_on_wall())
-	if Input.is_action_just_pressed("dash"):
-		if dash.is_on_cooldown():
-			dash.start_dash(dashlength)
-#	if dash._on_dashtimer_timeout():
-#		cooldown.start_cooldown(1)
-	var speed = dashspeed if dash.is_dashing() else normalspeed
-	
-	
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	direction = Input.get_vector("left", "right", "up", "down")
-	
-	if direction.x != 0 && state_machine.check_if_can_move():
-		velocity.x = direction.x * speed
+	if current_health > 0:
+		if is_on_wall_only() and velocity.y >= 0 and clingSlide == false:
+			velocity.y = 0
+			if $ClingTimer.is_stopped():
+				$ClingTimer.start()
+		elif is_on_wall_only() and velocity.y >= 0 and clingSlide == true:
+			velocity.y += (gravity/5) * delta
+		elif not is_on_floor():
+			velocity.y += gravity * delta
+		#print("Am I on a wall? That's ", self.is_on_wall())
+		if Input.is_action_just_pressed("dash"):
+			if dash.is_on_cooldown():
+				dash.start_dash(dashlength)
+	#	if dash._on_dashtimer_timeout():
+	#		cooldown.start_cooldown(1)
+		var speed = dashspeed if dash.is_dashing() else normalspeed
+		
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		direction = Input.get_vector("left", "right", "up", "down")
+		
+		if direction.x != 0 && state_machine.check_if_can_move():
+			velocity.x = direction.x * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+		if is_on_floor():
+			clingSlide = false
+			$ClingTimer.stop()
+		move_and_slide()
+		update_animation_parameters()
+		update_facing_direction()
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-
-	move_and_slide()
-	update_animation_parameters()
-	update_facing_direction()
+		pass
+		#SceneTransition.change_scene_to_file("res://Game_Over.tscn")
+		#$AnimationPlayer.play("dead")
+#		if notDead:
+#			$AnimationPlayer.play("dead")
+#			notDead = false
+#		if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+#			queue_free()
 	
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position",direction.x)
@@ -81,7 +100,23 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
+	if area.has_method("heal") && current_health < max_health:
+		current_health += 1
+		healthChanged.emit(current_health)
+		
+		#print(self, "just collided with ", area )
 
 
 func _on_inventory_gui_closed():
 	pass # Replace with function body.
+
+
+func _on_damageable_on_hit(node, damage_taken, knockback_direction):
+	current_health -= damage_taken
+	healthChanged.emit(current_health)
+	
+
+
+func _on_cling_timer_timeout():
+	clingSlide = true
+	print("Slidin!") # Replace with function body.
