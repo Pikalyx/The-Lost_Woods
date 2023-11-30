@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://da6eafhmdgdpx"]
 
 [ext_resource type="Script" path="res://Character/snail.gd" id="1_bwhs0"]
-[ext_resource type="Texture2D" uid="uid://djjad7u7gvqnk" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png" id="1_cohpc"]
-[ext_resource type="Texture2D" uid="uid://bcfe3m5r1gunr" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/Dead-Sheet.png" id="1_lm51u"]
+[ext_resource type="Texture2D" uid="uid://bm3gfmpg2s8we" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png" id="1_cohpc"]
+[ext_resource type="Texture2D" uid="uid://dspsdshmxj28m" path="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/Dead-Sheet.png" id="1_lm51u"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="2_6kf2s"]
 [ext_resource type="Script" path="res://Character/CharacterStateMachine.gd" id="4_6kq2u"]
 [ext_resource type="Script" path="res://Character/State.gd" id="5_durdt"]

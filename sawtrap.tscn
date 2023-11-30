@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://kbsxbqpfboed"]
+
+[ext_resource type="Script" path="res://sawtrap.gd" id="1_e2te3"]
+[ext_resource type="Texture2D" uid="uid://o4neb3eqpov7" path="res://traps/Foozle_2DTR0001_Pixel_Trap_Pack/Saw Trap/PNGs/Saw Trap - Level 2.png" id="1_v0b7b"]
+[ext_resource type="Script" path="res://sawDamage.gd" id="3_5tgpr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scmct"]
+
+[sub_resource type="Animation" id="Animation_o62qn"]
+resource_name = "saw"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_v0b7b")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 29]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wfxey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s6unn"]
+_data = {
+"RESET": SubResource("Animation_wfxey"),
+"saw": SubResource("Animation_o62qn")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smf16"]
+
+[node name="saw" type="Area2D"]
+script = ExtResource("1_e2te3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_scmct")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v0b7b")
+hframes = 30
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s6unn")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+script = ExtResource("3_5tgpr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_smf16")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
