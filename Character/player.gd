@@ -5,7 +5,7 @@ class_name Player
 @export var normalspeed  = 200.0
 @export var speed : float = 200.0
 @export var max_health : float = PlayerVars.h
-
+@export var score : float = PlayerVars.s
 
 var current_health: int = max_health
 signal healthChanged(cur)
@@ -101,6 +101,7 @@ func update_facing_direction():
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		$CanvasLayer3/PauseMenu.pause()
+	$CanvasLayer3/Score.updateScore(score)
 		
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
@@ -108,7 +109,8 @@ func _on_area_2d_area_entered(area):
 	if area.has_method("heal") && current_health < max_health:
 		current_health += 1
 		healthChanged.emit(current_health)
-		
+	if area.has_method("heal"):
+		score += 10
 		#print(self, "just collided with ", area )
 
 
@@ -117,6 +119,7 @@ func _on_inventory_gui_closed():
 
 
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
+	score -= 1
 	current_health -= damage_taken
 	healthChanged.emit(current_health)
 	
