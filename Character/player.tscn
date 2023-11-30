@@ -593,8 +593,6 @@ grow_vertical = 2
 offset_right = 200.0
 offset_bottom = 14.0
 
-[node name="PauseMenu" parent="CanvasLayer3" instance=ExtResource("14_px7vt")]
-
 [node name="Dash" type="Node2D" parent="."]
 script = ExtResource("20_vup2t")
 
