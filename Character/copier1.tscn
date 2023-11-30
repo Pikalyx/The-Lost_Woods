@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c8dfjty2mx5jh"]
 
 [ext_resource type="Script" path="res://Copier1.gd" id="1_dwlc0"]
-[ext_resource type="Texture2D" uid="uid://bbvnsfn0mbkvl" path="res://Art/AmberBounce.png" id="2_0f2nq"]
+[ext_resource type="Texture2D" uid="uid://c2bh1pcafjdl2" path="res://Art/AmberBounce.png" id="2_0f2nq"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="3_m46nf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xj85a"]
@@ -91,6 +91,10 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_1kvn3")
 }
+
+[node name="RecoilTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
 [connection signal="timeout" from="CopyTimer" to="." method="_on_timer_timeout"]
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
