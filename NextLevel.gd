@@ -6,7 +6,6 @@ const FILE_BEGIN = "res://test_level"
 func _on_body_entered(body):
 	#For testing
 	#print("Level Cleared")
-	
 	var current_scene_file = get_tree().current_scene.scene_file_path
 	#For testing
 	#print(current_scene_file)
