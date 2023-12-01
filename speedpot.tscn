@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://pe0ir73kumay" path="res://collectable.tscn" id="1_leprt"]
 [ext_resource type="Script" path="res://speedpot.gd" id="2_314qs"]
 [ext_resource type="Resource" uid="uid://uwwy7fx715cj" path="res://Inventory/items/speedpot.tres" id="3_hmjmg"]
-[ext_resource type="Texture2D" uid="uid://u2wggfjeiwfh" path="res://Art/Necklace.png" id="4_do082"]
+[ext_resource type="Texture2D" uid="uid://lhc4kcbrypfk" path="res://Art/Necklace.png" id="4_do082"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kc37e"]
 resource_local_to_scene = true
