@@ -1,5 +1,5 @@
 extends Node
-
+@export var camShake : bool = false
 @export var h : float = 20
 @export var t : float
 @export var s : float
@@ -26,7 +26,12 @@ func setCH(current: float):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if ch == 0:
+  if ch == 0:
 		ch = h
 		s = 0
 		t = 0
+func shake():
+	camShake = true
+func stopShake():
+	camShake = false
+		
