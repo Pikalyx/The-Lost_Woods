@@ -118,6 +118,9 @@ func _on_area_2d_area_entered(area):
 		healthChanged.emit(current_health)
 	if area.has_method("heal"):
 		score += 10
+	if area.has_method("increasePow"):
+		$Sword.damage += 5
+		
 		#print(self, "just collided with ", area )
 
 
