@@ -847,7 +847,11 @@ sources/2 = SubResource("TileSetAtlasSource_qb8b0")
 [node name="CarterLevel1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2j0oh")]
+<<<<<<< Updated upstream
 position = Vector2(18, 46)
+=======
+position = Vector2(32, 36)
+>>>>>>> Stashed changes
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")

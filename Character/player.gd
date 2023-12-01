@@ -6,8 +6,7 @@ class_name Player
 @export var speed : float = 200.0
 @export var max_health : float = PlayerVars.h
 @export var score : float = PlayerVars.s
-
-var current_health: int = max_health
+@export var current_health : float = PlayerVars.ch
 signal healthChanged(cur)
 var clingSlide = false
 var colorAdjust = 0
@@ -109,6 +108,9 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		$CanvasLayer3/PauseMenu.pause()
 	$CanvasLayer3/Score.updateScore(score)
+	PlayerVars.setCH(current_health)
+	PlayerVars.setS(score)
+	PlayerVars.setT($CanvasLayer3/Timer.time)
 		
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
