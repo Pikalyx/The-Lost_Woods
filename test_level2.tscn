@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://uo7hbmwy4l1r"]
+[gd_scene load_steps=19 format=3 uid="uid://uo7hbmwy4l1r"]
 
 [ext_resource type="Texture2D" uid="uid://buj0n7fmjtnpr" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_yie4n"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_mcw2p"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://blj1lwkpab2y5" path="res://UI/health_changed_manger.tscn" id="7_nq11b"]
 [ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="8_676um"]
 [ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="9_qlht3"]
+[ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="9_tl1yp"]
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="10_c30va"]
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="11_rjfpu"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_7ml3d"]
@@ -1506,6 +1507,12 @@ hit_state = NodePath("../snail/CharacterStateMachine/Hit")
 position = Vector2(1105, -174)
 hit_state = NodePath("../snail/CharacterStateMachine/Hit")
 
+[node name="speedpot2" parent="." instance=ExtResource("12_etoe8")]
+position = Vector2(1288, -447)
+
+[node name="HealthFlute" parent="." instance=ExtResource("9_tl1yp")]
+position = Vector2(1093, 47)
+
 [node name="snail5" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("6_22uof")]
 position = Vector2(1051, -313)
 hit_state = NodePath("../snail/CharacterStateMachine/Hit")
@@ -1561,8 +1568,6 @@ motion_mirroring = Vector2(500, 0)
 position = Vector2(49, 26.6667)
 scale = Vector2(1.19141, 1.17778)
 texture = ExtResource("11_rjfpu")
-
-[node name="speedpot" parent="." instance=ExtResource("12_etoe8")]
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(1459, 21)

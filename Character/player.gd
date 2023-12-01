@@ -7,6 +7,7 @@ class_name Player
 @export var max_health : float = PlayerVars.h
 @export var score : float = PlayerVars.s
 @export var current_health : float = PlayerVars.ch
+@export var t : float = PlayerVars.t
 signal healthChanged(cur)
 var clingSlide = false
 var colorAdjust = 0
@@ -134,10 +135,14 @@ func _on_inventory_gui_closed():
 
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	if $RecoilTimer.is_stopped() == true:
+		var stopt = PlayerVars.t + 1
+		PlayerVars.shake()
 		current_health -= damage_taken
 		healthChanged.emit(current_health)
 		$RecoilTimer.start()
 		score -= 1
+		await get_tree().create_timer(0.0018).timeout
+		PlayerVars.stopShake()
 
 
 func _on_cling_timer_timeout():
