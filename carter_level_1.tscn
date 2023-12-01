@@ -1330,13 +1330,13 @@ sources/0 = SubResource("TileSetAtlasSource_vbpwq")
 [node name="carter_level_1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2j0oh")]
-position = Vector2(32, 36)
+position = Vector2(18, 46)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(32, 36)
+position = Vector2(18, 46)
 zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
