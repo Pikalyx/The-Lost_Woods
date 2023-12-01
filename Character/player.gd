@@ -116,6 +116,8 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
+	if area.has_method("heal") && current_health == max_health:
+		score += 40
 	if area.has_method("heal") && current_health < max_health:
 		current_health += 1
 		healthChanged.emit(current_health)

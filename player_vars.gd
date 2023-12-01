@@ -5,6 +5,7 @@ extends Node
 @export var s : float
 @export var ch : float
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -20,13 +21,17 @@ func setS(score: float):
 	
 func setCH(current: float):
 	ch = current
+
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-	
+  if ch == 0:
+		ch = h
+		s = 0
+		t = 0
 func shake():
 	camShake = true
 func stopShake():
 	camShake = false
-	
+		
