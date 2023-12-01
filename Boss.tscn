@@ -329,5 +329,10 @@ collision_mask = 2
 position = Vector2(-2, 6.875)
 shape = SubResource("RectangleShape2D_nn8q7")
 
+[node name="LookTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="LookTimer" to="." method="_on_look_timer_timeout"]

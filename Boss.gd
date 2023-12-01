@@ -4,7 +4,9 @@ extends CharacterBody2D
 @onready var animation = $AnimationPlayer
 var defaultRotation : float
 const SPEED = 200
+var homeSpeed : float
 var ramSpeed = 500
+var ramming = false
 const JUMP_VELOCITY = -500
 signal zoomOut
 var state = "Waiting"
@@ -76,7 +78,17 @@ func _physics_process(delta):
 					
 			elif state == "Homer":
 				if not is_on_floor() and not is_on_wall():
-					if cooldown == false:
+					if cooldown == false and ramming == false:
+						homeSpeed = 0
+						look_at(player.get_position())
+						var angle = fmod(self.get_rotation(), 2 * PI)
+						if abs(angle) >= PI/2:
+							$Sprite2D.flip_v = true
+						else:
+							$Sprite2D.flip_v = false
+						if $LookTimer.is_stopped() == true:
+							$LookTimer.start()
+					elif cooldown == false and ramming == true:
 						animation.play("home")
 						look_at(player.get_position())
 						cooldown = true
@@ -89,10 +101,14 @@ func _physics_process(delta):
 							$Sprite2D.flip_v = false
 							$Sprite2D.offset.y = 0
 						direction = Vector2(cos(angle), sin(angle))
-					self.set_position(self.get_position() + (direction * ramSpeed * delta))
+						homeSpeed = ramSpeed
+					self.set_position(self.get_position() + (direction * homeSpeed * delta))
 				else:
 					cooldown = false
+					ramming = false
+					print(self.get_rotation())
 					self.rotate(defaultRotation)
+					print(self.get_rotation())
 					$Sprite2D.offset.y = 0
 					state = "Jumping"
 		else:
@@ -149,3 +165,7 @@ func _on_area_2d_body_entered(body):
 					child.hit(damage, Vector2.LEFT)
 				else:
 					child.hit(damage, Vector2.ZERO)
+
+
+func _on_look_timer_timeout():
+	ramming = true # Replace with function body.
