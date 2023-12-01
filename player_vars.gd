@@ -3,7 +3,7 @@ extends Node
 @export var h : float = 20
 @export var t : float
 @export var s : float
-@export var ch : float
+@export var ch : float = 20
 
 
 # Called when the node enters the scene tree for the first time.
