@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://uo7hbmwy4l1r"]
+[gd_scene load_steps=18 format=3 uid="uid://uo7hbmwy4l1r"]
 
 [ext_resource type="Texture2D" uid="uid://buj0n7fmjtnpr" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_yie4n"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_mcw2p"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_preoq"]
+[ext_resource type="Script" path="res://camShake.gd" id="3_t4sdn"]
 [ext_resource type="Script" path="res://DayNightTesting/daynightcycle.gd" id="4_fommp"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightTesting/daynightcycle-gradient-texture.tres" id="5_q0q8j"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="6_22uof"]
@@ -1477,6 +1478,7 @@ process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+script = ExtResource("3_t4sdn")
 
 [node name="pig" parent="." instance=ExtResource("3_preoq")]
 position = Vector2(66, 74)
