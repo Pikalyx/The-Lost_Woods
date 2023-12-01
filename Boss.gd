@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animation = $AnimationPlayer
 var defaultRotation : float
 const SPEED = 200
-var ramSpeed = 400
+var ramSpeed = 500
 const JUMP_VELOCITY = -500
 signal zoomOut
 var state = "Waiting"
@@ -35,62 +35,72 @@ func _ready():
 				
 func _physics_process(delta):
 	if inCloset != true:
-		if state == "Waiting":
-			if animation.is_playing() == false:
-				animation.play("idle")
-				print(animation.current_animation)
-			if not is_on_floor():
-				velocity.y += gravity * delta
-			if player.get_position() <= self.get_global_position():
-				if facing_left == false:
-					scale.x = -scale.x
-					facing_left = true
-			elif player.get_position() >= self.get_global_position():
-				if facing_left == true:
-					scale.x = -scale.x
-					facing_left = false
+		if health > 0:
+			if state == "Waiting":
+				if animation.is_playing() == false:
+					animation.play("idle")
+					print(animation.current_animation)
+				if not is_on_floor():
+					velocity.y += gravity * delta
+				if player.get_position() <= self.get_global_position():
+					if facing_left == false:
+						scale.x = -scale.x
+						facing_left = true
+				elif player.get_position() >= self.get_global_position():
+					if facing_left == true:
+						scale.x = -scale.x
+						facing_left = false
+					
+			elif state == "Walking":
+				if animation.is_playing() == false:
+					animation.play("walk")
+				velocity.x = SPEED
 				
-		elif state == "Walking":
-			if animation.is_playing() == false:
-				animation.play("walk")
-			velocity.x = SPEED
-			
-		elif state == "Jumping":
-			if entering == true: 
-				animation.play("jump")
-				entering = false
-			if is_on_floor():
-				velocity.y = JUMP_VELOCITY
-			if not is_on_floor():
-				velocity.y += gravity * delta
-			if not (self.get_global_position().x <= middleOfRoom +2 and self.get_global_position().x >= middleOfRoom - 2):
-				if self.get_global_position().x > middleOfRoom:
-					velocity.x = -SPEED
-				elif self.get_global_position().x < middleOfRoom:
-					velocity.x = SPEED
-			else:
-				velocity.x = 0
-				velocity. y = 0
-				state = "Homer"
-				
-		elif state == "Homer":
-			if not is_on_floor() and not is_on_wall():
-				if cooldown == false:
-					animation.play("home")
-					look_at(player.get_position())
-					cooldown = true
-					print("cooldown is ", cooldown, (player.get_position() - self.get_position()))
-					var angle = fmod(self.get_rotation(), 2 * PI)
-					if abs(angle) >= PI/2:
-						$Sprite2D.flip_v = true
-					else:
-						$Sprite2D.flip_v = false
-					direction = Vector2(cos(angle), sin(angle))
-				self.set_position(self.get_position() + (direction * ramSpeed * delta))
-			else:
-				cooldown = false
-				self.rotate(defaultRotation)
-				state = "Jumping"
+			elif state == "Jumping":
+				if entering == true: 
+					animation.play("jump")
+					entering = false
+				if is_on_floor():
+					velocity.y = JUMP_VELOCITY
+				if not is_on_floor():
+					velocity.y += gravity * delta
+				if not (self.get_global_position().x <= middleOfRoom +2 and self.get_global_position().x >= middleOfRoom - 2):
+					if self.get_global_position().x > middleOfRoom:
+						velocity.x = -SPEED
+					elif self.get_global_position().x < middleOfRoom:
+						velocity.x = SPEED
+				else:
+					velocity.x = 0
+					velocity. y = 0
+					state = "Homer"
+					
+			elif state == "Homer":
+				if not is_on_floor() and not is_on_wall():
+					if cooldown == false:
+						animation.play("home")
+						look_at(player.get_position())
+						cooldown = true
+						print("cooldown is ", cooldown, (player.get_position() - self.get_position()))
+						var angle = fmod(self.get_rotation(), 2 * PI)
+						if abs(angle) >= PI/2:
+							$Sprite2D.flip_v = true
+							$Sprite2D.offset.y = 15.55
+						else:
+							$Sprite2D.flip_v = false
+							$Sprite2D.offset.y = 0
+						direction = Vector2(cos(angle), sin(angle))
+					self.set_position(self.get_position() + (direction * ramSpeed * delta))
+				else:
+					cooldown = false
+					self.rotate(defaultRotation)
+					$Sprite2D.offset.y = 0
+					state = "Jumping"
+		else:
+			if state != "Death":
+				state = "Death"
+				animation.play("death")
+			if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+				queue_free()
 
 		
 	# Handle Jump
