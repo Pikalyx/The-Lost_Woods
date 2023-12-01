@@ -799,6 +799,7 @@ shape = SubResource("RectangleShape2D_oy1lx")
 [node name="AttackingArea2D" type="Area2D" parent="AnimatedSprite2D"]
 collision_layer = 4
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/AttackingArea2D"]
 position = Vector2(-165, -86.1)
@@ -824,5 +825,6 @@ health = 50.0
 [connection signal="timeout" from="AnimatedSprite2D/Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
 [connection signal="body_entered" from="AnimatedSprite2D/IdleArea2D" to="AnimatedSprite2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/IdleArea2D" to="AnimatedSprite2D" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="AnimatedSprite2D/AttackingArea2D" to="AnimatedSprite2D" method="_on_attacking_area_2d_body_entered"]
 [connection signal="on_hit" from="AnimatedSprite2D/Eye/EyeDamageable" to="AnimatedSprite2D" method="_on_eye_damageable_on_hit"]
 [connection signal="on_hit" from="Damageable" to="AnimatedSprite2D" method="_on_damageable_on_hit"]
