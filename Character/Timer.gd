@@ -1,6 +1,6 @@
 extends Label
 
-var time := 0.0
+@export var time : float = PlayerVars.t
 var minutes
 var seconds
 var milliseconds
@@ -19,5 +19,4 @@ func _process(delta: float) -> void:
 	milliseconds = fmod(time, 1) * 100
 	time_string = "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 	$".".text = "Time: "+time_string
-
-
+	
