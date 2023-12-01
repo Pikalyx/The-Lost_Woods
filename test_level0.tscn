@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvc57jsmfm5ka"]
+[gd_scene load_steps=7 format=3 uid="uid://dvc57jsmfm5ka"]
 
 [ext_resource type="Texture2D" uid="uid://buj0n7fmjtnpr" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_20tu8"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_ng5tn"]
+[ext_resource type="Script" path="res://camShake.gd" id="3_bc2h5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ek8l5"]
 
@@ -1438,3 +1439,4 @@ position = Vector2(103, 167)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
+script = ExtResource("3_bc2h5")
