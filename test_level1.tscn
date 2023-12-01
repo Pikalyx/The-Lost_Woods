@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=25 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://c7ti6bnmsuhts" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="17_e5pbr"]
 [ext_resource type="Script" path="res://LevelTransitionArea.gd" id="18_b4hh7"]
 [ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="19_vx56n"]
-[ext_resource type="PackedScene" uid="uid://dwutqlu1rwlt1" path="res://boss.tscn" id="20_ycx8t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
@@ -1729,9 +1728,6 @@ position = Vector2(-4708, -83)
 
 [node name="HomerBody2" parent="." instance=ExtResource("17_8k6ed")]
 position = Vector2(-150.206, 0.517029)
-
-[node name="Boss" parent="." instance=ExtResource("20_ycx8t")]
-position = Vector2(-585, 7)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]
