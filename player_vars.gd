@@ -1,6 +1,6 @@
 extends Node
 
-@export var h : float
+@export var h : float = 20
 @export var t : float
 @export var s : float
 
