@@ -2,7 +2,6 @@ extends State
 
 @export var dead_animation_name : String = "dead"
 @export var dead_state : State
-
 func state_process(delta):
 	pass
 

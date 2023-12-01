@@ -6,8 +6,8 @@ class_name Player
 @export var speed : float = 200.0
 @export var max_health : float = PlayerVars.h
 @export var score : float = PlayerVars.s
-
-var current_health: int = max_health
+@export var current_health : float = PlayerVars.ch
+@export var t : float = PlayerVars.t
 signal healthChanged(cur)
 var clingSlide = false
 var colorAdjust = 0
@@ -109,15 +109,23 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		$CanvasLayer3/PauseMenu.pause()
 	$CanvasLayer3/Score.updateScore(score)
+	PlayerVars.setCH(current_health)
+	PlayerVars.setS(score)
+	PlayerVars.setT($CanvasLayer3/Timer.time)
 		
 func _on_area_2d_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
+	if area.has_method("heal") && current_health == max_health:
+		score += 40
 	if area.has_method("heal") && current_health < max_health:
 		current_health += 1
 		healthChanged.emit(current_health)
 	if area.has_method("heal"):
 		score += 10
+	if area.has_method("increasePow"):
+		$Sword.damage += 5
+		
 		#print(self, "just collided with ", area )
 
 
@@ -127,10 +135,14 @@ func _on_inventory_gui_closed():
 
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	if $RecoilTimer.is_stopped() == true:
+		var stopt = PlayerVars.t + 1
+		PlayerVars.shake()
 		current_health -= damage_taken
 		healthChanged.emit(current_health)
 		$RecoilTimer.start()
 		score -= 1
+		await get_tree().create_timer(0.0018).timeout
+		PlayerVars.stopShake()
 
 
 func _on_cling_timer_timeout():
