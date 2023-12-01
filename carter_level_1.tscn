@@ -623,7 +623,7 @@ shape = SubResource("RectangleShape2D_putcj")
 
 [node name="Boss" parent="ClosetDoor" instance=ExtResource("5_wglk5")]
 position = Vector2(325, -69)
-scale = Vector2(1.95, 1.95)
+scale = Vector2(1.8, 1.8)
 inCloset = true
 
 [node name="HealthFlute" parent="." instance=ExtResource("6_nke6d")]

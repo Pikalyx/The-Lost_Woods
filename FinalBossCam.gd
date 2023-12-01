@@ -16,7 +16,7 @@ func _process(delta):
 		doneZooming.emit()
 		reveal = false
 	if reveal == true and offset.y >= finalOffset:
-		offset.y -= 100 * delta
+		offset.y -= 150 * delta
 	pass
 
 

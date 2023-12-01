@@ -3,9 +3,11 @@ extends CharacterBody2D
 @onready var player = get_parent().get_node("Player")
 @onready var animation = $AnimationPlayer
 var defaultRotation : float
-const SPEED = 200
+const SPEED = 300
 var homeSpeed : float
-var ramSpeed = 500
+@export var pigSpeed = 50
+var originalPigSpeed = pigSpeed
+@export var ramSpeed = 500
 var ramming = false
 const JUMP_VELOCITY = -500
 signal zoomOut
@@ -38,80 +40,128 @@ func _ready():
 func _physics_process(delta):
 	if inCloset != true:
 		if health > 0:
+			#print(self.get_rotation(), ", ", $Sprite2D.flip_h, ", ", $Sprite2D.flip_v)
 			if state == "Waiting":
 				if animation.is_playing() == false:
 					animation.play("idle")
-					print(animation.current_animation)
+					#print(animation.current_animation)
+				if not is_on_floor():
+					velocity.y += gravity * delta
+				if player != null:
+					if player.get_position() <= self.get_global_position():
+						if facing_left == false:
+							scale.x = -scale.x
+							facing_left = true
+					elif player.get_position() >= self.get_global_position():
+						if facing_left == true:
+							scale.x = -scale.x
+							facing_left = false
+				
+			elif state == "Jumping":
+				if entering == true:
+					animation.play("jump")
+					entering = false
+				elif entering == false:
+					if player.get_position() <= self.get_global_position():
+						$Sprite2D.flip_h = true
+					elif player.get_position() >= self.get_global_position():
+						$Sprite2D.flip_h = false
+					if is_on_floor():
+						velocity.y = JUMP_VELOCITY
+					if not is_on_floor():
+						velocity.y += gravity * delta
+					if not (self.get_global_position().x <= middleOfRoom +4 and self.get_global_position().x >= middleOfRoom - 4):
+						if self.get_global_position().x > middleOfRoom:
+							velocity.x = -SPEED
+						elif self.get_global_position().x < middleOfRoom:
+							velocity.x = SPEED
+					else:
+						velocity.x = 0
+						velocity. y = 0
+						choose_state()
+					
+			elif state == "Homer":
+				if entering == true:
+					ramming = false
+					cooldown = false
+					if is_on_wall():
+						if not (self.get_global_position().x <= middleOfRoom +4 and self.get_global_position().x >= middleOfRoom - 4):
+							if self.get_global_position().x > middleOfRoom:
+								self.position.x -= 10
+							elif self.get_global_position().x < middleOfRoom:
+								self.position.x += 10
+					if is_on_floor():
+						self.position.y -= 10
+					if not is_on_floor() and not is_on_wall():
+						entering = false
+					$Sprite2D.flip_h = false
+				var angle = fmod(self.get_rotation(), 2 * PI)
+				if angle >= PI/2 or angle <= -PI/2:
+					$Sprite2D.flip_v = true
+					$Sprite2D.offset.y = 17
+				else:
+					$Sprite2D.flip_v = false
+					$Sprite2D.offset.y = 0
+				if entering == false:
+					if not is_on_floor() and not is_on_wall():
+						if cooldown == false and ramming == false:
+							homeSpeed = 0
+							look_at(player.get_position())
+							if $LookTimer.is_stopped() == true:
+								$LookTimer.start()
+						elif cooldown == false and ramming == true:
+							animation.play("home")
+							look_at(player.get_position())
+							cooldown = true
+							print("cooldown is ", cooldown, (player.get_position() - self.get_position()))
+							direction = Vector2(cos(angle), sin(angle))
+							homeSpeed = ramSpeed
+						self.set_position(self.get_position() + (direction * homeSpeed * delta))
+					else:
+						if cooldown == true:
+							pass
+#							var resetRads =  -self.get_rotation()
+#							self.rotate(resetRads)
+#							print(self.get_rotation())
+						#print((2*PI) - self.get_rotation())
+#						$Sprite2D.flip_v = false
+						$Sprite2D.offset.y = 0
+						#state = "Jumping"
+						choose_state()
+			
+			elif state == "Pig":
+				if entering == true:
+					$AnimationPlayer.play("walk")
+					entering = false
+				elif entering == false and animation.is_playing() == false:
+					animation.play("walk")
 				if not is_on_floor():
 					velocity.y += gravity * delta
 				if player.get_position() <= self.get_global_position():
-					if facing_left == false:
-						scale.x = -scale.x
-						facing_left = true
+						if facing_left == false:
+							scale.x = -scale.x
+							facing_left = true
+						velocity.x = -pigSpeed
 				elif player.get_position() >= self.get_global_position():
+					velocity.x = pigSpeed
 					if facing_left == true:
 						scale.x = -scale.x
 						facing_left = false
+				if pigSpeed < originalPigSpeed:
+					pigSpeed += 50 * delta
 					
-			elif state == "Walking":
-				if animation.is_playing() == false:
-					animation.play("walk")
-				velocity.x = SPEED
-				
-			elif state == "Jumping":
-				if entering == true: 
-					animation.play("jump")
+			elif state == "Swing":
+				velocity.x = 0
+				if entering == true:
+					$AnimationPlayer.play("attack")
 					entering = false
-				if is_on_floor():
-					velocity.y = JUMP_VELOCITY
-				if not is_on_floor():
-					velocity.y += gravity * delta
-				if not (self.get_global_position().x <= middleOfRoom +2 and self.get_global_position().x >= middleOfRoom - 2):
-					if self.get_global_position().x > middleOfRoom:
-						velocity.x = -SPEED
-					elif self.get_global_position().x < middleOfRoom:
-						velocity.x = SPEED
-				else:
-					velocity.x = 0
-					velocity. y = 0
-					state = "Homer"
-					
-			elif state == "Homer":
-				if not is_on_floor() and not is_on_wall():
-					if cooldown == false and ramming == false:
-						homeSpeed = 0
-						look_at(player.get_position())
-						var angle = fmod(self.get_rotation(), 2 * PI)
-						if abs(angle) >= PI/2:
-							$Sprite2D.flip_v = true
-						else:
-							$Sprite2D.flip_v = false
-						if $LookTimer.is_stopped() == true:
-							$LookTimer.start()
-					elif cooldown == false and ramming == true:
-						animation.play("home")
-						look_at(player.get_position())
-						cooldown = true
-						print("cooldown is ", cooldown, (player.get_position() - self.get_position()))
-						var angle = fmod(self.get_rotation(), 2 * PI)
-						if abs(angle) >= PI/2:
-							$Sprite2D.flip_v = true
-							$Sprite2D.offset.y = 15.55
-						else:
-							$Sprite2D.flip_v = false
-							$Sprite2D.offset.y = 0
-						direction = Vector2(cos(angle), sin(angle))
-						homeSpeed = ramSpeed
-					self.set_position(self.get_position() + (direction * homeSpeed * delta))
-				else:
-					cooldown = false
-					ramming = false
-					print(self.get_rotation())
-					self.rotate(defaultRotation)
-					print(self.get_rotation())
-					$Sprite2D.offset.y = 0
-					state = "Jumping"
+				if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+					choose_state()
+
 		else:
+			self.rotate(- self.get_rotation())
+			$Sprite2D.flip_v = false
+			$Sprite2D.offset.y = 0
 			if state != "Death":
 				state = "Death"
 				animation.play("death")
@@ -126,6 +176,20 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func choose_state():
+	$Sprite2D.flip_h = false
+	$Sprite2D.flip_v = false
+	self.rotate(-self.get_rotation())
+	var rng = RandomNumberGenerator.new()
+	var stateNumber = rng.randi_range(0, 2)
+	entering = true
+	if stateNumber == 0:
+		state = "Pig"
+	elif stateNumber == 1:
+		state = "Homer"
+	elif stateNumber == 2:
+		state = "Jumping"
+	print(state)
 
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	if state == "Waiting":
@@ -137,6 +201,8 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 		direction.y = direction.y * knockback_direction.y 
 		health -= damage_taken
 		#deflected = true
+	elif state == "Pig":
+		pigSpeed = -pigSpeed/2
 	
 func _on_monster_closet_detector_body_exited(body):
 	show()
@@ -152,7 +218,7 @@ func _on_camera_2d_done_zooming():
 
 
 func _on_area_2d_body_entered(body):
-	if health > 0 and inCloset != true:
+	if health > 0 and inCloset != true and state != "Waiting":
 		for child in body.get_children():
 			if child is Damageable:
 				print(self, " is hitting ", child)
@@ -165,6 +231,9 @@ func _on_area_2d_body_entered(body):
 					child.hit(damage, Vector2.LEFT)
 				else:
 					child.hit(damage, Vector2.ZERO)
+		if state == "Pig":
+			state = "Swing"
+			entering = true
 
 
 func _on_look_timer_timeout():

@@ -33,16 +33,16 @@ func _ready():
 func _process(delta):
 	#var player = get_parent().get_node("Player")
 	if inCloset != true:
+		var angle = fmod(self.get_rotation(), 2 * PI)
+		if angle >= PI/2 or angle <= -PI/2:
+			$AnimatedSprite2D.flip_v = true
+		else:
+			$AnimatedSprite2D.flip_v = false
 		if player != null:
 			if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius) and cooldown == false and ramming == false:
 				look_at(player.get_position())
 				$AnimatedSprite2D.frame = 11
 				$AnimatedSprite2D.pause()
-				var angle = fmod(self.get_rotation(), 2 * PI)
-				if abs(angle) >= PI/2:
-					$AnimatedSprite2D.flip_v = true
-				else:
-					$AnimatedSprite2D.flip_v = false
 				if $LookTimer.is_stopped() == true:
 					$LookTimer.start()
 			elif ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius) and cooldown == false and ramming == true:
@@ -50,11 +50,6 @@ func _process(delta):
 				look_at(player.get_position())
 				cooldown = true
 				print("cooldown is ", cooldown, (player.get_position() - self.get_position()))
-				var angle = fmod(self.get_rotation(), 2 * PI)
-				if abs(angle) >= PI/2:
-					$AnimatedSprite2D.flip_v = true
-				else:
-					$AnimatedSprite2D.flip_v = false
 				direction = Vector2(cos(angle), sin(angle))
 				speed = ramSpeed
 				$AnimatedSprite2D.frame = 1
