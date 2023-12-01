@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://davhx6ntg147k"]
+[gd_scene load_steps=16 format=3 uid="uid://davhx6ntg147k"]
 
 [ext_resource type="Texture2D" uid="uid://bdxsliy7s0pj8" path="res://level 3/background_layer_1.png" id="1_gafwj"]
 [ext_resource type="Texture2D" uid="uid://c7eysr7o15ihm" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="9_7veqo"]
 [ext_resource type="Script" path="res://moving_platform.gd" id="10_4kfja"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
-[ext_resource type="PackedScene" uid="uid://0abdvjekaw6l" path="res://speedpot.tscn" id="14_1a6e8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbpwq"]
 texture = ExtResource("1_hsu8m")
@@ -1349,7 +1348,7 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(200, 800)
-zoom = Vector2(2.4, 2.4)
+zoom = Vector2(3, 3)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -1444,5 +1443,3 @@ script = ExtResource("10_4kfja")
 distance = Vector2(35.76, 46)
 phase_offset = 0.518
 debug = false
-
-[node name="speedpot" parent="." instance=ExtResource("14_1a6e8")]

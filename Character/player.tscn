@@ -508,7 +508,7 @@ position = Vector2(2.08165e-12, 2)
 shape = SubResource("CapsuleShape2D_wja7b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_688gr")
+texture = ExtResource("3_a4glp")
 hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -576,7 +576,6 @@ state_machine = NodePath("../CharacterStateMachine")
 position = Vector2(2.08165e-12, 2.08165e-12)
 collision_layer = 0
 collision_mask = 4
-monitoring = false
 script = ExtResource("12_ge70g")
 player = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=24 format=3 uid="uid://b4aqd86pwf6h7"]
 
 [ext_resource type="Texture2D" uid="uid://c7ti6bnmsuhts" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://blj1lwkpab2y5" path="res://UI/health_changed_manger.tscn" id="4_2jugk"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightTesting/daynightcycle-gradient-texture.tres" id="4_2wotw"]
 [ext_resource type="Script" path="res://DayNightTesting/daynightcycle.gd" id="7_nbp6l"]
-[ext_resource type="PackedScene" uid="uid://06dnpe4drbfi" path="res://ceiling_trap.tscn" id="8_i7403"]
 [ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="8_m3jou"]
 [ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="9_lpf1t"]
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="10_lflav"]
@@ -1598,18 +1597,6 @@ hit_state = NodePath("../snail/CharacterStateMachine/Hit")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="trap" parent="." instance=ExtResource("8_i7403")]
-position = Vector2(460, 56)
-
-[node name="trap2" parent="." instance=ExtResource("8_i7403")]
-position = Vector2(491, 56)
-
-[node name="trap3" parent="." instance=ExtResource("8_i7403")]
-position = Vector2(523, 56)
-
-[node name="trap4" parent="." instance=ExtResource("8_i7403")]
-position = Vector2(551, 56)
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
 follow_viewport_scale = 0.75
@@ -1704,7 +1691,7 @@ position = Vector2(339, -25)
 ramSpeed = 1.0
 
 [node name="CarterLevel1Transition" type="Area2D" parent="."]
-position = Vector2(-1048, 258)
+position = Vector2(-1056.48, 258.13)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("18_b4hh7")

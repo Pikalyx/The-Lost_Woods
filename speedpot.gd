@@ -4,7 +4,6 @@ extends "res://Collectable.gd"
 
 
 func collect(inventory: Inventory):
+	animation.play("spin")
+	await animation.animation_finished
 	super(inventory)
-	
-func increasePower():
-	pass

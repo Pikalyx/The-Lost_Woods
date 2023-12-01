@@ -103,10 +103,6 @@ func _on_area_2d_area_entered(area):
 	if area.has_method("heal") && current_health < max_health:
 		current_health += 1
 		healthChanged.emit(current_health)
-	if area.has_method("increasePower"):
-		#get_node($Sword).damage += 5
-		pass
-		
 		
 		#print(self, "just collided with ", area )
 
@@ -118,7 +114,6 @@ func _on_inventory_gui_closed():
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	current_health -= damage_taken
 	healthChanged.emit(current_health)
-	
 	
 
 
