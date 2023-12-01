@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://cqldvyq4r1i3p"]
 
-[ext_resource type="Texture2D" uid="uid://buj0n7fmjtnpr" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_mfgw6"]
+[ext_resource type="Texture2D" uid="uid://chuhau04u6dhm" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_mfgw6"]
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="2_3nagc"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="3_up7x5"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="4_8egnn"]
 [ext_resource type="Script" path="res://camShake.gd" id="4_iqskq"]
-[ext_resource type="Texture2D" uid="uid://cph8jr34lcxfq" path="res://Art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="5_wpimw"]
+[ext_resource type="Texture2D" uid="uid://cu5tq2eh0y7wx" path="res://Art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="5_wpimw"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="6_tyiym"]
 [ext_resource type="Texture2D" uid="uid://mok23gsvb80h" path="res://Parallax/Garden_s Forest/pushes.png" id="7_i3gcf"]
 [ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="7_v7yn8"]
@@ -1449,7 +1449,7 @@ sources/0 = SubResource("TileSetAtlasSource_mmj3h")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7qb88"]
 
-[node name="test_level3" type="Node2D"]
+[node name="test_level4" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jox8f")
@@ -1460,18 +1460,17 @@ layer_0/tile_data = PackedInt32Array(131066, 131072, 0, 196602, 65536, 1, 131067
 [node name="MovingPlatform" parent="." instance=ExtResource("2_3nagc")]
 position = Vector2(226, -307)
 
+[node name="MovingPlatform3" parent="." instance=ExtResource("2_3nagc")]
+position = Vector2(344.921, -429.461)
+
 [node name="MovingPlatform2" parent="." instance=ExtResource("2_3nagc")]
 position = Vector2(91, -86)
-
-[node name="MovingPlatform2" parent="MovingPlatform2" instance=ExtResource("2_3nagc")]
-position = Vector2(253.921, -343.461)
 
 [node name="Player" parent="." instance=ExtResource("3_up7x5")]
 position = Vector2(-18.3296, -52.4011)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-18.3296, -52.4011)
-zoom = Vector2(4, 4)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
 script = ExtResource("4_iqskq")
 
 [node name="pig" parent="." instance=ExtResource("4_8egnn")]
@@ -1529,6 +1528,8 @@ position = Vector2(-257.27, -85.364)
 scale = Vector2(0.25, 0.25)
 
 [node name="Node2D" parent="." instance=ExtResource("7_v7yn8")]
+position = Vector2(-569, -449)
+scale = Vector2(3, 3)
 
 [node name="HealthFlute" parent="." instance=ExtResource("10_4p6ro")]
 position = Vector2(763, -349)
