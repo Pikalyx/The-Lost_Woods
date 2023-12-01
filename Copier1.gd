@@ -52,13 +52,14 @@ func _physics_process(delta):
 					reachVertex = true
 					#$AnimationPlayer.play_backwards("Bounce")
 				if player != null:
-					if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius):
+					if (player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius and (player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius:
 						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false and $RecoilTimer.is_stopped() == true:
 							var copy = copier.instantiate()
 							if closetStink == true:
 								copy.set_global_position(self.get_global_position() + Vector2(1668, -208))
 								copy.closet_child()
 							else:
+								copy.fuckRadius = fuckRadius
 								copy.set_global_position(self.get_global_position())
 							print(self.get_global_position())
 							#copy.set_owner(get_parent())
@@ -131,7 +132,7 @@ func _on_stick_timer_timeout():
 
 
 func _on_area_2d_body_entered(body):
-	if sticking == false and shakeCooldown == false and health > 0:
+	if sticking == false and shakeCooldown == false and health > 0 and $RecoilTimer.is_stopped() == true:
 		sticking = true
 		currentPlayerFlip = player.sprite.flip_h
 		stickOffset = Vector2(player.get_position() - self.get_global_position())

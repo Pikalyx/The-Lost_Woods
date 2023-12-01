@@ -10,9 +10,10 @@ var direction : Vector2
 @export var health = 40
 @export var inCloset : bool
 @export var damage = 1
-@export var deflectDamage = 5
+@export var deflectDamage = 20
 var origin : Vector2
 var ramRadius : Vector2
+var ramming = false
 var deflected = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +34,18 @@ func _process(delta):
 	#var player = get_parent().get_node("Player")
 	if inCloset != true:
 		if player != null:
-			if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius) and cooldown == false:
+			if ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius) and cooldown == false and ramming == false:
+				look_at(player.get_position())
+				$AnimatedSprite2D.frame = 11
+				$AnimatedSprite2D.pause()
+				var angle = fmod(self.get_rotation(), 2 * PI)
+				if abs(angle) >= PI/2:
+					$AnimatedSprite2D.flip_v = true
+				else:
+					$AnimatedSprite2D.flip_v = false
+				if $LookTimer.is_stopped() == true:
+					$LookTimer.start()
+			elif ((player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius) and ((player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius) and cooldown == false and ramming == true:
 				origin = Vector2(player.get_position())
 				look_at(player.get_position())
 				cooldown = true
@@ -45,23 +57,28 @@ func _process(delta):
 					$AnimatedSprite2D.flip_v = false
 				direction = Vector2(cos(angle), sin(angle))
 				speed = ramSpeed
+				$AnimatedSprite2D.frame = 1
+				$AnimatedSprite2D.play("Homering")
 				#self.set_position(self.get_position() + (direction * speed))
-			elif (((player.get_position().x - self.get_global_position().x) >= fuckRadius or (player.get_position().x - self.get_global_position().x) <= -fuckRadius or (player.get_position().y - self.get_global_position().y) >= fuckRadius or ((player.get_position().y - self.get_global_position().y) <= -fuckRadius) and cooldown == true) or ((origin.x - self.get_global_position().x) >= fuckRadius or (origin.x - self.get_global_position().x) <= -fuckRadius or (origin.y - self.get_global_position().y) >= fuckRadius or ((origin.y - self.get_global_position().y) <= -fuckRadius) and cooldown == true)) :
+			elif (player.get_position().x - self.get_global_position().x >= fuckRadius or player.get_position().x - self.get_global_position().x <= -fuckRadius or player.get_position().y - self.get_global_position().y >= fuckRadius or player.get_position().y - self.get_global_position().y <= -fuckRadius or origin.x - self.get_global_position().x >= fuckRadius or origin.x - self.get_global_position().x <= -fuckRadius or origin.y - self.get_global_position().y >= fuckRadius or origin.y - self.get_global_position().y <= -fuckRadius) and cooldown == true and ramming == true :
 				cooldown = false
 				deflected = false
+				ramming = false
 				speed = 0
+				$AnimatedSprite2D.frame = 0
+				$AnimatedSprite2D.pause()
 				if health <= 0:
 					queue_free()
 				print("cooldown is ", cooldown, (player.get_position() - self.get_position()))
 			self.set_position(self.get_position() + (direction * speed * delta))
-			print(speed * delta, " ", delta)
-		$AnimatedSprite2D.play("Homering")
 	
 	
 
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	print("Homer hit by ", node)
-	direction.x = -direction.x
+	direction.x = knockback_direction.x
+	print(direction.y, " ", knockback_direction.y)
+	direction.y = direction.y * knockback_direction.y 
 	health -= damage_taken
 	deflected = true
 	origin = Vector2(player.get_position())
@@ -99,3 +116,7 @@ func _on_area_2d_body_entered(body):
 					child.hit(deflectDamage, Vector2.LEFT)
 				else:
 					child.hit(deflectDamage, Vector2.ZERO)
+
+
+func _on_look_timer_timeout():
+	ramming = true
