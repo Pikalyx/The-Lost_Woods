@@ -1,16 +1,16 @@
 [gd_scene load_steps=18 format=3 uid="uid://dxxtanw42vdl4"]
 
-[ext_resource type="Texture2D" uid="uid://c2ixmeeogsvmk" path="res://level 3/background_layer_1.png" id="1_gafwj"]
-[ext_resource type="Texture2D" uid="uid://6e8firpwpv2p" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
-[ext_resource type="Texture2D" uid="uid://30hf6v4ud67f" path="res://level 3/sign.png" id="2_hatpp"]
-[ext_resource type="Texture2D" uid="uid://brdtke48kt1e2" path="res://level 3/background_layer_2.png" id="2_uy1fl"]
-[ext_resource type="Texture2D" uid="uid://deu5p1ymwvuqy" path="res://level 3/rock_3.png" id="3_7pfqq"]
-[ext_resource type="Texture2D" uid="uid://dtij7vwrtysgl" path="res://level 3/background_layer_3.png" id="3_kwmpn"]
-[ext_resource type="Texture2D" uid="uid://cye1sjdwvj5l8" path="res://level 3/grass_3.png" id="4_timii"]
-[ext_resource type="Texture2D" uid="uid://gp1c3rpo8wi5" path="res://level 3/grass_2.png" id="5_x6t6b"]
-[ext_resource type="Texture2D" uid="uid://qkcsjaq08ous" path="res://level 3/grass_1.png" id="6_q3fki"]
-[ext_resource type="Texture2D" uid="uid://dgnxelaiq088i" path="res://level 3/fence_2.png" id="7_hh7xc"]
-[ext_resource type="PackedScene" path="res://moving_platform.tscn" id="9_7veqo"]
+[ext_resource type="Texture2D" uid="uid://cviuo0pqcg7gq" path="res://level 3/background_layer_1.png" id="1_gafwj"]
+[ext_resource type="Texture2D" uid="uid://68kcgyb01qms" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
+[ext_resource type="Texture2D" uid="uid://drsd68j7c11or" path="res://level 3/sign.png" id="2_hatpp"]
+[ext_resource type="Texture2D" uid="uid://c8arfbbq8h2nx" path="res://level 3/background_layer_2.png" id="2_uy1fl"]
+[ext_resource type="Texture2D" uid="uid://dajb7epmct5r2" path="res://level 3/rock_3.png" id="3_7pfqq"]
+[ext_resource type="Texture2D" uid="uid://didpcggx01ycy" path="res://level 3/background_layer_3.png" id="3_kwmpn"]
+[ext_resource type="Texture2D" uid="uid://l6kanjlvmwai" path="res://level 3/grass_3.png" id="4_timii"]
+[ext_resource type="Texture2D" uid="uid://dsuudmadvbgov" path="res://level 3/grass_2.png" id="5_x6t6b"]
+[ext_resource type="Texture2D" uid="uid://cs7ui0djqst1" path="res://level 3/grass_1.png" id="6_q3fki"]
+[ext_resource type="Texture2D" uid="uid://eppar3wlxgwb" path="res://level 3/fence_2.png" id="7_hh7xc"]
+[ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="9_7veqo"]
 [ext_resource type="Script" path="res://moving_platform.gd" id="10_4kfja"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
 [ext_resource type="PackedScene" uid="uid://chu334tsngh43" path="res://NextLevel.tscn" id="14_67dxh"]
@@ -1353,7 +1353,6 @@ remote_path = NodePath("../../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(200, 800)
 zoom = Vector2(3, 3)
-script = ExtResource("2_rsk2j")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -1434,12 +1433,6 @@ script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.723
 debug = false
-
-[node name="speedpot" parent="." instance=ExtResource("5_k2xs7")]
-position = Vector2(1095, -11)
-
-[node name="HealthFlute" parent="." instance=ExtResource("16_nqwfd")]
-position = Vector2(2192, 648)
 
 [node name="MovingPlatform3" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(577, 598)
