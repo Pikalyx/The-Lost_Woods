@@ -79,7 +79,7 @@ func detect_turn_around():
 func _on_area_2d_body_entered(body):
 	state = "Attacking"
 	$AnimationPlayer.play("attack")
-	if health > 0 and inCloset != true:
+	if health > 0 and inCloset != true and state != "Hit":
 		for child in body.get_children():
 			if child is Damageable:
 				print(self, " is hitting ", child)
