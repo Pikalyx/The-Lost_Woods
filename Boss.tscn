@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://62q6lqpn4mw0"]
+[gd_scene load_steps=18 format=3 uid="uid://62q6lqpn4mw0"]
 
 [ext_resource type="Script" path="res://Boss.gd" id="1_i7cuh"]
 [ext_resource type="Texture2D" uid="uid://dkqcsdhggpam6" path="res://Art/Sprites/NightBorne.png" id="2_jxe08"]
@@ -73,6 +73,22 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_5frey"]
+resource_name = "charge"
+length = 0.42
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54]
 }
 
 [sub_resource type="Animation" id="Animation_0r7l8"]
@@ -169,7 +185,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ftx0m"]
 resource_name = "home"
-length = 0.60001
+length = 0.50001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -177,10 +193,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [52, 53, 54, 55, 56, 57]
+"values": [53, 54, 55, 56, 57]
 }
 
 [sub_resource type="Animation" id="Animation_mdfhi"]
@@ -239,6 +255,38 @@ tracks/0/keys = {
 "values": [69, 70]
 }
 
+[sub_resource type="Animation" id="Animation_6anc6"]
+resource_name = "Slump"
+length = 0.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [92, 93, 94, 95]
+}
+
+[sub_resource type="Animation" id="Animation_lqdm4"]
+resource_name = "slumphit"
+length = 0.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [95, 97, 98, 95]
+}
+
 [sub_resource type="Animation" id="Animation_gl1wt"]
 resource_name = "walk"
 length = 0.60001
@@ -284,11 +332,14 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_j3noa"),
 "attack": SubResource("Animation_8485b"),
+"charge": SubResource("Animation_5frey"),
 "death": SubResource("Animation_0r7l8"),
 "hit": SubResource("Animation_wnxur"),
 "home": SubResource("Animation_ftx0m"),
 "idle": SubResource("Animation_mdfhi"),
 "jump": SubResource("Animation_2sqau"),
+"slump": SubResource("Animation_6anc6"),
+"slumphit": SubResource("Animation_lqdm4"),
 "walk": SubResource("Animation_gl1wt")
 }
 
@@ -304,7 +355,7 @@ script = ExtResource("1_i7cuh")
 texture = ExtResource("2_jxe08")
 hframes = 23
 vframes = 5
-frame = 5
+frame = 70
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
@@ -340,9 +391,28 @@ wait_time = 0.5
 one_shot = true
 
 [node name="PigRecoilTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
+one_shot = true
+
+[node name="SlumpTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="SummonTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="SwordArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwordArea"]
+polygon = PackedVector2Array(-14, -28, 13, -23, 27, -13, 29, -8, 29, 8, 20, 14, -2, 15, -2, 30, 18, 30, 35, 21, 38, 15, 39, 12, 39, -9, 27, -22, 9, -31, -15, -31)
 
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="LookTimer" to="." method="_on_look_timer_timeout"]
 [connection signal="timeout" from="PigRecoilTimer" to="." method="_on_pig_recoil_timer_timeout"]
+[connection signal="timeout" from="SlumpTimer" to="." method="_on_slump_timer_timeout"]
+[connection signal="timeout" from="SummonTimer" to="." method="_on_summon_timer_timeout"]
+[connection signal="body_entered" from="SwordArea" to="." method="_on_sword_area_body_entered"]
