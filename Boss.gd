@@ -14,6 +14,7 @@ signal zoomOut
 var state = "Waiting"
 var entering : bool
 var cooldown = false
+var recoilCount = 0
 var direction : Vector2
 @export var inCloset : bool
 @export var facing_left = false
@@ -120,17 +121,14 @@ func _physics_process(delta):
 					else:
 						if cooldown == true:
 							pass
-#							var resetRads =  -self.get_rotation()
-#							self.rotate(resetRads)
-#							print(self.get_rotation())
-						#print((2*PI) - self.get_rotation())
-#						$Sprite2D.flip_v = false
+						$Sprite2D.flip_v = false
 						$Sprite2D.offset.y = 0
 						#state = "Jumping"
-						choose_state()
+						state = "Jumping"
 			
 			elif state == "Pig":
 				if entering == true:
+					recoilCount = 0
 					$AnimationPlayer.play("walk")
 					entering = false
 				elif entering == false and animation.is_playing() == false:
@@ -149,17 +147,18 @@ func _physics_process(delta):
 						facing_left = false
 				if pigSpeed < originalPigSpeed:
 					pigSpeed += 50 * delta
+				if recoilCount >= 5:
+					choose_state()
 					
 			elif state == "Swing":
 				velocity.x = 0
 				if entering == true:
-					$AnimationPlayer.play("attack")
 					entering = false
+					$AnimationPlayer.play("attack")
 				if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
 					choose_state()
 
 		else:
-			self.rotate(- self.get_rotation())
 			$Sprite2D.flip_v = false
 			$Sprite2D.offset.y = 0
 			if state != "Death":
@@ -174,12 +173,16 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 
-	move_and_slide()
+		move_and_slide()
 
 func choose_state():
+	$AnimationPlayer.stop()
 	$Sprite2D.flip_h = false
 	$Sprite2D.flip_v = false
-	self.rotate(-self.get_rotation())
+	if facing_left:
+		rotation = PI
+	else:
+		rotation = 0
 	var rng = RandomNumberGenerator.new()
 	var stateNumber = rng.randi_range(0, 2)
 	entering = true
@@ -202,6 +205,9 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 		health -= damage_taken
 		#deflected = true
 	elif state == "Pig":
+		if $PigRecoilTimer.is_stopped() == true:
+			$PigRecoilTimer.start()
+		recoilCount += 1
 		pigSpeed = -pigSpeed/2
 	
 func _on_monster_closet_detector_body_exited(body):
@@ -238,3 +244,7 @@ func _on_area_2d_body_entered(body):
 
 func _on_look_timer_timeout():
 	ramming = true # Replace with function body.
+
+
+func _on_pig_recoil_timer_timeout():
+	recoilCount = 0

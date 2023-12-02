@@ -134,7 +134,7 @@ func _on_inventory_gui_closed():
 
 
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
-	if $RecoilTimer.is_stopped() == true:
+	if $RecoilTimer.is_stopped() == true and dash.is_dashing() == false:
 		var stopt = PlayerVars.t + 1
 		PlayerVars.shake()
 		current_health -= damage_taken

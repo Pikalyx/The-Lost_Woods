@@ -296,6 +296,7 @@ _data = {
 size = Vector2(24, 29.75)
 
 [node name="Boss" type="CharacterBody2D"]
+position = Vector2(0, -9)
 collision_layer = 4
 script = ExtResource("1_i7cuh")
 
@@ -316,6 +317,7 @@ libraries = {
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("7_xgmsc")
+health = 100.0
 
 [node name="Imposing" type="CharacterBody2D" parent="."]
 collision_layer = 16
@@ -337,6 +339,10 @@ shape = SubResource("RectangleShape2D_nn8q7")
 wait_time = 0.5
 one_shot = true
 
+[node name="PigRecoilTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="LookTimer" to="." method="_on_look_timer_timeout"]
+[connection signal="timeout" from="PigRecoilTimer" to="." method="_on_pig_recoil_timer_timeout"]
