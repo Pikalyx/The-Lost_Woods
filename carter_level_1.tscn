@@ -618,7 +618,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClosetDoor/monster_closet_detector"]
-position = Vector2(659, -11)
+position = Vector2(519, -10)
 shape = SubResource("RectangleShape2D_putcj")
 
 [node name="Boss" parent="ClosetDoor" instance=ExtResource("5_wglk5")]

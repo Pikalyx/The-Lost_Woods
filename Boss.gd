@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var player = get_parent().get_node("Player")
+@onready var defaultModulate = $Sprite2D.modulate
 @onready var animation = $AnimationPlayer
 const SPEED = 300
 var homeSpeed : float
@@ -12,17 +13,25 @@ var deflected = false
 const JUMP_VELOCITY = -500
 signal zoomOut
 var homerNext = false
+var summonNext = false
 var state = "Waiting"
 var entering : bool
 var cooldown = false
 var recoilCount = 0
+var topEnd : float
+var bottomEnd : float
+var reachedTop : bool
+var reachedBottom : bool
+var instanter : PackedScene
+var collected = false
 var direction : Vector2
 @export var inCloset : bool
 @export var facing_left = false
 @export var middleOfRoom = 825
+@export var halfwayUpRoom = -25
 @export var damage = 2
 @export var swordDamage = 4
-@export var health = 100
+@export var health = 300
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -73,7 +82,7 @@ func _physics_process(delta):
 						velocity.y = JUMP_VELOCITY
 					if not is_on_floor():
 						velocity.y += gravity * delta
-					if not (self.get_global_position().x <= middleOfRoom +4 and self.get_global_position().x >= middleOfRoom - 4):
+					if not (self.get_global_position().x <= middleOfRoom +4 and self.get_global_position().x >= middleOfRoom - 4 and self.get_global_position().y <= halfwayUpRoom):
 						if self.get_global_position().x > middleOfRoom:
 							velocity.x = -SPEED
 						elif self.get_global_position().x < middleOfRoom:
@@ -84,6 +93,9 @@ func _physics_process(delta):
 						if homerNext == true:
 							homerNext = false
 							choose_state("Homer")
+						elif summonNext == true:
+							summonNext = false
+							choose_state("Summon")
 						else:
 							choose_state("Random")
 					
@@ -153,9 +165,54 @@ func _physics_process(delta):
 						facing_left = false
 				if pigSpeed < originalPigSpeed:
 					pigSpeed += 50 * delta
+				$Sprite2D.modulate = defaultModulate + Color(recoilCount, 0, recoilCount)
 				if recoilCount >= 5:
 					choose_state("Hit")
 					
+			elif state == "Summon":
+				velocity.x = 0
+				if entering == true:
+					$AnimationPlayer.play("attack")
+					$SummonTimer.start()
+					if self.get_global_position().y < halfwayUpRoom:
+						velocity.y += gravity * delta
+					else:
+						topEnd = self.get_global_position().y -20
+						bottomEnd = self.get_global_position().y +20
+						reachedTop = true
+						reachedBottom = false
+						velocity.y = 0
+						entering = false
+#						print(topEnd)
+#						print(bottomEnd)
+						instanter = ResourceLoader.load("res://boss_sphere.tscn")
+						$Imposing/ImposingShape2D.set_deferred("disabled", false)
+						var copy = instanter.instantiate()
+						get_parent().add_child(copy)
+				elif entering == false:
+					if $AnimationPlayer.current_animation == "attack" and $AnimationPlayer.current_animation_position > 0.8:
+						$AnimationPlayer.play("charge")
+					elif $AnimationPlayer.current_animation != "attack" and $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+						$AnimationPlayer.play("charge")
+					var unfilteredChildren = get_parent().get_children().size()
+					var childName = str(get_parent().get_children())
+#					print(childName)
+					if "BossSphere" not in childName:
+						collected = true
+					if self.get_global_position().y > topEnd and reachedTop == false:
+						velocity.y = -4000 * delta
+					elif self.get_global_position().y <= topEnd and reachedTop == false:
+						reachedTop = true
+						reachedBottom = false
+					elif self.get_global_position().y <= bottomEnd and reachedBottom == false:
+						velocity.y = 4000 * delta
+					elif self.get_global_position().y >= bottomEnd and reachedBottom == false:
+						reachedBottom = true
+						reachedTop = false
+					if collected == true:
+						$Imposing/ImposingShape2D.set_deferred("disabled", true)
+						choose_state("Slump")
+			
 			elif state == "Swing":
 				velocity.x = 0
 				#print($AnimationPlayer.current_animation_position)
@@ -186,12 +243,15 @@ func _physics_process(delta):
 					choose_state("Random")
 			
 			elif state == "Hit":
+				$Sprite2D.modulate = defaultModulate + Color(5, 0, 5)
 				velocity.x = 0
 				if not is_on_floor():
 					velocity.y += gravity * delta
 				if entering == true:
 					entering = false
 					$AnimationPlayer.play("hit")
+				if $AnimationPlayer.current_animation_position >= 0.1:
+					$Sprite2D.modulate = defaultModulate
 				if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
 					choose_state("Slump")
 					
@@ -236,13 +296,15 @@ func choose_state(next):
 	$Sprite2D.flip_h = false
 	$Sprite2D.flip_v = false
 	$SwordArea.monitoring = false
+	$Sprite2D.modulate = Color(defaultModulate)
+	collected = false
 	entering = true
 	if facing_left:
 		rotation = PI
 	else:
 		rotation = 0
 	var rng = RandomNumberGenerator.new()
-	var stateNumber = rng.randi_range(0, 2)
+	var stateNumber = rng.randi_range(0, 3)
 	if next == "Random":
 		if stateNumber == 0:
 			state = "Pig"
@@ -250,6 +312,9 @@ func choose_state(next):
 			homerNext = true
 			state = "Jumping"
 		elif stateNumber == 2:
+			summonNext = true
+			state = "Jumping"
+		elif stateNumber == 3:
 			state = "Jumping"
 	else:
 		state = next
@@ -292,7 +357,7 @@ func _on_camera_2d_done_zooming():
 
 func _on_area_2d_body_entered(body):
 	if health > 0 and inCloset != true:
-		if (state == "Homer"):
+		if (state == "Homer" or state == "Summon"):
 			for child in body.get_children():
 				if child is Damageable:
 					print(self, " is hitting ", child)
@@ -336,3 +401,19 @@ func _on_sword_area_body_entered(body):
 				child.hit(swordDamage, Vector2.LEFT)
 			else:
 				child.hit(swordDamage, Vector2.ZERO)
+
+
+func _on_summon_timer_timeout():
+	if state == "Summon":
+		for child in player.get_children():
+			if child is Damageable:
+				print(self, " is hitting ", child)
+				var direction_to_damageable = (player.global_position - get_parent().global_position) 
+				var direction_sign = sign(direction_to_damageable.x)
+
+				if(direction_sign > 0):
+					child.hit(damage * 900, Vector2.RIGHT)
+				elif(direction_sign < 0):
+					child.hit(damage * 900, Vector2.LEFT)
+				else:
+					child.hit(damage * 900, Vector2.ZERO)
