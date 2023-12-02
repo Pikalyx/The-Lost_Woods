@@ -292,7 +292,7 @@ func _on_camera_2d_done_zooming():
 
 func _on_area_2d_body_entered(body):
 	if health > 0 and inCloset != true:
-		if (state == "Jumping" or state == "Homer"):
+		if (state == "Homer"):
 			for child in body.get_children():
 				if child is Damageable:
 					print(self, " is hitting ", child)

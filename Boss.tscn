@@ -239,6 +239,38 @@ tracks/0/keys = {
 "values": [69, 70]
 }
 
+[sub_resource type="Animation" id="Animation_6anc6"]
+resource_name = "Slump"
+length = 0.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [92, 93, 94, 95]
+}
+
+[sub_resource type="Animation" id="Animation_lqdm4"]
+resource_name = "slumphit"
+length = 0.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [95, 97, 98, 95]
+}
+
 [sub_resource type="Animation" id="Animation_gl1wt"]
 resource_name = "walk"
 length = 0.60001
@@ -280,38 +312,6 @@ tracks/2/keys = {
 "values": [23, 24, 25, 26, 27, 28]
 }
 
-[sub_resource type="Animation" id="Animation_lqdm4"]
-resource_name = "slumphit"
-length = 0.40001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [95, 97, 98, 95]
-}
-
-[sub_resource type="Animation" id="Animation_6anc6"]
-resource_name = "Slump"
-length = 0.40001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [92, 93, 94, 95]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpa0i"]
 _data = {
 "RESET": SubResource("Animation_j3noa"),
@@ -333,6 +333,7 @@ size = Vector2(24, 29.75)
 position = Vector2(0, -9)
 collision_layer = 4
 script = ExtResource("1_i7cuh")
+swordDamage = 3
 health = 300
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
