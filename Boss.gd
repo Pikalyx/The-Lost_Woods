@@ -8,7 +8,7 @@ var homeSpeed : float
 @export var pigSpeed = 50
 var originalPigSpeed = pigSpeed
 @export var ramSpeed = 500
-@export var dashSpeed = 300
+@export var dashSpeed = 400
 var ramming = false
 var deflected = false
 const JUMP_VELOCITY = -500
@@ -25,13 +25,15 @@ var reachedTop : bool
 var reachedBottom : bool
 var instanter : PackedScene
 var collected = false
+var wipe = false
 var direction : Vector2
 @export var inCloset : bool
 @export var facing_left = false
 @export var middleOfRoom = 825
 @export var halfwayUpRoom = -25
-@export var damage = 2
-@export var swordDamage = 4
+@export var homerDamage = 2
+@export var summonDamage = 1
+@export var swordDamage = 3
 @export var health = 300
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -140,6 +142,10 @@ func _physics_process(delta):
 						self.set_position(self.get_position() + (direction * homeSpeed * delta))
 					else:
 						$Sprite2D.offset.y = 0
+						if facing_left:
+							rotation = PI
+						else:
+							rotation = 0
 						if deflected == true:
 							choose_state("Slump")
 						else:
@@ -174,7 +180,6 @@ func _physics_process(delta):
 				velocity.x = 0
 				if entering == true:
 					$AnimationPlayer.play("attack")
-					$SummonTimer.start()
 					if self.get_global_position().y < halfwayUpRoom:
 						velocity.y += gravity * delta
 					else:
@@ -190,11 +195,14 @@ func _physics_process(delta):
 						$Imposing/ImposingShape2D.set_deferred("disabled", false)
 						var copy = instanter.instantiate()
 						get_parent().add_child(copy)
+						$SummonTimer.start()
 				elif entering == false:
 					if $AnimationPlayer.current_animation == "attack" and $AnimationPlayer.current_animation_position > 0.8:
 						$AnimationPlayer.play("charge")
-					elif $AnimationPlayer.current_animation != "attack" and $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+					elif $AnimationPlayer.current_animation != "attack" and $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and not $SummonTimer.is_stopped():
 						$AnimationPlayer.play("charge")
+					elif $AnimationPlayer.current_animation != "attack" and $SummonTimer.is_stopped():
+						$AnimationPlayer.play("home")
 					var unfilteredChildren = get_parent().get_children().size()
 					var childName = str(get_parent().get_children())
 #					print(childName)
@@ -211,6 +219,7 @@ func _physics_process(delta):
 						reachedBottom = true
 						reachedTop = false
 					if collected == true:
+						$SummonTimer.stop()
 						$Imposing/ImposingShape2D.set_deferred("disabled", true)
 						choose_state("Slump")
 			
@@ -222,17 +231,21 @@ func _physics_process(delta):
 							self.position.x -= 10
 						elif self.get_global_position().x < middleOfRoom:
 							self.position.x += 10
-					$AnimationPlayer.play("home")
-					if animation.current_animation_position >= 0.1:
+					$AnimationPlayer.play("dashWind")
+					if animation.current_animation_position >= 0.5:
 						entering = false
 						animation.play("dash")
+						$SwordArea.monitoring = true
 				else:
+					if animation.current_animation_position == animation.current_animation_length:
+						animation.play("dash")
 					if not is_on_wall():
-						if self.get_global_position().x > middleOfRoom:
+						if facing_left:
 							velocity.x = -dashSpeed
-						elif self.get_global_position().x <= middleOfRoom:
+						else:
 							velocity.x = dashSpeed
 					else:
+						$SwordArea.monitoring = false
 						choose_state("Random")
 			
 			elif state == "Swing":
@@ -295,6 +308,20 @@ func _physics_process(delta):
 					$AnimationPlayer.play_backwards("slump")
 				if $AnimationPlayer.current_animation_position == 0:
 					choose_state("Random")
+			
+			if wipe == true:
+				for child in player.get_children():
+					if child is Damageable:
+						print(self, " is hitting ", child)
+						var direction_to_damageable = (player.global_position - get_parent().global_position) 
+						var direction_sign = sign(direction_to_damageable.x)
+
+						if(direction_sign > 0):
+							child.hit(99999, Vector2.RIGHT)
+						elif(direction_sign < 0):
+							child.hit(99999, Vector2.LEFT)
+						else:
+							child.hit(99999, Vector2.ZERO)
 				
 		else:
 			$Sprite2D.flip_v = false
@@ -321,12 +348,16 @@ func choose_state(next):
 	$Sprite2D.modulate = Color(defaultModulate)
 	collected = false
 	entering = true
-	if facing_left:
-		rotation = PI
-	else:
-		rotation = 0
+	if player.get_position() <= self.get_global_position():
+		if facing_left == false:
+			scale.x = -scale.x
+			facing_left = true
+	elif player.get_position() >= self.get_global_position():
+		if facing_left == true:
+			scale.x = -scale.x
+			facing_left = false
 	var rng = RandomNumberGenerator.new()
-	var stateNumber = rng.randi_range(0, 3)
+	var stateNumber = rng.randi_range(0, 4)
 	if next == "Random":
 		if stateNumber == 0:
 			state = "Pig"
@@ -362,6 +393,8 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 			pigSpeed = -pigSpeed/2
 		else:
 			health -= damage_taken
+	elif state == "Dash":
+		choose_state("Slump")
 	elif state == "Slump":
 		$AnimationPlayer.play("slumphit")
 		health -= damage_taken
@@ -380,8 +413,13 @@ func _on_camera_2d_done_zooming():
 
 
 func _on_area_2d_body_entered(body):
+	var damage : int
 	if health > 0 and inCloset != true:
-		if (state == "Homer" or state == "Summon"):
+		if state == "Homer":
+			damage = homerDamage
+		elif state == "Summon":
+			damage = summonDamage
+		if damage != 0:
 			for child in body.get_children():
 				if child is Damageable:
 					print(self, " is hitting ", child)
@@ -413,6 +451,11 @@ func _on_slump_timer_timeout():
 
 
 func _on_sword_area_body_entered(body):
+	var sliceDamage : int
+	if state != "Swing":
+		sliceDamage = swordDamage -1
+	else:
+		sliceDamage = swordDamage
 	for child in body.get_children():
 		if child is Damageable:
 			print(self, " is hitting ", child)
@@ -420,24 +463,13 @@ func _on_sword_area_body_entered(body):
 			var direction_sign = sign(direction_to_damageable.x)
 
 			if(direction_sign > 0):
-				child.hit(swordDamage, Vector2.RIGHT)
+				child.hit(sliceDamage, Vector2.RIGHT)
 			elif(direction_sign < 0):
-				child.hit(swordDamage, Vector2.LEFT)
+				child.hit(sliceDamage, Vector2.LEFT)
 			else:
-				child.hit(swordDamage, Vector2.ZERO)
+				child.hit(sliceDamage, Vector2.ZERO)
 
 
 func _on_summon_timer_timeout():
 	if state == "Summon":
-		for child in player.get_children():
-			if child is Damageable:
-				print(self, " is hitting ", child)
-				var direction_to_damageable = (player.global_position - get_parent().global_position) 
-				var direction_sign = sign(direction_to_damageable.x)
-
-				if(direction_sign > 0):
-					child.hit(damage * 900, Vector2.RIGHT)
-				elif(direction_sign < 0):
-					child.hit(damage * 900, Vector2.LEFT)
-				else:
-					child.hit(damage * 900, Vector2.ZERO)
+		wipe = true

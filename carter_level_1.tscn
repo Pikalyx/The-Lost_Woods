@@ -578,7 +578,7 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_tw0c8")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_putcj"]
-size = Vector2(39, 71.25)
+size = Vector2(39, 276.313)
 
 [node name="carter_level_1" type="Node2D"]
 
@@ -609,7 +609,7 @@ position = Vector2(341, 38)
 script = ExtResource("4_tm4xm")
 
 [node name="closet_collision" type="CollisionShape2D" parent="ClosetDoor"]
-position = Vector2(215, -4.625)
+position = Vector2(214, -8.84375)
 shape = SubResource("RectangleShape2D_putcj")
 
 [node name="monster_closet_detector" type="Area2D" parent="ClosetDoor"]
@@ -618,7 +618,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClosetDoor/monster_closet_detector"]
-position = Vector2(519, -10)
+position = Vector2(611, -105.688)
 shape = SubResource("RectangleShape2D_putcj")
 
 [node name="Boss" parent="ClosetDoor" instance=ExtResource("5_wglk5")]

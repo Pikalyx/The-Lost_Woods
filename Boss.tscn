@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://62q6lqpn4mw0"]
+[gd_scene load_steps=20 format=3 uid="uid://62q6lqpn4mw0"]
 
 [ext_resource type="Script" path="res://Boss.gd" id="1_i7cuh"]
 [ext_resource type="Texture2D" uid="uid://dkqcsdhggpam6" path="res://Art/Sprites/NightBorne.png" id="2_jxe08"]
@@ -89,6 +89,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [50, 51, 52, 53, 54]
+}
+
+[sub_resource type="Animation" id="Animation_75wkr"]
+resource_name = "dash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57, 56, 55, 53]
 }
 
 [sub_resource type="Animation" id="Animation_0r7l8"]
@@ -328,8 +344,8 @@ tracks/2/keys = {
 "values": [23, 24, 25, 26, 27, 28]
 }
 
-[sub_resource type="Animation" id="Animation_75wkr"]
-resource_name = "dash"
+[sub_resource type="Animation" id="Animation_2g3rg"]
+resource_name = "dashWind"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -338,10 +354,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [54, 55, 56, 57, 56, 55, 53]
+"values": [46, 47, 52, 53, 54]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpa0i"]
@@ -350,6 +366,7 @@ _data = {
 "attack": SubResource("Animation_8485b"),
 "charge": SubResource("Animation_5frey"),
 "dash": SubResource("Animation_75wkr"),
+"dashWind": SubResource("Animation_2g3rg"),
 "death": SubResource("Animation_0r7l8"),
 "hit": SubResource("Animation_wnxur"),
 "home": SubResource("Animation_ftx0m"),
@@ -372,7 +389,7 @@ script = ExtResource("1_i7cuh")
 texture = ExtResource("2_jxe08")
 hframes = 23
 vframes = 5
-frame = 53
+frame = 55
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
@@ -408,7 +425,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="PigRecoilTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.5
 one_shot = true
 
 [node name="SlumpTimer" type="Timer" parent="."]
@@ -424,7 +441,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwordArea"]
-polygon = PackedVector2Array(-14, -28, 13, -23, 27, -13, 29, -8, 29, 8, 20, 14, -2, 15, -2, 30, 18, 30, 35, 21, 38, 15, 39, 12, 39, -9, 27, -22, 9, -31, -15, -31)
+polygon = PackedVector2Array(0, -28, 14, -24, 28, -15, 30, -9, 30, 8, 21, 15, -1, 14, -1, 28, 18, 28, 33, 20, 37, 15, 38, 12, 37, -8, 26, -21, 9, -30, -14, -30, -9, -28)
 
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
