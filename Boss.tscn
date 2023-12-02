@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://62q6lqpn4mw0"]
+[gd_scene load_steps=19 format=3 uid="uid://62q6lqpn4mw0"]
 
 [ext_resource type="Script" path="res://Boss.gd" id="1_i7cuh"]
 [ext_resource type="Texture2D" uid="uid://dkqcsdhggpam6" path="res://Art/Sprites/NightBorne.png" id="2_jxe08"]
@@ -328,11 +328,28 @@ tracks/2/keys = {
 "values": [23, 24, 25, 26, 27, 28]
 }
 
+[sub_resource type="Animation" id="Animation_75wkr"]
+resource_name = "dash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57, 56, 55, 53]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpa0i"]
 _data = {
 "RESET": SubResource("Animation_j3noa"),
 "attack": SubResource("Animation_8485b"),
 "charge": SubResource("Animation_5frey"),
+"dash": SubResource("Animation_75wkr"),
 "death": SubResource("Animation_0r7l8"),
 "hit": SubResource("Animation_wnxur"),
 "home": SubResource("Animation_ftx0m"),
@@ -355,7 +372,7 @@ script = ExtResource("1_i7cuh")
 texture = ExtResource("2_jxe08")
 hframes = 23
 vframes = 5
-frame = 70
+frame = 53
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)

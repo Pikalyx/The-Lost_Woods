@@ -8,6 +8,7 @@ var homeSpeed : float
 @export var pigSpeed = 50
 var originalPigSpeed = pigSpeed
 @export var ramSpeed = 500
+@export var dashSpeed = 300
 var ramming = false
 var deflected = false
 const JUMP_VELOCITY = -500
@@ -213,6 +214,27 @@ func _physics_process(delta):
 						$Imposing/ImposingShape2D.set_deferred("disabled", true)
 						choose_state("Slump")
 			
+			elif state == "Dash":
+				if entering == true:
+					velocity.x = 0
+					if is_on_wall():
+						if self.get_global_position().x > middleOfRoom:
+							self.position.x -= 10
+						elif self.get_global_position().x < middleOfRoom:
+							self.position.x += 10
+					$AnimationPlayer.play("home")
+					if animation.current_animation_position >= 0.1:
+						entering = false
+						animation.play("dash")
+				else:
+					if not is_on_wall():
+						if self.get_global_position().x > middleOfRoom:
+							velocity.x = -dashSpeed
+						elif self.get_global_position().x < middleOfRoom:
+							velocity.x = dashSpeed
+					else:
+						choose_state("Random")
+			
 			elif state == "Swing":
 				velocity.x = 0
 				#print($AnimationPlayer.current_animation_position)
@@ -304,7 +326,7 @@ func choose_state(next):
 	else:
 		rotation = 0
 	var rng = RandomNumberGenerator.new()
-	var stateNumber = rng.randi_range(0, 3)
+	var stateNumber = rng.randi_range(0, 4)
 	if next == "Random":
 		if stateNumber == 0:
 			state = "Pig"
@@ -316,6 +338,8 @@ func choose_state(next):
 			state = "Jumping"
 		elif stateNumber == 3:
 			state = "Jumping"
+		elif stateNumber == 4:
+			state = "Dash"
 	else:
 		state = next
 	print(state)
