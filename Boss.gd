@@ -230,7 +230,7 @@ func _physics_process(delta):
 					if not is_on_wall():
 						if self.get_global_position().x > middleOfRoom:
 							velocity.x = -dashSpeed
-						elif self.get_global_position().x < middleOfRoom:
+						elif self.get_global_position().x <= middleOfRoom:
 							velocity.x = dashSpeed
 					else:
 						choose_state("Random")
@@ -326,7 +326,7 @@ func choose_state(next):
 	else:
 		rotation = 0
 	var rng = RandomNumberGenerator.new()
-	var stateNumber = rng.randi_range(0, 4)
+	var stateNumber = rng.randi_range(0, 3)
 	if next == "Random":
 		if stateNumber == 0:
 			state = "Pig"
