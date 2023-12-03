@@ -70,6 +70,7 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 
 func _on_eye_damageable_on_hit(node, damage_taken, knockback_direction):
 	attacking = false
+	print("Ow! My eye!")
 	self.stop()
 
 

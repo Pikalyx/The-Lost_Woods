@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=26 format=3 uid="uid://b4aqd86pwf6h7"]
 
-[ext_resource type="Texture2D" uid="uid://btb36dtctwgb6" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
+[ext_resource type="Texture2D" uid="uid://45gv7nhe7870" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
+[ext_resource type="Script" path="res://camShake.gd" id="3_0rw4l"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_axmyc"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="3_j2hck"]
 [ext_resource type="PackedScene" uid="uid://blj1lwkpab2y5" path="res://UI/health_changed_manger.tscn" id="4_2jugk"]
@@ -18,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="17_e5pbr"]
 [ext_resource type="Script" path="res://LevelTransitionArea.gd" id="18_b4hh7"]
 [ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="19_vx56n"]
+[ext_resource type="PackedScene" uid="uid://dqodgxxv4aaxb" path="res://NewTrap.tscn" id="20_qdlxw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
@@ -1575,6 +1577,7 @@ process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+script = ExtResource("3_0rw4l")
 
 [node name="pig" parent="." instance=ExtResource("3_axmyc")]
 position = Vector2(66, 74)
@@ -1717,6 +1720,10 @@ position = Vector2(-4708, -83)
 [node name="HomerBody2" parent="." instance=ExtResource("17_8k6ed")]
 position = Vector2(-150.206, 0.517029)
 health = 40
+
+[node name="Trap" parent="." instance=ExtResource("20_qdlxw")]
+position = Vector2(-395, 81)
+scale = Vector2(0.125, 0.125)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]

@@ -34,7 +34,7 @@ var direction : Vector2
 @export var homerDamage = 2
 @export var summonDamage = 1
 @export var swordDamage = 3
-@export var health = 300
+@export var health = 450
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -289,6 +289,16 @@ func _physics_process(delta):
 					$Sprite2D.modulate = defaultModulate
 				if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
 					choose_state("Slump")
+			
+			elif state == "Clash":
+				velocity.x = 0
+				if not is_on_floor():
+					velocity.y += gravity * delta
+				if entering == true:
+					entering = false
+					$AnimationPlayer.play("clash")
+				if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+					choose_state("Slump")
 					
 			elif state == "Slump":
 				velocity.x = 0
@@ -341,7 +351,8 @@ func _physics_process(delta):
 		move_and_slide()
 
 func choose_state(next):
-	$AnimationPlayer.stop()
+	$StateInvulnTimer.start()
+	#$AnimationPlayer.stop()
 	$Sprite2D.flip_h = false
 	$Sprite2D.flip_v = false
 	$SwordArea.monitoring = false
@@ -394,7 +405,7 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 		else:
 			health -= damage_taken
 	elif state == "Dash":
-		choose_state("Slump")
+		pass
 	elif state == "Slump":
 		$AnimationPlayer.play("slumphit")
 		health -= damage_taken
@@ -458,7 +469,7 @@ func _on_sword_area_body_entered(body):
 		sliceDamage = swordDamage
 	for child in body.get_children():
 		if child is Damageable:
-			print(self, " is hitting ", child)
+			print("Boss Sword is hitting ", child)
 			var direction_to_damageable = (body.global_position - get_parent().global_position) 
 			var direction_sign = sign(direction_to_damageable.x)
 
@@ -473,3 +484,8 @@ func _on_sword_area_body_entered(body):
 func _on_summon_timer_timeout():
 	if state == "Summon":
 		wipe = true
+
+
+func _on_sword_damageable_on_hit(node, damage_taken, knockback_direction):
+	if state == "Dash" and $StateInvulnTimer.is_stopped():
+		choose_state("Clash")
