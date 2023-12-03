@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://c62w0b21qvuio" path="res://level 3/grass_1.png" id="6_q3fki"]
 [ext_resource type="Texture2D" uid="uid://bo6h4643wtxil" path="res://level 3/fence_2.png" id="7_hh7xc"]
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="9_7veqo"]
-[ext_resource type="Script" path="res://moving_platform.gd" id="10_4kfja"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
 [ext_resource type="PackedScene" uid="uid://chu334tsngh43" path="res://NextLevel.tscn" id="14_67dxh"]
+[ext_resource type="Script" path="res://restartLevel.gd" id="15_gtuon"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbpwq"]
 texture = ExtResource("1_hsu8m")
@@ -1420,50 +1420,46 @@ texture = ExtResource("7_hh7xc")
 
 [node name="MovingPlatform" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(753, 433)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.28
 debug = false
 
 [node name="MovingPlatform4" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(727, 723)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.28
 debug = false
 
 [node name="MovingPlatform5" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(662, 302)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.723
 debug = false
 
 [node name="MovingPlatform3" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(577, 598)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.713
 debug = false
 
 [node name="MovingPlatform2" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(2002, 366)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.518
 debug = false
 
-[node name="Area2D" parent="." instance=ExtResource("14_67dxh")]
+[node name="nextLevel" parent="." instance=ExtResource("14_67dxh")]
 position = Vector2(2516, 585)
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="nextLevel"]
 position = Vector2(1, -7)
 shape = SubResource("CircleShape2D_ov6eq")
 
 [node name="back" parent="." instance=ExtResource("14_67dxh")]
 position = Vector2(2516, 585)
 collision_mask = 2
+script = ExtResource("15_gtuon")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="back"]
 position = Vector2(-960, 455)
