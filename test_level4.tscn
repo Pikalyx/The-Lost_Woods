@@ -1546,7 +1546,7 @@ scale = Vector2(3, 3)
 script = ExtResource("6_tyiym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nextLevel"]
-position = Vector2(128.397, -475.364)
+position = Vector2(136.397, -464.697)
 shape = SubResource("CircleShape2D_7qb88")
 
 [node name="pig4" parent="." instance=ExtResource("4_8egnn")]
