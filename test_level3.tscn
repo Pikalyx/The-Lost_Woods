@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxxtanw42vdl4"]
+[gd_scene load_steps=18 format=3 uid="uid://dxxtanw42vdl4"]
 
 [ext_resource type="Texture2D" uid="uid://bp6coqi7g137r" path="res://level 3/background_layer_1.png" id="1_gafwj"]
 [ext_resource type="Texture2D" uid="uid://dpnsyrv472rcm" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="9_7veqo"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
 [ext_resource type="PackedScene" uid="uid://chu334tsngh43" path="res://NextLevel.tscn" id="14_67dxh"]
-[ext_resource type="Script" path="res://restartLevel.gd" id="15_gtuon"]
+[ext_resource type="PackedScene" uid="uid://0ewxb2415e8q" path="res://restartLevel.tscn" id="14_mvi7x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbpwq"]
 texture = ExtResource("1_hsu8m")
@@ -1340,12 +1340,6 @@ texture = ExtResource("1_hsu8m")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vbpwq")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ov6eq"]
-radius = 75.1864
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws8tb"]
-size = Vector2(3800, 198)
-
 [node name="test_level3" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("13_agutb")]
@@ -1448,19 +1442,8 @@ distance = Vector2(36, 46)
 phase_offset = 0.518
 debug = false
 
-[node name="nextLevel" parent="." instance=ExtResource("14_67dxh")]
-position = Vector2(2516, 585)
-collision_mask = 2
+[node name="restartLevel" parent="." instance=ExtResource("14_mvi7x")]
+position = Vector2(1374, 1162)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="nextLevel"]
-position = Vector2(1, -7)
-shape = SubResource("CircleShape2D_ov6eq")
-
-[node name="back" parent="." instance=ExtResource("14_67dxh")]
-position = Vector2(2516, 585)
-collision_mask = 2
-script = ExtResource("15_gtuon")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="back"]
-position = Vector2(-960, 455)
-shape = SubResource("RectangleShape2D_ws8tb")
+[node name="next level" parent="." instance=ExtResource("14_67dxh")]
+position = Vector2(2524, 624)

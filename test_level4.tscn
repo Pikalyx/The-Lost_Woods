@@ -1530,7 +1530,7 @@ position = Vector2(106.667, -236)
 scale = Vector2(2.091, 2.46889)
 texture = ExtResource("7_i3gcf")
 
-[node name="Node2D" parent="." instance=ExtResource("7_v7yn8")]
+[node name="deathFall" parent="." instance=ExtResource("7_v7yn8")]
 position = Vector2(-569, -449)
 scale = Vector2(3, 3)
 
