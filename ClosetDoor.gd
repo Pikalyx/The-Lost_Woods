@@ -1,5 +1,6 @@
 extends CharacterBody2D
 signal boo
+signal closed
 var enemyChildren = 0
 var unfilteredChildren : int
 # Called when the node enters the scene tree for the first time.
@@ -30,6 +31,7 @@ func _process(delta):
 	if enemyChildren == 0:
 		$closet_collision.set_deferred("disabled", true)
 		hide()
+		closed.emit()
 
 
 func _on_monster_closet_detector_body_exited(body):

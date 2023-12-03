@@ -138,6 +138,8 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 		var stopt = PlayerVars.t + 1
 		PlayerVars.shake()
 		current_health -= damage_taken
+		if current_health < 0:
+			current_health = 0
 		healthChanged.emit(current_health)
 		$RecoilTimer.start()
 		score -= 1
