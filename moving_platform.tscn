@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://sqhxvgq16tsh"]
+[gd_scene load_steps=4 format=3 uid="uid://sqhxvgq16tsh"]
 
-[ext_resource type="Texture2D" uid="uid://b35v0xjw272ec" path="res://level 3/oak_woods_tileset.png" id="1_bju7h"]
+[ext_resource type="Script" path="res://moving_platform.gd" id="1_0de6p"]
+[ext_resource type="Texture2D" uid="uid://dpnsyrv472rcm" path="res://level 3/oak_woods_tileset.png" id="1_bju7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cscfo"]
 size = Vector2(70, 20)
 
 [node name="MovingPlatform" type="AnimatableBody2D"]
+script = ExtResource("1_0de6p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cscfo")
