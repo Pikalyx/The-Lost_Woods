@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2bpoc8kjhpvb"]
+[gd_scene load_steps=4 format=3 uid="uid://dveqqo2nabqru"]
 
 [ext_resource type="Script" path="res://Art/text-box.gd" id="1_0rgd7"]
 [ext_resource type="Texture2D" uid="uid://xx3p4sreyhjd" path="res://Art/Dia-box.png" id="1_pdemm"]
