@@ -1723,7 +1723,6 @@ health = 40
 
 [node name="Trap" parent="." instance=ExtResource("20_qdlxw")]
 position = Vector2(-395, 81)
-scale = Vector2(0.125, 0.125)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]
