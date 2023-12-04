@@ -4,11 +4,13 @@ var stalkOffset : float
 @export var state : String = "Launch"
 @export var damage = 1
 var directionCommit : float
-var homeSpeed = 400
+var homeSpeed = 600
 var cooldown = false
 var direction : Vector2
 var angle : float
 var entering : bool
+var throbCount = 0
+var maxThrobCount = 10
 @onready var player = get_parent().get_node("Player")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,10 +27,8 @@ func _process(delta):
 				direction = Vector2(cos(angle), sin(angle))
 				if angle >= PI/2 or angle <= -PI/2:
 					$Sprite2D.flip_v = true
-					$Sprite2D.offset.y = 17
 				else:
 					$Sprite2D.flip_v = false
-					$Sprite2D.offset.y = 0
 			#animation.play("home")
 				cooldown = true
 				print("Trailer cooldown is ", cooldown, (player.get_position() - self.get_position()))
@@ -40,8 +40,9 @@ func _process(delta):
 
 	elif state == "Latch":
 		if entering == true:
-			$AudioStreamPlayer2D.play()
-			self.set_position(Vector2(stalkOffset, player.get_position().y))
+			$Sprite2D.flip_v = false
+			$AnimationPlayer.play("throb")
+			self.set_position(Vector2(player.get_position().x - 25, player.get_position().y))
 			look_at(player.get_position())
 			entering = false
 		#var player = get_parent().get_node("Player")
@@ -52,23 +53,31 @@ func _process(delta):
 				elif player.sprite.flip_h == true:
 					stalkOffset = (player.get_position().x + 25)
 				self.set_position(Vector2(stalkOffset, player.get_position().y))
+			else:
+				$AnimationPlayer.pause()
+				if $Timer.is_stopped() == true:
+					$Timer.start()
+			if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+				$AnimationPlayer.play("throb")
+				throbCount += 1
+				print(throbCount)
+			if throbCount >= maxThrobCount:
+				state = "Hatch"
+				entering = true
 			move_and_slide()
 	
 	elif state == "Hatch":
-		
+		if entering == true:
+			$Timer.start()
+			if player.sprite.flip_h == false:
+				directionCommit = 1
+			elif player.sprite.flip_h == true:
+				directionCommit = -1
+			entering = false
 		if not is_on_wall() and not is_on_floor() and not is_on_ceiling():
 			self.set_position(Vector2(self.get_position().x +(500 * directionCommit * delta) , self.get_position().y))
 		else:
 			queue_free()
-
-
-func _on_audio_stream_player_2d_finished():
-	state = "Hatch"
-	$Timer.start()
-	if player.sprite.flip_h == false:
-		directionCommit = 1
-	elif player.sprite.flip_h == true:
-		directionCommit = -1
 
 
 func _on_area_2d_body_entered(body):
