@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cr8quku83ijpp"]
 
 [ext_resource type="Script" path="res://controls.gd" id="1_owfru"]
-[ext_resource type="Texture2D" uid="uid://54r4v15rwyo3" path="res://Art/GUI Art/back button.png" id="2_28d1y"]
+[ext_resource type="Texture2D" uid="uid://ptdrr1wt3g6m" path="res://Art/GUI Art/back button.png" id="2_28d1y"]
 [ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="2_yubqp"]
-[ext_resource type="Texture2D" uid="uid://c0721c1nqgxmt" path="res://Art/GUI Art/pressed back button.png" id="3_1nbxl"]
+[ext_resource type="Texture2D" uid="uid://dpkv3yy8egfp8" path="res://Art/GUI Art/pressed back button.png" id="3_1nbxl"]
 [ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="3_lntdr"]
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="4_yhe56"]
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="5_va3hn"]

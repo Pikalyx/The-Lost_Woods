@@ -1,4 +1,5 @@
-extends Panel
+extends Button
+
 
 @onready var backgroundSprite: Sprite2D = $background
 @onready var itemSprite: Sprite2D = $CenterContainer/Panel/item
@@ -14,9 +15,4 @@ func update(item: inventoryItem):
 		itemSprite.visible = true
 		itemSprite.texture = item.texture
 		
-
-
-func _on_use_pressed(item: inventoryItem):
-	if !item:
-		print("nothing sorry")
-	
+		
