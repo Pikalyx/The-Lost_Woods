@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=27 format=3 uid="uid://b4aqd86pwf6h7"]
 
-[ext_resource type="Texture2D" uid="uid://45gv7nhe7870" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
+[ext_resource type="Texture2D" uid="uid://c3to2nnxsjx6q" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
 [ext_resource type="Script" path="res://camShake.gd" id="3_0rw4l"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_axmyc"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://LevelTransitionArea.gd" id="18_b4hh7"]
 [ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="19_vx56n"]
 [ext_resource type="PackedScene" uid="uid://dqodgxxv4aaxb" path="res://NewTrap.tscn" id="20_qdlxw"]
+[ext_resource type="PackedScene" uid="uid://wfo8feeh0wpi" path="res://hive.tscn" id="21_qg2j3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
@@ -1723,6 +1724,9 @@ health = 40
 
 [node name="Trap" parent="." instance=ExtResource("20_qdlxw")]
 position = Vector2(-395, 81)
+
+[node name="Hive" parent="." instance=ExtResource("21_qg2j3")]
+position = Vector2(45.3591, -108.114)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]
