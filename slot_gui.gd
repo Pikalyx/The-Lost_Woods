@@ -5,7 +5,6 @@ extends Panel
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var button: Button = $CenterContainer/Panel/item/use
 @onready var items : inventoryItem
-@onready var player = get_parent().get_node("Player")
 
 
 func update(item: inventoryItem):
@@ -23,5 +22,8 @@ func update(item: inventoryItem):
 func _on_use_pressed():
 	if backgroundSprite.frame == 1:
 		if items.name == "HealthFlute":
-			#print(players.current_health)
-			pass
+			#print(players.current_health
+			print(PlayerVars.ch)
+			if PlayerVars.ch < PlayerVars.h:
+				PlayerVars.ch += 1
+				print(PlayerVars.ch)
