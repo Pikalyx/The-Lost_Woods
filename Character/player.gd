@@ -150,3 +150,6 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 func _on_cling_timer_timeout():
 	clingSlide = true
 	print("Slidin!") # Replace with function body.
+
+
+
