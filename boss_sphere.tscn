@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b02gfs7g2eb2c"]
+
+[ext_resource type="Script" path="res://boss_sphere.gd" id="1_6m3tp"]
+[ext_resource type="Texture2D" uid="uid://1uuiw5sukksf" path="res://icon.svg" id="1_k6mal"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lloda"]
+radius = 13.0
+
+[node name="BossSphere" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_6m3tp")
+origin = Vector2(825, -175)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(0.191406, 0.191406)
+texture = ExtResource("1_k6mal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lloda")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

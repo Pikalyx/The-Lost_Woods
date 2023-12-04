@@ -14,6 +14,7 @@ func _ready():
 func _on_body_entered(body):
 	for child in body.get_children():
 		if child is Damageable:
+			print("this ", child, " has a health value of ", child.health)
 			#update score
 			print(self, " is hitting ", child)
 			var direction_to_damageable = (body.global_position - get_parent().global_position) 

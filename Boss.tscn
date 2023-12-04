@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://62q6lqpn4mw0"]
+[gd_scene load_steps=22 format=3 uid="uid://62q6lqpn4mw0"]
 
-[ext_resource type="Texture2D" uid="uid://dlolu7dxa47ua" path="res://Art/Sprites/Demon/demon_death_1-Sheet.png" id="1_8uoyq"]
-[ext_resource type="Texture2D" uid="uid://daiuj0ddbvefb" path="res://Art/Sprites/Demon/demon_cleave_1-Sheet.png" id="1_ys0t3"]
-[ext_resource type="Texture2D" uid="uid://dbw0umsosiodw" path="res://Art/Sprites/Demon/demon_idle_1-Sheet.png" id="2_tdmff"]
-[ext_resource type="Texture2D" uid="uid://cuy7kvplwsjnf" path="res://Art/Sprites/Demon/demon_walk_1-Sheet.png" id="3_ur5bj"]
-[ext_resource type="Texture2D" uid="uid://4i0fuadptwqq" path="res://Art/Sprites/Demon/demon_take_hit_1-Sheet.png" id="5_u867d"]
+[ext_resource type="Script" path="res://Boss.gd" id="1_i7cuh"]
+[ext_resource type="Texture2D" uid="uid://dkqcsdhggpam6" path="res://Art/Sprites/NightBorne.png" id="2_jxe08"]
+[ext_resource type="AudioStream" uid="uid://qdu223k2vg4b" path="res://Sound/223612__ctcollab__epic-sword-clash.wav" id="3_2pip8"]
+[ext_resource type="Script" path="res://Character/Damageable.gd" id="7_xgmsc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7go5e"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cow2o"]
+radius = 14.0
+height = 28.0
 
 [sub_resource type="Animation" id="Animation_j3noa"]
 length = 0.001
@@ -17,10 +18,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [0]
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_8485b"]
@@ -36,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_ys0t3")]
+"values": [ExtResource("2_jxe08")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -48,7 +49,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [15]
+"values": [23]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -57,15 +58,75 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14]
+"values": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_5frey"]
+resource_name = "charge"
+length = 0.42
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54]
+}
+
+[sub_resource type="Animation" id="Animation_75wkr"]
+resource_name = "dash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57, 56, 55, 53]
+}
+
+[sub_resource type="Animation" id="Animation_2g3rg"]
+resource_name = "dashWind"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [46, 47, 52, 53, 54]
 }
 
 [sub_resource type="Animation" id="Animation_0r7l8"]
 resource_name = "death"
-length = 1.1
+length = 2.20001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -76,7 +137,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_8uoyq")]
+"values": [ExtResource("2_jxe08")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -88,7 +149,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.000961971),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [22]
+"values": [23]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -97,14 +158,27 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 21]
+"values": [92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
 }
 
 [sub_resource type="Animation" id="Animation_wnxur"]
 resource_name = "hit"
+length = 0.50001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,7 +189,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_u867d")]
+"values": [ExtResource("2_jxe08")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -127,7 +201,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [23]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -139,12 +213,28 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [69, 70, 71, 72, 73]
 }
 
-[sub_resource type="Animation" id="Animation_5f5l4"]
-resource_name = "idle "
-length = 0.6
+[sub_resource type="Animation" id="Animation_ftx0m"]
+resource_name = "home"
+length = 0.50001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [53, 54, 55, 56, 57]
+}
+
+[sub_resource type="Animation" id="Animation_mdfhi"]
+resource_name = "idle"
+length = 0.60001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -155,7 +245,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_tdmff")]
+"values": [ExtResource("2_jxe08")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -167,7 +257,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [23]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -182,9 +272,58 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_2sqau"]
+resource_name = "jump"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [69, 70]
+}
+
+[sub_resource type="Animation" id="Animation_6anc6"]
+resource_name = "Slump"
+length = 0.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [92, 93, 94, 95]
+}
+
+[sub_resource type="Animation" id="Animation_lqdm4"]
+resource_name = "slumphit"
+length = 0.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [95, 97, 98, 95]
+}
+
 [sub_resource type="Animation" id="Animation_gl1wt"]
 resource_name = "walk"
-length = 1.1
+length = 0.60001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -195,7 +334,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_ur5bj")]
+"values": [ExtResource("2_jxe08")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -207,7 +346,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
+"values": [23]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -216,32 +355,147 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
+"values": [23, 24, 25, 26, 27, 28]
 }
+
+[sub_resource type="Animation" id="Animation_d6ynq"]
+resource_name = "clash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [54, 53, 52, 51]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_2pip8")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpa0i"]
 _data = {
 "RESET": SubResource("Animation_j3noa"),
 "attack": SubResource("Animation_8485b"),
+"charge": SubResource("Animation_5frey"),
+"clash": SubResource("Animation_d6ynq"),
+"dash": SubResource("Animation_75wkr"),
+"dashWind": SubResource("Animation_2g3rg"),
 "death": SubResource("Animation_0r7l8"),
 "hit": SubResource("Animation_wnxur"),
-"idle ": SubResource("Animation_5f5l4"),
+"home": SubResource("Animation_ftx0m"),
+"idle": SubResource("Animation_mdfhi"),
+"jump": SubResource("Animation_2sqau"),
+"slump": SubResource("Animation_6anc6"),
+"slumphit": SubResource("Animation_lqdm4"),
 "walk": SubResource("Animation_gl1wt")
 }
 
-[node name="Boss" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn8q7"]
+size = Vector2(24, 29.75)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_7go5e")
+[node name="Boss" type="CharacterBody2D"]
+position = Vector2(0, -9)
+collision_layer = 4
+script = ExtResource("1_i7cuh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8uoyq")
-hframes = 22
+texture = ExtResource("2_jxe08")
+hframes = 23
+vframes = 5
+frame = 51
+
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_cow2o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wpa0i")
 }
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("7_xgmsc")
+health = 100.0
+
+[node name="Imposing" type="CharacterBody2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="ImposingShape2D" type="CollisionShape2D" parent="Imposing"]
+position = Vector2(-2, 6.875)
+shape = SubResource("RectangleShape2D_nn8q7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 6.875)
+shape = SubResource("RectangleShape2D_nn8q7")
+
+[node name="LookTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PigRecoilTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="SlumpTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="StateInvulnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SummonTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="SwordArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwordArea"]
+polygon = PackedVector2Array(0, -28, 14, -24, 28, -15, 30, -9, 30, 8, 21, 15, -1, 14, -1, 28, 18, 28, 33, 20, 37, 15, 38, 12, 37, -8, 26, -21, 9, -30, -14, -30, -9, -28)
+
+[node name="SwordBody" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwordBody"]
+polygon = PackedVector2Array(0, -28, 14, -24, 28, -15, 30, -9, 30, 8, 21, 15, -1, 14, -1, 28, 18, 28, 33, 20, 37, 15, 38, 12, 37, -8, 26, -21, 9, -30, -14, -30, -9, -28)
+
+[node name="SwordDamageable" type="Node" parent="SwordBody"]
+script = ExtResource("7_xgmsc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="LookTimer" to="." method="_on_look_timer_timeout"]
+[connection signal="timeout" from="PigRecoilTimer" to="." method="_on_pig_recoil_timer_timeout"]
+[connection signal="timeout" from="SlumpTimer" to="." method="_on_slump_timer_timeout"]
+[connection signal="timeout" from="SummonTimer" to="." method="_on_summon_timer_timeout"]
+[connection signal="body_entered" from="SwordArea" to="." method="_on_sword_area_body_entered"]
+[connection signal="on_hit" from="SwordBody/SwordDamageable" to="." method="_on_sword_damageable_on_hit"]
