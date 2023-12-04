@@ -1,5 +1,6 @@
 extends Panel
 
+@onready var player = get_parent().get_parent().get_parent().get_parent().get_parent()
 @onready var backgroundSprite: Sprite2D = $background
 @onready var itemSprite: Sprite2D = $CenterContainer/Panel/item
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -23,8 +24,10 @@ func _on_use_pressed():
 	if backgroundSprite.frame == 1:
 		if items.name == "HealthFlute":
 			#print(players.current_health
-			print(PlayerVars.ch)
-			if PlayerVars.ch < PlayerVars.h:
-				PlayerVars.ch += 1
-				print(PlayerVars.ch)
+#			print(PlayerVars.ch)
+#			if PlayerVars.ch < PlayerVars.h:
+#				PlayerVars.ch += 1
+#				print(PlayerVars.ch)
+			player.current_health += 1
+			player.healthChanged.emit(player.current_health)
 				#healthChanged.emit(PlayerVars.ch)
