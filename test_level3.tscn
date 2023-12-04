@@ -1,20 +1,20 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxxtanw42vdl4"]
+[gd_scene load_steps=18 format=3 uid="uid://dxxtanw42vdl4"]
 
-[ext_resource type="Texture2D" uid="uid://bauvmyixi15gs" path="res://level 3/background_layer_1.png" id="1_gafwj"]
-[ext_resource type="Texture2D" uid="uid://bacgojmsrws3p" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
+[ext_resource type="Texture2D" uid="uid://bp6coqi7g137r" path="res://level 3/background_layer_1.png" id="1_gafwj"]
+[ext_resource type="Texture2D" uid="uid://dpnsyrv472rcm" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
 [ext_resource type="Script" path="res://camShake.gd" id="2_2wk4k"]
-[ext_resource type="Texture2D" uid="uid://cqii42wqc3cov" path="res://level 3/sign.png" id="2_hatpp"]
-[ext_resource type="Texture2D" uid="uid://dp5vpi2plkjyq" path="res://level 3/background_layer_2.png" id="2_uy1fl"]
-[ext_resource type="Texture2D" uid="uid://ntkt8dgpijeg" path="res://level 3/rock_3.png" id="3_7pfqq"]
-[ext_resource type="Texture2D" uid="uid://gahknr2ui0ym" path="res://level 3/background_layer_3.png" id="3_kwmpn"]
-[ext_resource type="Texture2D" uid="uid://brkukihdvspym" path="res://level 3/grass_3.png" id="4_timii"]
-[ext_resource type="Texture2D" uid="uid://dn0ayjlshm3vl" path="res://level 3/grass_2.png" id="5_x6t6b"]
-[ext_resource type="Texture2D" uid="uid://e0bx3bs1aui0" path="res://level 3/grass_1.png" id="6_q3fki"]
-[ext_resource type="Texture2D" uid="uid://bjklv6gu8se32" path="res://level 3/fence_2.png" id="7_hh7xc"]
+[ext_resource type="Texture2D" uid="uid://de1csxfmcym7s" path="res://level 3/sign.png" id="2_hatpp"]
+[ext_resource type="Texture2D" uid="uid://hqmo5rhtlt18" path="res://level 3/background_layer_2.png" id="2_uy1fl"]
+[ext_resource type="Texture2D" uid="uid://bwevdij1xdwb" path="res://level 3/rock_3.png" id="3_7pfqq"]
+[ext_resource type="Texture2D" uid="uid://c7bof367tq6ry" path="res://level 3/background_layer_3.png" id="3_kwmpn"]
+[ext_resource type="Texture2D" uid="uid://x5yhihji8m5k" path="res://level 3/grass_3.png" id="4_timii"]
+[ext_resource type="Texture2D" uid="uid://cbriri73wam4b" path="res://level 3/grass_2.png" id="5_x6t6b"]
+[ext_resource type="Texture2D" uid="uid://c62w0b21qvuio" path="res://level 3/grass_1.png" id="6_q3fki"]
+[ext_resource type="Texture2D" uid="uid://bo6h4643wtxil" path="res://level 3/fence_2.png" id="7_hh7xc"]
 [ext_resource type="PackedScene" uid="uid://sqhxvgq16tsh" path="res://moving_platform.tscn" id="9_7veqo"]
-[ext_resource type="Script" path="res://moving_platform.gd" id="10_4kfja"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
 [ext_resource type="PackedScene" uid="uid://chu334tsngh43" path="res://NextLevel.tscn" id="14_67dxh"]
+[ext_resource type="PackedScene" uid="uid://0ewxb2415e8q" path="res://restartLevel.tscn" id="14_mvi7x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbpwq"]
 texture = ExtResource("1_hsu8m")
@@ -1340,12 +1340,6 @@ texture = ExtResource("1_hsu8m")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vbpwq")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ov6eq"]
-radius = 75.1864
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws8tb"]
-size = Vector2(3800, 198)
-
 [node name="test_level3" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("13_agutb")]
@@ -1420,51 +1414,36 @@ texture = ExtResource("7_hh7xc")
 
 [node name="MovingPlatform" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(753, 433)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.28
 debug = false
 
 [node name="MovingPlatform4" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(727, 723)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.28
 debug = false
 
 [node name="MovingPlatform5" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(662, 302)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.723
 debug = false
 
 [node name="MovingPlatform3" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(577, 598)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.713
 debug = false
 
 [node name="MovingPlatform2" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(2002, 366)
-script = ExtResource("10_4kfja")
 distance = Vector2(36, 46)
 phase_offset = 0.518
 debug = false
 
-[node name="Area2D" parent="." instance=ExtResource("14_67dxh")]
-position = Vector2(2516, 585)
-collision_mask = 2
+[node name="restartLevel" parent="." instance=ExtResource("14_mvi7x")]
+position = Vector2(1374, 1162)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, -7)
-shape = SubResource("CircleShape2D_ov6eq")
-
-[node name="back" parent="." instance=ExtResource("14_67dxh")]
-position = Vector2(2516, 585)
-collision_mask = 2
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="back"]
-position = Vector2(-960, 455)
-shape = SubResource("RectangleShape2D_ws8tb")
+[node name="next level" parent="." instance=ExtResource("14_67dxh")]
+position = Vector2(2524, 624)
