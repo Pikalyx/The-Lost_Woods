@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfslgacjv5d0h"]
+
+[ext_resource type="Script" path="res://youWin.gd" id="1_ekk5l"]
+
+[node name="youWin" type="Node2D"]
+script = ExtResource("1_ekk5l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
