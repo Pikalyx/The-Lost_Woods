@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="1_2j0oh"]
 [ext_resource type="Script" path="res://FinalBossCam.gd" id="2_2yv34"]
-[ext_resource type="Texture2D" uid="uid://2jgtg1rltjvh" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/red.png" id="2_5ro1l"]
+[ext_resource type="Texture2D" uid="uid://bepiwx23qga2o" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/red.png" id="2_5ro1l"]
 [ext_resource type="Script" path="res://ClosetDoor.gd" id="4_tm4xm"]
 [ext_resource type="PackedScene" uid="uid://62q6lqpn4mw0" path="res://Boss.tscn" id="5_wglk5"]
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="6_nke6d"]
