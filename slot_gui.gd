@@ -23,11 +23,10 @@ func update(item: inventoryItem):
 func _on_use_pressed():
 	if backgroundSprite.frame == 1:
 		if items.name == "HealthFlute":
-			#print(players.current_health
-#			print(PlayerVars.ch)
-#			if PlayerVars.ch < PlayerVars.h:
-#				PlayerVars.ch += 1
-#				print(PlayerVars.ch)
-			player.current_health += 1
-			player.healthChanged.emit(player.current_health)
-				#healthChanged.emit(PlayerVars.ch)
+			if player.current_health  < player.max_health:
+				player.current_health += 1
+				player.healthChanged.emit(player.current_health)
+				backgroundSprite.frame = 0
+				itemSprite.visible = false
+				button.visible = false
+
