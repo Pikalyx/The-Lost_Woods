@@ -27,7 +27,7 @@ func _process(delta):
 		scale = Vector2(1, 1)
 	if animation == "Attack" and frame == 40:
 		attacking = false
-	if eating == true and is_playing() == false:
+	if eating == true and frame == 25:
 		queue_free()
 	#var player = get_parent().get_node("Player")
 	pass
@@ -51,8 +51,9 @@ func retract():
 	$Timer.start()
 	
 func eat():
-	offset = Vector2(8.715, -133.86)
-	play("Retract")
+	scale = Vector2(1.5,1.5)
+	offset = Vector2(0,-74.32)
+	play("Eat")
 	eating = true
 	
 func _on_area_2d_body_exited(body):
