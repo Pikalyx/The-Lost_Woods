@@ -21,6 +21,7 @@ SignalBus="*res://signal_bus.gd"
 SceneTransition="*res://scene_transition.tscn"
 PlayerVars="*res://player_vars.gd"
 DialogManager="*res://Art/Dia-Box/DialogManager.gd"
+InteractionManager="*res://Interaction/InteractionManager.tscn"
 
 [display]
 

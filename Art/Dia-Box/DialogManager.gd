@@ -1,6 +1,8 @@
 extends Node
 
+
 @onready var text_box_scene = preload("res://Art/Dia-Box/text-box.tscn")
+
 
 var dialog_lines: Array[String] = []
 var current_line_index = 0
@@ -10,6 +12,7 @@ var text_box_position: Vector2
 
 var is_dialog_active = false
 var can_advance_line = false
+
 
 func start_dialog(position: Vector2, lines: Array[String]):
 	if is_dialog_active:
