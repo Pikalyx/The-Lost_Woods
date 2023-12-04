@@ -24,16 +24,15 @@ offset_bottom = 20.0
 [node name="Panel" type="Panel" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="use" type="Button" parent="CenterContainer/Panel"]
-layout_mode = 2
-offset_left = -4.0
-offset_top = 3.0
-offset_right = 40.0
-offset_bottom = 34.0
-scale = Vector2(0.2, 0.2)
-text = " use "
-
 [node name="item" type="Sprite2D" parent="CenterContainer/Panel"]
 position = Vector2(2.08165e-12, -5)
 
-[connection signal="pressed" from="CenterContainer/Panel/use" to="." method="_on_use_pressed"]
+[node name="use" type="Button" parent="CenterContainer/Panel/item"]
+offset_left = -4.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 39.0
+scale = Vector2(0.2, 0.2)
+text = " use "
+
+[connection signal="pressed" from="CenterContainer/Panel/item/use" to="." method="_on_use_pressed"]

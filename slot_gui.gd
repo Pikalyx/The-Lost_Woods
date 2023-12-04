@@ -3,7 +3,10 @@ extends Panel
 @onready var backgroundSprite: Sprite2D = $background
 @onready var itemSprite: Sprite2D = $CenterContainer/Panel/item
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@onready var button: Button = $CenterContainer/Panel/use
+@onready var button: Button = $CenterContainer/Panel/item/use
+@onready var items : inventoryItem
+@onready var player = get_parent().get_node("Player")
+@onready var players = get_parent().get_parent().get_parent().get_node("Player")
 
 
 func update(item: inventoryItem):
@@ -16,17 +19,13 @@ func update(item: inventoryItem):
 		itemSprite.visible = true
 		button.visible = true
 		itemSprite.texture = item.texture
+		items = item
 		
-		
-		
-func health_me(item: inventoryItem):
-	if item.name ==  "HealthFlute":
-		return true
+func _on_use_pressed():
+	if backgroundSprite.frame == 1:
+		if items.name == "HealthFlute":
+			print(players.current_health)
+				
 
-			
-		
-			
-			
-		
 		
 	

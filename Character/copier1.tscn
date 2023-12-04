@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c8dfjty2mx5jh"]
 
 [ext_resource type="Script" path="res://Copier1.gd" id="1_dwlc0"]
-[ext_resource type="Texture2D" uid="uid://c2bh1pcafjdl2" path="res://Art/AmberBounce.png" id="2_0f2nq"]
+[ext_resource type="Texture2D" uid="uid://bh1atmtyrt8xv" path="res://Art/AmberBounce.png" id="2_0f2nq"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="3_m46nf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xj85a"]
