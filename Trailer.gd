@@ -55,6 +55,7 @@ func _process(delta):
 			move_and_slide()
 	
 	elif state == "Hatch":
+		
 		if not is_on_wall() and not is_on_floor() and not is_on_ceiling():
 			self.set_position(Vector2(self.get_position().x +(500 * directionCommit * delta) , self.get_position().y))
 		else:
@@ -63,6 +64,7 @@ func _process(delta):
 
 func _on_audio_stream_player_2d_finished():
 	state = "Hatch"
+	$Timer.start()
 	if player.sprite.flip_h == false:
 		directionCommit = 1
 	elif player.sprite.flip_h == true:
@@ -86,3 +88,7 @@ func _on_area_2d_body_entered(body):
 					child.hit(damage, Vector2.LEFT)
 				else:
 					child.hit(damage, Vector2.ZERO)
+
+
+func _on_timer_timeout():
+	queue_free()

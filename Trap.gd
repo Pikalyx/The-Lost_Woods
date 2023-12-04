@@ -38,7 +38,7 @@ func _on_area_2d_body_entered(body):
 		print("Hey, that's the player! Facing ", player.sprite.flip_h)
 		if player.sprite.flip_h == facingRight:
 			retract()
-	elif violator.begins_with("Trailer") == true:
+	elif violator.begins_with("Trailer") == true and body.state == "Latch":
 		print("Hey, that's a trailer!")
 		body.queue_free()
 		eat()
@@ -51,8 +51,10 @@ func retract():
 	$Timer.start()
 	
 func eat():
+	offset = Vector2(8.715, -133.86)
 	play("Retract")
 	eating = true
+	
 func _on_area_2d_body_exited(body):
 	var violateEnder = str(body)
 	print(violateEnder, "is exiting.")
