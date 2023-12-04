@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqynjw3liqs88"]
+[gd_scene load_steps=3 format=3 uid="uid://bqynjw3liqs88"]
 
 [ext_resource type="Script" path="res://slot_gui.gd" id="1_34wj0"]
 [ext_resource type="Texture2D" uid="uid://77gt88ftkhlq" path="res://Art/GUI Art/inventorySlot.png" id="2_vtg5l"]
-[ext_resource type="Script" path="res://use.gd" id="3_w4i3x"]
 
 [node name="Slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -25,16 +24,16 @@ offset_bottom = 20.0
 [node name="Panel" type="Panel" parent="CenterContainer"]
 layout_mode = 2
 
+[node name="use" type="Button" parent="CenterContainer/Panel"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 34.0
+scale = Vector2(0.2, 0.2)
+text = " use "
+
 [node name="item" type="Sprite2D" parent="CenterContainer/Panel"]
 position = Vector2(2.08165e-12, -5)
 
-[node name="use" type="Button" parent="."]
-layout_mode = 2
-offset_left = 6.0
-offset_top = 8.0
-offset_right = 50.0
-offset_bottom = 39.0
-text = " use "
-script = ExtResource("3_w4i3x")
-
-[connection signal="pressed" from="use" to="." method="_on_use_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/use" to="." method="_on_use_pressed"]
