@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 @onready var player = get_parent().get_parent().get_node("Player")
 @export var facingRight : bool
 var attacking = false
+var eating = false
 @export var health = 50
 @export var damage = 2
 # Called when the node enters the scene tree for the first time.
@@ -19,14 +20,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if self.is_playing() == false and attacking == false:
+	if self.is_playing() == false and attacking == false and eating == false:
 		play("Idle")
 		$AttackingArea2D.monitoring = false
 		offset = Vector2(0,0)
 		scale = Vector2(1, 1)
 	if animation == "Attack" and frame == 40:
 		attacking = false
-	if health <= 0:
+	if eating == true and is_playing() == false:
 		queue_free()
 	#var player = get_parent().get_node("Player")
 	pass
@@ -37,6 +38,10 @@ func _on_area_2d_body_entered(body):
 		print("Hey, that's the player! Facing ", player.sprite.flip_h)
 		if player.sprite.flip_h == facingRight:
 			retract()
+	elif violator.begins_with("Trailer") == true:
+		print("Hey, that's a trailer!")
+		body.queue_free()
+		eat()
 		
 		
 func retract():
@@ -44,7 +49,10 @@ func retract():
 	offset = Vector2(8.715, -133.86)
 	play("Retract")
 	$Timer.start()
-
+	
+func eat():
+	play("Retract")
+	eating = true
 func _on_area_2d_body_exited(body):
 	var violateEnder = str(body)
 	print(violateEnder, "is exiting.")
@@ -65,7 +73,6 @@ func _on_timer_timeout():
 func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	if attacking == false:
 		retract()
-	health -= 1
 
 
 func _on_eye_damageable_on_hit(node, damage_taken, knockback_direction):

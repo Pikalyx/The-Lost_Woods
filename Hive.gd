@@ -15,7 +15,10 @@ func _physics_process(delta):
 
 
 func _on_spawn_timer_timeout():
-	var spawn = spawner.instantiate()
-	spawn.set_global_position(self.get_global_position())
-	get_parent().add_child(spawn)
+	var childName = str(get_parent().get_children())
+#					print(childName)
+	if "Trailer" not in childName:
+		var spawn = spawner.instantiate()
+		spawn.set_global_position(self.get_global_position())
+		get_parent().add_child(spawn)
 	

@@ -40,9 +40,9 @@ func _process(delta):
 
 	elif state == "Latch":
 		if entering == true:
-			rotation = PI
 			$AudioStreamPlayer2D.play()
 			self.set_position(Vector2(stalkOffset, player.get_position().y))
+			look_at(player.get_position())
 			entering = false
 		#var player = get_parent().get_node("Player")
 		elif entering == false:
@@ -55,7 +55,10 @@ func _process(delta):
 			move_and_slide()
 	
 	elif state == "Hatch":
+		if not is_on_wall() and not is_on_floor() and not is_on_ceiling():
 			self.set_position(Vector2(self.get_position().x +(500 * directionCommit * delta) , self.get_position().y))
+		else:
+			queue_free()
 
 
 func _on_audio_stream_player_2d_finished():

@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://wfo8feeh0wpi"]
 
-[ext_resource type="Script" path="res://Hive.gd" id="1_tch8h"]
-[ext_resource type="Texture2D" uid="uid://bsj488nbancox" path="res://icon.svg" id="2_jaldx"]
+[ext_resource type="Script" path="res://Hive.gd" id="1_tky7w"]
+[ext_resource type="Texture2D" uid="uid://bsj488nbancox" path="res://icon.svg" id="2_d0hsx"]
 
 [node name="Hive" type="CharacterBody2D"]
-script = ExtResource("1_tch8h")
+script = ExtResource("1_tky7w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4.76837e-07)
 scale = Vector2(0.523438, 0.742188)
-texture = ExtResource("2_jaldx")
+texture = ExtResource("2_d0hsx")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
