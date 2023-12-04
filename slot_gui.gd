@@ -27,3 +27,4 @@ func _on_use_pressed():
 			if PlayerVars.ch < PlayerVars.h:
 				PlayerVars.ch += 1
 				print(PlayerVars.ch)
+				#healthChanged.emit(PlayerVars.ch)
