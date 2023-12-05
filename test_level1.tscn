@@ -1683,6 +1683,7 @@ inCloset = true
 [node name="Copier1" parent="ClosetDoor" instance=ExtResource("15_aqxfj")]
 position = Vector2(294.642, 87.3332)
 inCloset = true
+closetStinkOffset = Vector2(1668, -208)
 
 [node name="HomerBody" parent="ClosetDoor" instance=ExtResource("17_8k6ed")]
 position = Vector2(370, -4)
