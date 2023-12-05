@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://oo5rtgn88nui"]
+[gd_scene load_steps=13 format=3 uid="uid://oo5rtgn88nui"]
 
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="1_2j0oh"]
 [ext_resource type="Script" path="res://FinalBossCam.gd" id="2_2yv34"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://62q6lqpn4mw0" path="res://Boss.tscn" id="5_wglk5"]
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="6_nke6d"]
 [ext_resource type="Script" path="res://LevelTransitionArea.gd" id="7_gso8k"]
+[ext_resource type="Script" path="res://SummonTimerLabel.gd" id="8_feafo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tw0c8"]
 texture = ExtResource("2_5ro1l")
@@ -657,6 +658,14 @@ inCloset = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
 position = Vector2(17.0905, 19.716)
 shape = SubResource("CapsuleShape2D_midoo")
+
+[node name="SummonTimerLabel" type="RichTextLabel" parent="."]
+offset_left = 807.0
+offset_top = -130.0
+offset_right = 852.0
+offset_bottom = -108.0
+text = "5"
+script = ExtResource("8_feafo")
 
 [connection signal="doneZooming" from="Camera2D" to="ClosetDoor/Boss" method="_on_camera_2d_done_zooming"]
 [connection signal="closed" from="ClosetDoor" to="LevelTransitionArea" method="_on_closet_door_closed"]

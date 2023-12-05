@@ -951,15 +951,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oy1lx"]
-size = Vector2(347, 122)
+size = Vector2(347, 238)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kn8pc"]
 radius = 50.01
 
 [node name="Trap" type="CharacterBody2D"]
-scale = Vector2(0.125, 0.125)
+scale = Vector2(0.15, 0.15)
 collision_layer = 4
 collision_mask = 6
+script = ExtResource("3_34p0e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -7)
@@ -967,50 +968,49 @@ shape = SubResource("RectangleShape2D_jgqha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r63hh")
-animation = &"Eat"
-script = ExtResource("3_34p0e")
-
-[node name="Timer" type="Timer" parent="AnimatedSprite2D"]
-wait_time = 2.0
-one_shot = true
-
-[node name="IdleArea2D" type="Area2D" parent="AnimatedSprite2D"]
-collision_layer = 4
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/IdleArea2D"]
-position = Vector2(-4.5, -7)
-shape = SubResource("RectangleShape2D_oy1lx")
-
-[node name="AttackingArea2D" type="Area2D" parent="AnimatedSprite2D"]
-collision_layer = 4
-collision_mask = 2
-monitoring = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/AttackingArea2D"]
-position = Vector2(-165, -86.1)
-polygon = PackedVector2Array(323, 114, -60, -217, -99, -204, -48, -145, -84, -56, -147, -91, -165, -57, -118, -21, -116, 63, -141, 82, -186, 79, -172, 116, -112, 126, -98, 155, -151, 205, -137, 226, -72, 192, 59, 199)
-
-[node name="Eye" type="CharacterBody2D" parent="AnimatedSprite2D"]
-position = Vector2(-1, 1)
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Eye"]
-position = Vector2(-531, -35.1)
-shape = SubResource("CircleShape2D_kn8pc")
-
-[node name="EyeDamageable" type="Node" parent="AnimatedSprite2D/Eye"]
-script = ExtResource("5_cw7j4")
-health = 50.0
+animation = &"Idle"
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("5_cw7j4")
 health = 50.0
 
-[connection signal="timeout" from="AnimatedSprite2D/Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
-[connection signal="body_entered" from="AnimatedSprite2D/IdleArea2D" to="AnimatedSprite2D" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="AnimatedSprite2D/IdleArea2D" to="AnimatedSprite2D" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="AnimatedSprite2D/AttackingArea2D" to="AnimatedSprite2D" method="_on_attacking_area_2d_body_entered"]
-[connection signal="on_hit" from="AnimatedSprite2D/Eye/EyeDamageable" to="AnimatedSprite2D" method="_on_eye_damageable_on_hit"]
-[connection signal="on_hit" from="Damageable" to="AnimatedSprite2D" method="_on_damageable_on_hit"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="IdleArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IdleArea2D"]
+position = Vector2(-4.5, -65)
+shape = SubResource("RectangleShape2D_oy1lx")
+
+[node name="AttackingArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackingArea2D"]
+position = Vector2(-165, -86.1)
+polygon = PackedVector2Array(323, 114, -60, -217, -99, -204, -48, -145, -84, -56, -147, -91, -165, -57, -118, -21, -116, 63, -141, 82, -186, 79, -172, 116, -112, 126, -98, 155, -151, 205, -137, 226, -72, 192, 59, 199)
+
+[node name="Eye" type="CharacterBody2D" parent="."]
+position = Vector2(-1, 1)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eye"]
+position = Vector2(-531, -35.1)
+shape = SubResource("CircleShape2D_kn8pc")
+
+[node name="EyeDamageable" type="Node" parent="Eye"]
+script = ExtResource("5_cw7j4")
+health = 50.0
+
+[connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="IdleArea2D" to="." method="_on_idle_area_2d_body_entered"]
+[connection signal="body_exited" from="IdleArea2D" to="." method="_on_idle_area_2d_body_exited"]
+[connection signal="body_entered" from="AttackingArea2D" to="." method="_on_attacking_area_2d_body_entered"]
+[connection signal="on_hit" from="Eye/EyeDamageable" to="." method="_on_eye_damageable_on_hit"]
