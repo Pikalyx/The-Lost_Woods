@@ -5,6 +5,7 @@ class_name Player
 @export var normalspeed  = 200.0
 @export var speed : float = 200.0
 @export var max_health : float = PlayerVars.h
+@export var high_score : float = PlayerVars.hs
 @export var score : float = PlayerVars.s
 @export var current_health : float = PlayerVars.ch
 @export var t : float = PlayerVars.t
@@ -109,8 +110,10 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		$CanvasLayer3/PauseMenu.pause()
 	$CanvasLayer3/Score.updateScore(score)
+	$CanvasLayer3/hScore.updateScore(PlayerVars.hs)
 	PlayerVars.setCH(current_health)
 	PlayerVars.setS(score)
+	PlayerVars.setHS(score)
 	PlayerVars.setT($CanvasLayer3/Timer.time)
 		
 func _on_area_2d_area_entered(area):

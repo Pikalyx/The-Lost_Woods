@@ -396,7 +396,7 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 		direction.y = direction.y * knockback_direction.y 
 		health -= damage_taken
 		deflected = true
-	elif state == "Pig":
+	elif state == "Pig" and $StateInvulnTimer.is_stopped():
 		if $PigRecoilTimer.is_stopped() == true:
 			$PigRecoilTimer.start()
 		if recoilCount < 5:

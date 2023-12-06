@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var damageable = $Damageable
 var cooldown = false
 var speed = 0
-@export var ramSpeed = 200
+@export var ramSpeed = 200 * PlayerVars.esm
 var direction : Vector2
 @export var fuckRadius = 200
 @export var health = 40
@@ -19,8 +19,12 @@ var deflected = false
 func _ready():
 	if inCloset == true:
 		hide()
-		var trigger = get_parent().get_node("monster_closet_detector")
-		trigger.body_exited.connect(_on_monster_closet_detector_body_exited)
+		for i in get_parent().get_children().size():
+			var childName = str(get_parent().get_children()[i])
+			#print(childName)
+			if "monster_closet_detector" in childName:
+				var trigger = get_parent().get_children()[i]
+				trigger.body_exited.connect(_on_monster_closet_detector_body_exited)
 		if player == null:
 			var playerSeek = get_parent().get_parent().get_node("Player")
 			if playerSeek != null:
