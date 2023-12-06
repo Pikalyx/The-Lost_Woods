@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://b63oyeeqegp6q"]
+[gd_scene load_steps=11 format=3 uid="uid://b63oyeeqegp6q"]
 
 [ext_resource type="Texture2D" uid="uid://b06tbaf830ici" path="res://Art/GUI Art/Play Button.png" id="1_f6x2p"]
 [ext_resource type="Script" path="res://Game_Over.gd" id="1_il0v3"]
 [ext_resource type="Texture2D" uid="uid://htj5heakbj0a" path="res://Art/GUI Art/Pressed Play Button.png" id="2_3wbm7"]
 [ext_resource type="Texture2D" uid="uid://dx7guousarju0" path="res://Art/GUI Art/Quit Button.png" id="3_u40mb"]
 [ext_resource type="Texture2D" uid="uid://dgdoj41716x13" path="res://Art/GUI Art/Pressed Quit Button.png" id="4_l35d0"]
+[ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="6_sojxk"]
+[ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="7_v0l4g"]
+[ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="8_4on8l"]
+[ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="9_0mlhi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_48gsf"]
 font_size = 130
+font_color = Color(1, 0, 0, 1)
 
 [node name="Game_Over" type="Control"]
 layout_mode = 3
@@ -29,6 +34,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 text = "Game Over"
 label_settings = SubResource("LabelSettings_48gsf")
 horizontal_alignment = 1
@@ -58,6 +65,50 @@ layout_mode = 2
 layout_mode = 2
 texture_normal = ExtResource("3_u40mb")
 texture_pressed = ExtResource("4_l35d0")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+follow_viewport_scale = 0.75
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1256, 826.333)
+scale = Vector2(7.02604, 7.76889)
+texture = ExtResource("6_sojxk")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(756.667, 514.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("7_v0l4g")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(756.667, 514.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("8_4on8l")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(18, 46)
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(758.667, 515.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("9_0mlhi")
 
 [connection signal="button_up" from="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/play" to="." method="_on_play_button_up"]
 [connection signal="button_up" from="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/quit" to="." method="_on_quit_button_up"]

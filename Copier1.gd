@@ -17,8 +17,12 @@ var stickOffset : Vector2
 var closetStink = false
 var reachVertex = false
 var hostBody = Node2D
+var copierCount : int
+var unfilteredChildren : int
+@export var maxCopierCount = 8
 @onready var oldModulate = $Sprite2D.modulate
 @export var inCloset : bool
+@export var closetStinkOffset : Vector2
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -28,11 +32,22 @@ func _ready():
 	velocity.x = 0
 	velocity.y = -100
 	copier = ResourceLoader.load("res://Character/copier1.tscn")
+	copierCount = 0
+	unfilteredChildren = get_parent().get_children().size()
+	for i in get_parent().get_children().size():
+		var childName = str(get_parent().get_children()[i])
+		#print(childName)
+		if "Copier" in childName or childName.begins_with("@CharacterBody2D"):
+			copierCount += 1
 	if inCloset == true:
 		closetStink = true
 		hide()
-		var trigger = get_parent().get_node("monster_closet_detector")
-		trigger.body_exited.connect(_on_monster_closet_detector_body_exited)
+		for i in get_parent().get_children().size():
+			var childName = str(get_parent().get_children()[i])
+			#print(childName)
+			if "monster_closet_detector" in childName:
+				var trigger = get_parent().get_children()[i]
+				trigger.body_exited.connect(_on_monster_closet_detector_body_exited)
 	if player == null:
 		var playerSeek = get_parent().get_parent().get_node("Player")
 		if playerSeek != null:
@@ -53,14 +68,23 @@ func _physics_process(delta):
 					#$AnimationPlayer.play_backwards("Bounce")
 				if player != null:
 					if (player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius and (player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius:
-						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false and $RecoilTimer.is_stopped() == true:
+						if unfilteredChildren != get_parent().get_children().size():
+							copierCount = 0
+							unfilteredChildren = get_parent().get_children().size()
+							for i in get_parent().get_children().size():
+								var childName = str(get_parent().get_children()[i])
+								#print(childName)
+								if "Copier" in childName or childName.begins_with("@CharacterBody2D"):
+									copierCount += 1
+							#print(get_parent().get_children())
+							print("CopierCount is ", copierCount)
+						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false and $RecoilTimer.is_stopped() == true and copierCount < maxCopierCount:
 							var copy = copier.instantiate()
 							if closetStink == true:
-								copy.set_global_position(self.get_global_position() + Vector2(1668, -208))
 								copy.closet_child()
-							else:
-								copy.fuckRadius = fuckRadius
-								copy.set_global_position(self.get_global_position())
+								copy.closetStinkOffset = closetStinkOffset
+							copy.set_global_position(self.get_global_position() + closetStinkOffset)
+							copy.fuckRadius = fuckRadius
 							print(self.get_global_position())
 							#copy.set_owner(get_parent())
 							get_parent().add_child(copy)
