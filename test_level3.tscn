@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dxxtanw42vdl4"]
+[gd_scene load_steps=20 format=3 uid="uid://dxxtanw42vdl4"]
 
 
 [ext_resource type="Texture2D" uid="uid://cjgpckw38ne20" path="res://level 3/background_layer_1.png" id="1_gafwj"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
 [ext_resource type="PackedScene" uid="uid://chu334tsngh43" path="res://NextLevel.tscn" id="14_67dxh"]
 [ext_resource type="PackedScene" uid="uid://0ewxb2415e8q" path="res://restartLevel.tscn" id="14_mvi7x"]
+[ext_resource type="Texture2D" uid="uid://bcvdvs0fyhcww" path="res://Art/Sprites/TransitionHole.png" id="16_w83b2"]
+[ext_resource type="AudioStream" uid="uid://1xvuljgu551s" path="res://Sound/Beacon Beach.mp3" id="17_mqao8"]
 [ext_resource type="PackedScene" uid="uid://o4tl2sknh1ud" path="res://Character/NewHomer.tscn" id="16_yudjo"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="17_sevpx"]
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="18_frid2"]
@@ -1454,6 +1456,16 @@ position = Vector2(1374, 1162)
 [node name="next level" parent="." instance=ExtResource("14_67dxh")]
 position = Vector2(2499, 460)
 collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="next level"]
+position = Vector2(-3.99988, 2)
+scale = Vector2(1.93333, 1.84375)
+texture = ExtResource("16_w83b2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_mqao8")
+volume_db = -9.035
+autoplay = true
 
 [node name="HomerBody" parent="." instance=ExtResource("16_yudjo")]
 position = Vector2(498, 380)

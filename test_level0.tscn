@@ -1,6 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dvc57jsmfm5ka"]
 
-[ext_resource type="Texture2D" uid="uid://d10y75u7kp4ct" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_20tu8"]
+
+[ext_resource type="Texture2D" uid="uid://700hloroskx4" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_20tu8"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_ng5tn"]
 [ext_resource type="PackedScene" uid="uid://j2knar6p14kr" path="res://sign.tscn" id="3_y13tk"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="4_g58pd"]
