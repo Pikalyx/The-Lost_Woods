@@ -8,7 +8,7 @@ var homeSpeed = 600
 var cooldown = false
 var direction : Vector2
 var angle : float
-var entering : bool
+var entering = true
 var throbCount = 0
 var maxThrobCount = 10
 @onready var player = get_parent().get_node("Player")
@@ -20,8 +20,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if state == "Launch":
+		if entering == true:
+			$Timer.start()
+			entering = false
 		if not is_on_floor() and not is_on_wall():
-			if cooldown == false:
+			if cooldown == false and player != null:
 				look_at(player.get_position())
 				angle = fmod(self.get_rotation(), 2 * PI)
 				direction = Vector2(cos(angle), sin(angle))
@@ -40,6 +43,7 @@ func _process(delta):
 
 	elif state == "Latch":
 		if entering == true:
+			$Timer.stop()
 			$Sprite2D.flip_v = false
 			$AnimationPlayer.play("throb")
 			self.set_position(Vector2(player.get_position().x - 25, player.get_position().y))
@@ -47,13 +51,15 @@ func _process(delta):
 			entering = false
 		#var player = get_parent().get_node("Player")
 		elif entering == false:
-			if not is_on_floor() and not is_on_ceiling():
-				if player.sprite.flip_h == false:
+			#print(is_on_wall())
+			if (not is_on_floor_only() and not is_on_ceiling_only()) or (player.is_on_floor() and $Timer.is_stopped() == true):
+				if player.sprite.flip_h == false and not player.is_on_wall():
 					stalkOffset = (player.get_position().x - 25)
-				elif player.sprite.flip_h == true:
+				elif player.sprite.flip_h == true and not player.is_on_wall():
 					stalkOffset = (player.get_position().x + 25)
-				self.set_position(Vector2(stalkOffset, player.get_position().y))
+				self.set_position(Vector2(stalkOffset, player.get_position().y -10))
 			else:
+				modulate = Color(0,0,0)
 				$AnimationPlayer.pause()
 				if $Timer.is_stopped() == true:
 					$Timer.start()
