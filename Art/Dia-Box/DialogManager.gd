@@ -13,6 +13,7 @@ var text_box_position: Vector2
 var is_dialog_active = false
 var can_advance_line = false
 
+signal dialog_finished
 
 func start_dialog(position: Vector2, lines: Array[String]):
 	if is_dialog_active:
@@ -37,16 +38,13 @@ func _on_text_box_finished_displaying():
 	can_advance_line = true
 
 func _unhandled_input(event):
-	if (
-		event.is_action_pressed("advance_dialog") &&
-		is_dialog_active &&
-		can_advance_line
-	):
-		text_box.queue.free()
+	if (event.is_action_pressed("advance_dialog") && is_dialog_active && can_advance_line):
+		text_box.hide()
 		
 		current_line_index += 1
 		if current_line_index >= dialog_lines.size():
 			is_dialog_active = false
 			current_line_index = 0
+			#dialog_finished.emit()
 			return
 		_show_text_box()

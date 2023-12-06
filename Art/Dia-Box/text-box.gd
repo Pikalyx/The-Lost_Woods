@@ -14,7 +14,7 @@ var punctuation_time = 0.2
 
 signal finished_displaying()
 
-func display_tex(text_to_display: String):
+func display_text(text_to_display: String):
 	text = text_to_display
 	label.text = text_to_display
 	
@@ -27,11 +27,11 @@ func display_tex(text_to_display: String):
 		await resized # wait for y resize
 		custom_minimum_size.y = size.y
 		
-		global_position.x -= size.x / 2
-		global_position.y -= size.y + 24
+	global_position.x -= size.x / 2
+	global_position.y -= size.y + 24
 		
-		label.text = ""
-		_display_letter()
+	label.text = ""
+	_display_letter()
 	
 	
 func _display_letter():

@@ -3,7 +3,10 @@
 [ext_resource type="Script" path="res://Interaction/InteractionArea.gd" id="1_dpvoy"]
 
 [node name="InteractionArea" type="Area2D"]
+z_index = 20
 collision_layer = 0
+collision_mask = 2
+monitorable = false
 script = ExtResource("1_dpvoy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

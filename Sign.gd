@@ -4,8 +4,12 @@ extends Node2D
 @onready var interaction_area: InteractionArea = $InteractionArea
 
 
-const lines: Array[String] = [
-	"Hello"
+@export var lines: Array[String] = [
+	"Hello 234",
+	"Hi",
+	"Howdey",
+	"Haloha",
+	"Goodbye"
 ]
 
 func _ready():
@@ -14,4 +18,4 @@ func _ready():
 
 func _on_interact():
 	DialogManager.start_dialog(global_position, lines)
-	await DialogManager.dialog_finished
+	#await DialogManager.dialog_finished
