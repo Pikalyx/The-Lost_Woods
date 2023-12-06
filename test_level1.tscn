@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4aqd86pwf6h7"]
+[gd_scene load_steps=31 format=3 uid="uid://b4aqd86pwf6h7"]
 
-[ext_resource type="Texture2D" uid="uid://700hloroskx4" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
+[ext_resource type="Texture2D" uid="uid://c3to2nnxsjx6q" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
 [ext_resource type="Script" path="res://camShake.gd" id="3_0rw4l"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_axmyc"]
@@ -23,8 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="19_vx56n"]
 [ext_resource type="PackedScene" uid="uid://dqodgxxv4aaxb" path="res://NewTrap.tscn" id="20_qdlxw"]
 [ext_resource type="PackedScene" uid="uid://wfo8feeh0wpi" path="res://hive.tscn" id="21_qg2j3"]
-[ext_resource type="AudioStream" uid="uid://djtefqfwda1ap" path="res://Sound/Level1BGM.mp3" id="23_yrylr"]
 [ext_resource type="PackedScene" uid="uid://0abdvjekaw6l" path="res://speedpot.tscn" id="22_g1vnr"]
+[ext_resource type="AudioStream" uid="uid://djtefqfwda1ap" path="res://Sound/Level1BGM.mp3" id="23_yrylr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_iy2pk")
