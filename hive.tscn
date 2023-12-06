@@ -1,10 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://wfo8feeh0wpi"]
+[gd_scene load_steps=7 format=3 uid="uid://wfo8feeh0wpi"]
 
 [ext_resource type="Script" path="res://Hive.gd" id="1_tky7w"]
-[ext_resource type="Texture2D" uid="uid://bsj488nbancox" path="res://icon.svg" id="2_d0hsx"]
+[ext_resource type="Texture2D" uid="uid://dupkm881rhlw0" path="res://Art/Sprites/HiveSpurt.png" id="2_nfbw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2b3x8"]
-size = Vector2(52, 74)
+size = Vector2(26, 80)
+
+[sub_resource type="Animation" id="Animation_y5f7b"]
+resource_name = "Spurt"
+length = 1.26667
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 1, 1.06667, 1.13333, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_yfhet"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqcgd"]
+_data = {
+"RESET": SubResource("Animation_yfhet"),
+"Spurt": SubResource("Animation_y5f7b")
+}
 
 [node name="Hive" type="CharacterBody2D"]
 collision_layer = 16
@@ -12,13 +50,19 @@ script = ExtResource("1_tky7w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 9.53674e-07)
-scale = Vector2(0.402344, 0.570488)
-texture = ExtResource("2_d0hsx")
+scale = Vector2(0.072, 0.102)
+texture = ExtResource("2_nfbw4")
+hframes = 5
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2b3x8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rqcgd")
+}
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

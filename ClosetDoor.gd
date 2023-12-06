@@ -45,6 +45,7 @@ func _process(delta):
 
 func _on_monster_closet_detector_body_exited(body):
 	show()
+	unfilteredChildren = get_children().size()
 	for i in unfilteredChildren:
 		var childName = str(get_children()[i])
 		if "closet" in childName:

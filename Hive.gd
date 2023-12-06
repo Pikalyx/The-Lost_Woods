@@ -21,6 +21,7 @@ func _physics_process(delta):
 				var childName = str(get_parent().get_children())
 #					print(childName)
 				if "Trailer" not in childName:
+					$AnimationPlayer.play("Spurt")
 					var spawn = spawner.instantiate()
 					spawn.set_global_position(self.get_global_position()) # + Vector2(0,25)
 					get_parent().add_child(spawn)

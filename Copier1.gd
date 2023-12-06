@@ -18,6 +18,7 @@ var closetStink = false
 var reachVertex = false
 var hostBody = Node2D
 var copierCount : int
+var unfilteredChildren : int
 @export var maxCopierCount = 10
 @onready var oldModulate = $Sprite2D.modulate
 @export var inCloset : bool
@@ -32,10 +33,11 @@ func _ready():
 	velocity.y = -100
 	copier = ResourceLoader.load("res://Character/copier1.tscn")
 	copierCount = 0
+	unfilteredChildren = get_parent().get_children().size()
 	for i in get_parent().get_children().size():
 		var childName = str(get_parent().get_children()[i])
 		#print(childName)
-		if "copier" in childName:
+		if "Copier" in childName or childName.begins_with("@CharacterBody2D"):
 			copierCount += 1
 	if inCloset == true:
 		closetStink = true
@@ -66,11 +68,16 @@ func _physics_process(delta):
 					#$AnimationPlayer.play_backwards("Bounce")
 				if player != null:
 					if (player.get_position().x - self.get_global_position().x) <= fuckRadius and (player.get_position().x - self.get_global_position().x) >= -fuckRadius and (player.get_position().y - self.get_global_position().y) <= fuckRadius and (player.get_position().y - self.get_global_position().y) >= -fuckRadius:
-						for i in get_parent().get_children().size():
-							var childName = str(get_parent().get_children()[i])
-							#print(childName)
-							if "copier" in childName:
-								copierCount += 1
+						if unfilteredChildren != get_parent().get_children().size():
+							copierCount = 0
+							unfilteredChildren = get_parent().get_children().size()
+							for i in get_parent().get_children().size():
+								var childName = str(get_parent().get_children()[i])
+								#print(childName)
+								if "Copier" in childName or childName.begins_with("@CharacterBody2D"):
+									copierCount += 1
+							print(get_parent().get_children())
+							print("CopierCount is ", copierCount)
 						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false and $RecoilTimer.is_stopped() == true and copierCount <= maxCopierCount:
 							var copy = copier.instantiate()
 							if closetStink == true:
