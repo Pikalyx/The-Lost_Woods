@@ -1486,7 +1486,7 @@ scale = Vector2(1, 0.990643)
 position = Vector2(1176, 213)
 
 [node name="HomerBody5" parent="." instance=ExtResource("16_yudjo")]
-position = Vector2(429, 172)
+position = Vector2(977, 481)
 scale = Vector2(4.42252, 4.16662)
 ramSpeed = 300
 fuckRadius = 800
