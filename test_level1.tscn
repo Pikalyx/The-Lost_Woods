@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://b4aqd86pwf6h7"]
 
-[ext_resource type="Texture2D" uid="uid://c3to2nnxsjx6q" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
+[ext_resource type="Texture2D" uid="uid://700hloroskx4" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_iy2pk"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_xb4bq"]
 [ext_resource type="Script" path="res://camShake.gd" id="3_0rw4l"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_axmyc"]
@@ -1548,7 +1548,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_wqln0")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2yq22"]
-radius = 31.1448
+radius = 45.8912
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ausj1"]
 size = Vector2(39, 49)
@@ -1648,12 +1648,12 @@ scale = Vector2(1.19141, 1.17778)
 texture = ExtResource("11_231cr")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(4235, 122)
+position = Vector2(3618, 115)
 collision_mask = 2
 script = ExtResource("12_1tbo6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, -1)
+position = Vector2(2, 3)
 shape = SubResource("CircleShape2D_2yq22")
 
 [node name="ClosetDoor" type="CharacterBody2D" parent="."]
