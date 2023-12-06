@@ -673,6 +673,8 @@ offset_bottom = -108.0
 text = "5"
 script = ExtResource("8_feafo")
 
+[node name="ClosetSensitiveMusic" type="AudioStreamPlayer" parent="."]
+
 [connection signal="doneZooming" from="Camera2D" to="ClosetDoor/Boss" method="_on_camera_2d_done_zooming"]
 [connection signal="closed" from="ClosetDoor" to="LevelTransitionArea" method="_on_closet_door_closed"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="Camera2D" method="_on_monster_closet_detector_body_exited"]
