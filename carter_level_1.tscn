@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://oo5rtgn88nui"]
+[gd_scene load_steps=15 format=3 uid="uid://oo5rtgn88nui"]
 
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="1_2j0oh"]
+[ext_resource type="Script" path="res://carter_level_1.gd" id="1_jeenu"]
 [ext_resource type="Texture2D" uid="uid://c7y0hc7q6i5yn" path="res://Art/awesomeCavePixelArt.png" id="1_u8msu"]
 [ext_resource type="Script" path="res://FinalBossCam.gd" id="2_2yv34"]
 [ext_resource type="Texture2D" uid="uid://dl7b64fhmtq81" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/red.png" id="2_5ro1l"]
@@ -588,6 +589,7 @@ radius = 27.0
 height = 80.0
 
 [node name="carter_level_1" type="Node2D"]
+script = ExtResource("1_jeenu")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(746, -70)
@@ -674,6 +676,17 @@ text = "5"
 script = ExtResource("8_feafo")
 
 [node name="ClosetSensitiveMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 576.0
+offset_top = -194.0
+offset_right = 681.0
+offset_bottom = -171.0
+bbcode_enabled = true
+text = "Boss Health:
+"
+fit_content = true
+scroll_active = false
 
 [connection signal="doneZooming" from="Camera2D" to="ClosetDoor/Boss" method="_on_camera_2d_done_zooming"]
 [connection signal="closed" from="ClosetDoor" to="LevelTransitionArea" method="_on_closet_door_closed"]
