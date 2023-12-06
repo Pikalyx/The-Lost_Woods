@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfslgacjv5d0h"]
+[gd_scene load_steps=4 format=3 uid="uid://ccagq8qfjj4nb"]
 
 [ext_resource type="Script" path="res://youWin.gd" id="1_ekk5l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6hyrf"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_gq7wp"]
+font_size = 80
 
 [node name="youWin" type="Node2D"]
 script = ExtResource("1_ekk5l")
@@ -10,7 +16,35 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(1920, 980)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="YouWon" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "You Won
+"
+label_settings = SubResource("LabelSettings_6hyrf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="scoreHolder" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Score_Label" type="Label" parent="MarginContainer/VBoxContainer/scoreHolder"]
+layout_mode = 2
+text = "You're Score was:"
+label_settings = SubResource("LabelSettings_gq7wp")
+
+[node name="realScore" type="Label" parent="MarginContainer/VBoxContainer/scoreHolder"]
+layout_mode = 2
+
+[node name="timeHolder" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer_Label" type="Label" parent="MarginContainer/VBoxContainer/timeHolder"]
+layout_mode = 2
+text = "You're Score was:"
+label_settings = SubResource("LabelSettings_gq7wp")
+
+[node name="realTimer" type="Label" parent="MarginContainer/VBoxContainer/timeHolder"]
 layout_mode = 2
