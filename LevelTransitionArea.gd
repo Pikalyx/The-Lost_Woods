@@ -7,12 +7,12 @@ func _ready():
 	if inCloset == true:
 		monitoring = false
 		hide()
-	else:
-		show()
-		monitoring = true
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if inCloset == false:
+		show()
+		monitoring = true
 
 func _on_body_entered(body):
 	print("changing to ", targetLevel)

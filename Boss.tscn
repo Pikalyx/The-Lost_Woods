@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://62q6lqpn4mw0"]
 
 [ext_resource type="Script" path="res://Boss.gd" id="1_i7cuh"]
-[ext_resource type="Texture2D" uid="uid://dkqcsdhggpam6" path="res://Art/Sprites/NightBorne.png" id="2_jxe08"]
-[ext_resource type="AudioStream" uid="uid://qdu223k2vg4b" path="res://Sound/223612__ctcollab__epic-sword-clash.wav" id="3_2pip8"]
+[ext_resource type="Texture2D" uid="uid://c6sqremsf0vpy" path="res://Art/Sprites/NightBorne.png" id="2_jxe08"]
+[ext_resource type="AudioStream" uid="uid://cnbq63y1v0qpf" path="res://Sound/223612__ctcollab__epic-sword-clash.wav" id="3_2pip8"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="7_xgmsc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cow2o"]
@@ -91,6 +91,37 @@ tracks/0/keys = {
 "update": 1,
 "values": [50, 51, 52, 53, 54]
 }
+
+[sub_resource type="Animation" id="Animation_d6ynq"]
+resource_name = "clash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [54, 53, 52, 51]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_2pip8")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_75wkr"]
 resource_name = "dash"
@@ -361,37 +392,6 @@ tracks/2/keys = {
 "values": [23, 24, 25, 26, 27, 28]
 }
 
-[sub_resource type="Animation" id="Animation_d6ynq"]
-resource_name = "clash"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [54, 53, 52, 51]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_2pip8")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/1/use_blend = true
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpa0i"]
 _data = {
 "RESET": SubResource("Animation_j3noa"),
@@ -466,6 +466,7 @@ wait_time = 4.0
 one_shot = true
 
 [node name="StateInvulnTimer" type="Timer" parent="."]
+wait_time = 0.7
 one_shot = true
 
 [node name="SummonTimer" type="Timer" parent="."]
