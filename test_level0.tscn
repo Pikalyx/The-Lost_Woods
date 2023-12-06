@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvc57jsmfm5ka"]
+[gd_scene load_steps=15 format=3 uid="uid://dvc57jsmfm5ka"]
 
 [ext_resource type="Texture2D" uid="uid://c3to2nnxsjx6q" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_20tu8"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_ng5tn"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://wfo8feeh0wpi" path="res://hive.tscn" id="6_2qysk"]
 [ext_resource type="Script" path="res://Next Level.gd" id="7_avuh3"]
 [ext_resource type="AudioStream" uid="uid://cwe8ku24b6heg" path="res://Sound/Level0BGM.mp3" id="8_q0wdm"]
+[ext_resource type="PackedScene" uid="uid://o4tl2sknh1ud" path="res://Character/NewHomer.tscn" id="9_jjavl"]
+[ext_resource type="Script" path="res://NonReactiveMusic.gd" id="9_m34cg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ek8l5"]
 
@@ -1532,4 +1534,9 @@ lines = Array[String](["If you find any items you can collect them", "Use [E] to
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_q0wdm")
 autoplay = true
+script = ExtResource("9_m34cg")
+
+[node name="HomerBody" parent="." instance=ExtResource("9_jjavl")]
+position = Vector2(2506, -114)
+
 [connection signal="body_entered" from="Next Level" to="Next Level" method="_on_body_entered"]
