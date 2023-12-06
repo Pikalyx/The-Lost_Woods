@@ -1669,7 +1669,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClosetDoor/monster_closet_detector"]
-position = Vector2(1.5, 1.5)
+position = Vector2(62, 2)
 shape = SubResource("RectangleShape2D_ausj1")
 
 [node name="snail" parent="ClosetDoor" instance=ExtResource("3_j2hck")]
@@ -1683,6 +1683,7 @@ inCloset = true
 [node name="Copier1" parent="ClosetDoor" instance=ExtResource("15_aqxfj")]
 position = Vector2(294.642, 87.3332)
 inCloset = true
+closetStinkOffset = Vector2(1668, -208)
 
 [node name="HomerBody" parent="ClosetDoor" instance=ExtResource("17_8k6ed")]
 position = Vector2(370, -4)
@@ -1693,14 +1694,13 @@ position = Vector2(-364, 8)
 
 [node name="HomerBody" parent="." instance=ExtResource("17_8k6ed")]
 position = Vector2(339, -25)
-health = 40
 
 [node name="CarterLevel1Transition" type="Area2D" parent="."]
 position = Vector2(-1056.48, 258.13)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("18_b4hh7")
-targetLevel = "res://carter_level_1.tscn"
+targetLevel = "res://levels/carter_level_2.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarterLevel1Transition"]
 position = Vector2(6.48083, 4.86987)
@@ -1720,7 +1720,6 @@ position = Vector2(-4708, -83)
 
 [node name="HomerBody2" parent="." instance=ExtResource("17_8k6ed")]
 position = Vector2(-150.206, 0.517029)
-health = 40
 
 [node name="Trap" parent="." instance=ExtResource("20_qdlxw")]
 position = Vector2(-395, 81)
