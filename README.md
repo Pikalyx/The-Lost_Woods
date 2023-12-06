@@ -3,7 +3,7 @@
 
 ## Installation
 
- 1: Download the source Code from the green code button (download .zip)
+ 1: Download the source Code from the code button at the top (click download .zip)
 
  2: Install Godot Engine from their website https://godotengine.org/
 
