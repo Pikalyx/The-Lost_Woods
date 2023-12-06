@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var animation_tree : AnimationTree = $AnimationTree
 
 @export var starting_move_direction : Vector2 = Vector2.LEFT
-@export var movement_speed : float = 30.0
+@export var movement_speed : float = 30.0 * PlayerVars.esm
 @export var hit_state : State
 @export var inCloset : bool
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
