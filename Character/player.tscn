@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://c06h0yv06ktmh"]
+[gd_scene load_steps=67 format=3 uid="uid://c06h0yv06ktmh"]
 
 [ext_resource type="Texture2D" uid="uid://q83isyqwcgo2" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gx7fp"]
 [ext_resource type="Script" path="res://Character/player.gd" id="1_kxgl7"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="21_yaka7"]
 [ext_resource type="Script" path="res://Character/Timer.gd" id="22_l6u8f"]
 [ext_resource type="Script" path="res://Character/Score.gd" id="23_u8jk2"]
+[ext_resource type="Script" path="res://Character/hScore.gd" id="24_8adcv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wja7b"]
 radius = 8.0
@@ -634,6 +635,15 @@ offset_bottom = 173.0
 theme_override_font_sizes/font_size = 40
 text = "Score: "
 script = ExtResource("23_u8jk2")
+
+[node name="hScore" type="Label" parent="CanvasLayer3"]
+offset_left = 17.0
+offset_top = 153.0
+offset_right = 153.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 40
+text = "High Score: "
+script = ExtResource("24_8adcv")
 
 [node name="Dash" type="Node2D" parent="."]
 script = ExtResource("20_vup2t")

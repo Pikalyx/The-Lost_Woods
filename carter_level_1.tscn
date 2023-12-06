@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://oo5rtgn88nui"]
 
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="1_2j0oh"]
-[ext_resource type="Texture2D" uid="uid://usy1lv4nqova" path="res://Art/awesomeCavePixelArt.png" id="1_u8msu"]
+[ext_resource type="Texture2D" uid="uid://c7y0hc7q6i5yn" path="res://Art/awesomeCavePixelArt.png" id="1_u8msu"]
 [ext_resource type="Script" path="res://FinalBossCam.gd" id="2_2yv34"]
 [ext_resource type="Texture2D" uid="uid://dl7b64fhmtq81" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/red.png" id="2_5ro1l"]
 [ext_resource type="Script" path="res://ClosetDoor.gd" id="4_tm4xm"]
