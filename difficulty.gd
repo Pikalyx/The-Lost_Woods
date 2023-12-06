@@ -7,7 +7,7 @@ func _on_easy_button_button_up():
 	PlayerVars.setT(0)
 	PlayerVars.setSW(25)
 	PlayerVars.setESM(0.5)
-	SceneTransition.change_scene_to_file("res://test_level1.tscn")
+	SceneTransition.change_scene_to_file("res://test_level0.tscn")
 
 
 func _on_medium_button_button_up():
@@ -16,7 +16,7 @@ func _on_medium_button_button_up():
 	PlayerVars.setT(0)
 	PlayerVars.setSW(15)
 	PlayerVars.setESM(1)
-	SceneTransition.change_scene_to_file("res://test_level1.tscn")
+	SceneTransition.change_scene_to_file("res://test_level0.tscn")
 
 
 func _on_hard_button_button_up():
@@ -25,7 +25,7 @@ func _on_hard_button_button_up():
 	PlayerVars.setT(0)
 	PlayerVars.setSW(10)
 	PlayerVars.setESM(1.5)
-	SceneTransition.change_scene_to_file("res://test_level1.tscn")
+	SceneTransition.change_scene_to_file("res://test_level0.tscn")
 
 
 func _on_impossible_button_button_up():
@@ -34,4 +34,4 @@ func _on_impossible_button_button_up():
 	PlayerVars.setT(0)
 	PlayerVars.setSW(5)
 	PlayerVars.setESM(2)
-	SceneTransition.change_scene_to_file("res://test_level1.tscn")
+	SceneTransition.change_scene_to_file("res://test_level0.tscn")
