@@ -4,7 +4,8 @@ extends Node
 @export var t : float
 @export var s : float
 @export var ch : float = 20
-
+@export var sw : int = 10
+@export var esm : float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +22,12 @@ func setS(score: float):
 	
 func setCH(current: float):
 	ch = current
+	
+func setSW(sword: int):
+	sw = sword
+	
+func setESM(speed: float):
+	esm = speed
 
 	
 	
