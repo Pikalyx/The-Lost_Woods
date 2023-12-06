@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://wfo8feeh0wpi"]
 
 [ext_resource type="Script" path="res://Hive.gd" id="1_tky7w"]
+
 [ext_resource type="Texture2D" uid="uid://dupkm881rhlw0" path="res://Art/Sprites/HiveSpurt.png" id="2_nfbw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2b3x8"]
