@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://uo7hbmwy4l1r"]
 
-[ext_resource type="Texture2D" uid="uid://chuhau04u6dhm" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_yie4n"]
+[ext_resource type="Texture2D" uid="uid://d10y75u7kp4ct" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_yie4n"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_mcw2p"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="3_preoq"]
 [ext_resource type="Script" path="res://camShake.gd" id="3_t4sdn"]
@@ -1599,3 +1599,5 @@ position = Vector2(1042, -623)
 
 [node name="restartLevel" parent="." instance=ExtResource("18_3lhhu")]
 position = Vector2(125, 423)
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
