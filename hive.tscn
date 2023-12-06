@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://wfo8feeh0wpi"]
 
 [ext_resource type="Script" path="res://Hive.gd" id="1_tky7w"]
-[ext_resource type="Texture2D" uid="uid://bsj488nbancox" path="res://icon.svg" id="2_d0hsx"]
+[ext_resource type="Texture2D" uid="uid://c36g8fbep4rkd" path="res://icon.svg" id="2_d0hsx"]
 
 [node name="Hive" type="CharacterBody2D"]
 script = ExtResource("1_tky7w")

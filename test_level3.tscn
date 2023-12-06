@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxxtanw42vdl4"]
+[gd_scene load_steps=23 format=3 uid="uid://dxxtanw42vdl4"]
 
 [ext_resource type="Texture2D" uid="uid://6f1we1y8cqnn" path="res://level 3/background_layer_1.png" id="1_gafwj"]
 [ext_resource type="Texture2D" uid="uid://b35v0xjw272ec" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
@@ -15,6 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
 [ext_resource type="PackedScene" uid="uid://chu334tsngh43" path="res://NextLevel.tscn" id="14_67dxh"]
 [ext_resource type="PackedScene" uid="uid://0ewxb2415e8q" path="res://restartLevel.tscn" id="14_mvi7x"]
+[ext_resource type="PackedScene" uid="uid://o4tl2sknh1ud" path="res://Character/NewHomer.tscn" id="16_yudjo"]
+[ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="17_sevpx"]
+[ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="18_frid2"]
+[ext_resource type="PackedScene" uid="uid://0abdvjekaw6l" path="res://speedpot.tscn" id="19_1ah3s"]
+[ext_resource type="PackedScene" uid="uid://wfo8feeh0wpi" path="res://hive.tscn" id="20_5la53"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbpwq"]
 texture = ExtResource("1_hsu8m")
@@ -1414,7 +1419,7 @@ texture = ExtResource("7_hh7xc")
 
 [node name="MovingPlatform" parent="." instance=ExtResource("9_7veqo")]
 position = Vector2(753, 433)
-distance = Vector2(50, 46)
+distance = Vector2(70, 60)
 phase_offset = 0.28
 debug = false
 
@@ -1448,3 +1453,45 @@ position = Vector2(1374, 1162)
 [node name="next level" parent="." instance=ExtResource("14_67dxh")]
 position = Vector2(2499, 460)
 collision_mask = 2
+
+[node name="HomerBody" parent="." instance=ExtResource("16_yudjo")]
+position = Vector2(498, 380)
+health = 6
+damage = 2
+
+[node name="HomerBody2" parent="." instance=ExtResource("16_yudjo")]
+position = Vector2(852, 678)
+
+[node name="HomerBody3" parent="." instance=ExtResource("16_yudjo")]
+position = Vector2(1369, -157)
+
+[node name="HomerBody4" parent="." instance=ExtResource("16_yudjo")]
+position = Vector2(1934, 137)
+
+[node name="pig" parent="." instance=ExtResource("17_sevpx")]
+position = Vector2(1482, -16)
+
+[node name="pig2" parent="." instance=ExtResource("17_sevpx")]
+position = Vector2(2510, 482)
+scale = Vector2(0.995009, 0.977697)
+
+[node name="HealthFlute" parent="." instance=ExtResource("18_frid2")]
+position = Vector2(2269, 489)
+
+[node name="speedpot" parent="." instance=ExtResource("19_1ah3s")]
+position = Vector2(1432, -8)
+scale = Vector2(1, 0.990643)
+
+[node name="Hive" parent="." instance=ExtResource("20_5la53")]
+position = Vector2(1176, 213)
+
+[node name="HomerBody5" parent="." instance=ExtResource("16_yudjo")]
+position = Vector2(429, 172)
+scale = Vector2(4.42252, 4.16662)
+ramSpeed = 300
+fuckRadius = 800
+health = 100
+damage = 3
+
+[node name="HealthFlute2" parent="." instance=ExtResource("18_frid2")]
+position = Vector2(1347, -10)
