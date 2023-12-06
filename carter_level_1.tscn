@@ -1,15 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://oo5rtgn88nui"]
+[gd_scene load_steps=17 format=3 uid="uid://oo5rtgn88nui"]]
 
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="1_2j0oh"]
 [ext_resource type="Script" path="res://carter_level_1.gd" id="1_jeenu"]
 [ext_resource type="Texture2D" uid="uid://c7y0hc7q6i5yn" path="res://Art/awesomeCavePixelArt.png" id="1_u8msu"]
 [ext_resource type="Script" path="res://FinalBossCam.gd" id="2_2yv34"]
-[ext_resource type="Texture2D" uid="uid://dl7b64fhmtq81" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/red.png" id="2_5ro1l"]
+[ext_resource type="Texture2D" uid="uid://bepiwx23qga2o" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/red.png" id="2_5ro1l"]
 [ext_resource type="Script" path="res://ClosetDoor.gd" id="4_tm4xm"]
 [ext_resource type="PackedScene" uid="uid://62q6lqpn4mw0" path="res://Boss.tscn" id="5_wglk5"]
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="6_nke6d"]
 [ext_resource type="Script" path="res://LevelTransitionArea.gd" id="7_gso8k"]
 [ext_resource type="Script" path="res://SummonTimerLabel.gd" id="8_feafo"]
+[ext_resource type="Texture2D" uid="uid://bcvdvs0fyhcww" path="res://Art/Sprites/TransitionHole.png" id="9_b4dad"]
+[ext_resource type="AudioStream" uid="uid://bq3km38g1edga" path="res://Sound/FinalBossMusic.mp3" id="10_7cphs"]
+[ext_resource type="Script" path="res://ClosetSensitiveMusic.gd" id="11_yqeep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tw0c8"]
 texture = ExtResource("2_5ro1l")
@@ -663,6 +666,11 @@ script = ExtResource("7_gso8k")
 targetLevel = "res://test_level1.tscn"
 inCloset = true
 
+[node name="Sprite2D" type="Sprite2D" parent="LevelTransitionArea"]
+position = Vector2(17.09, 20.216)
+scale = Vector2(1.75, 2.46875)
+texture = ExtResource("9_b4dad")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitionArea"]
 position = Vector2(17.0905, 19.716)
 shape = SubResource("CapsuleShape2D_midoo")
@@ -676,6 +684,9 @@ text = "5"
 script = ExtResource("8_feafo")
 
 [node name="ClosetSensitiveMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_7cphs")
+volume_db = -0.7
+script = ExtResource("11_yqeep")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 576.0
@@ -689,7 +700,9 @@ fit_content = true
 scroll_active = false
 
 [connection signal="doneZooming" from="Camera2D" to="ClosetDoor/Boss" method="_on_camera_2d_done_zooming"]
+[connection signal="doneZooming" from="Camera2D" to="ClosetSensitiveMusic" method="_on_camera_2d_done_zooming"]
 [connection signal="closed" from="ClosetDoor" to="LevelTransitionArea" method="_on_closet_door_closed"]
+[connection signal="closed" from="ClosetDoor" to="ClosetSensitiveMusic" method="_on_closet_door_closed"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="Camera2D" method="_on_monster_closet_detector_body_exited"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]
 [connection signal="zoomOut" from="ClosetDoor/Boss" to="Camera2D" method="_on_boss_zoom_out"]
