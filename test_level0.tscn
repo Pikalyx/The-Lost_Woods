@@ -1532,5 +1532,4 @@ lines = Array[String](["If you find any items you can collect them", "Use [E] to
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_q0wdm")
 autoplay = true
-
 [connection signal="body_entered" from="Next Level" to="Next Level" method="_on_body_entered"]
