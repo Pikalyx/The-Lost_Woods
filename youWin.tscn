@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccagq8qfjj4nb"]
+[gd_scene load_steps=10 format=3 uid="uid://ccagq8qfjj4nb"]
 
 [ext_resource type="Script" path="res://youWin.gd" id="1_ekk5l"]
+[ext_resource type="Texture2D" uid="uid://dx7guousarju0" path="res://Art/GUI Art/Quit Button.png" id="2_bj85x"]
 [ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="2_kpb4w"]
+[ext_resource type="Texture2D" uid="uid://dgdoj41716x13" path="res://Art/GUI Art/Pressed Quit Button.png" id="3_1o3sj"]
 [ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="3_prjw4"]
 [ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="4_vnqb2"]
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="5_wi581"]
@@ -54,6 +56,12 @@ label_settings = SubResource("LabelSettings_gq7wp")
 [node name="realTimer" type="Label" parent="MarginContainer/VBoxContainer/timeHolder"]
 layout_mode = 2
 
+[node name="quitButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_bj85x")
+texture_pressed = ExtResource("3_1o3sj")
+stretch_mode = 3
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
 follow_viewport_scale = 0.75
@@ -97,3 +105,5 @@ motion_mirroring = Vector2(500, 0)
 position = Vector2(758.667, 515.333)
 scale = Vector2(4.36198, 5.41333)
 texture = ExtResource("5_wi581")
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/quitButton" to="." method="_on_quit_button_button_up"]
