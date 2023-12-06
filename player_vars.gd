@@ -6,14 +6,19 @@ extends Node
 @export var ch : float = 20
 @export var sw : int = 10
 @export var esm : float = 1
-
+@export var hs : float = 100
+@export var bh: float = 450
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
+func setHS(score: float):
+	if score > hs:
+		hs = score
+		
 func setH(health: float):
 	h = health
-
+func setBH(health: float):
+	bh = health
 func setT(time: float):
 	t = time
 
