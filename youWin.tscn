@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccagq8qfjj4nb"]
+
+[ext_resource type="Script" path="res://youWin.gd" id="1_ekk5l"]
+[ext_resource type="Texture2D" uid="uid://c2m8sbipm8oaf" path="res://Parallax/Garden_s Forest/background4.png" id="2_kpb4w"]
+[ext_resource type="Texture2D" uid="uid://ckquxv8pdnx0o" path="res://Parallax/Garden_s Forest/background3.png" id="3_prjw4"]
+[ext_resource type="Texture2D" uid="uid://6j2454jial6c" path="res://Parallax/Garden_s Forest/background2.png" id="4_vnqb2"]
+[ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="5_wi581"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6hyrf"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_gq7wp"]
+font_size = 80
+
+[node name="youWin" type="Node2D"]
+script = ExtResource("1_ekk5l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(1920, 980)
+layout_mode = 2
+
+[node name="YouWon" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "You Won!"
+label_settings = SubResource("LabelSettings_6hyrf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="scoreHolder" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Score_Label" type="Label" parent="MarginContainer/VBoxContainer/scoreHolder"]
+layout_mode = 2
+text = "Score: "
+label_settings = SubResource("LabelSettings_gq7wp")
+
+[node name="realScore" type="Label" parent="MarginContainer/VBoxContainer/scoreHolder"]
+layout_mode = 2
+
+[node name="timeHolder" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Timer_Label" type="Label" parent="MarginContainer/VBoxContainer/timeHolder"]
+layout_mode = 2
+text = "Time: "
+label_settings = SubResource("LabelSettings_gq7wp")
+
+[node name="realTimer" type="Label" parent="MarginContainer/VBoxContainer/timeHolder"]
+layout_mode = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+follow_viewport_scale = 0.75
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1256, 826.333)
+scale = Vector2(7.02604, 7.76889)
+texture = ExtResource("2_kpb4w")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(756.667, 514.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("3_prjw4")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(20, 47)
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(756.667, 514.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("4_vnqb2")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(18, 46)
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(758.667, 515.333)
+scale = Vector2(4.36198, 5.41333)
+texture = ExtResource("5_wi581")

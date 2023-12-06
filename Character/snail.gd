@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var animation_tree : AnimationTree = $AnimationTree
 
 @export var starting_move_direction : Vector2 = Vector2.LEFT
-@export var movement_speed : float = 30.0
+@export var movement_speed : float = 30.0 * PlayerVars.esm
 @export var hit_state : State
 @export var inCloset : bool
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
@@ -15,10 +15,16 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	animation_tree.active = true
+	if starting_move_direction.x > 0:
+		scale.x = -scale.x
 	if inCloset == true:
 		hide()
-		var trigger = get_parent().get_node("monster_closet_detector")
-		trigger.body_exited.connect(_on_monster_closet_detector_body_exited)
+		for i in get_parent().get_children().size():
+			var childName = str(get_parent().get_children()[i])
+			#print(childName)
+			if "monster_closet_detector" in childName:
+				var trigger = get_parent().get_children()[i]
+				trigger.body_exited.connect(_on_monster_closet_detector_body_exited)
 
 
 func _physics_process(delta):

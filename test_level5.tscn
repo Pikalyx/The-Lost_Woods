@@ -1,9 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://b2yadvmkp6ssm"]
 
-[ext_resource type="Texture2D" uid="uid://chuhau04u6dhm" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_8y4yy"]
+
+[ext_resource type="Texture2D" uid="uid://c3to2nnxsjx6q" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_8y4yy"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="3_x8t0a"]
 [ext_resource type="PackedScene" uid="uid://c6h483oubrxks" path="res://Character/pig.tscn" id="4_pr5xk"]
-[ext_resource type="Texture2D" uid="uid://cu5tq2eh0y7wx" path="res://Art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="5_7kgd5"]
+[ext_resource type="Texture2D" uid="uid://bid75o43xvtgi" path="res://Art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="5_7kgd5"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="6_qqc1v"]
 [ext_resource type="Texture2D" uid="uid://mok23gsvb80h" path="res://Parallax/Garden_s Forest/pushes.png" id="7_1krmf"]
 [ext_resource type="PackedScene" uid="uid://ds0vb7hsvlxnk" path="res://levels/fall_death_area.tscn" id="8_105gt"]

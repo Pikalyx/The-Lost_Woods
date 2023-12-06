@@ -51,7 +51,10 @@ func _ready():
 				player = playerSeek
 			else:
 				player = get_parent().get_parent().get_parent().get_node("Player")
-				
+	
+func _process(delta):
+	PlayerVars.setBH(health)
+					
 func _physics_process(delta):
 	if inCloset != true:
 		if health > 0:
