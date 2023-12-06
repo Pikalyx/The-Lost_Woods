@@ -1520,3 +1520,7 @@ script = ExtResource("7_avuh3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Next Level"]
 position = Vector2(4, 24)
 shape = SubResource("CircleShape2D_dh7j3")
+
+[node name="Sign11" parent="." instance=ExtResource("3_y13tk")]
+position = Vector2(1651, 193)
+lines = Array[String](["If you find any items you can collect them", "Use [E] to open the inventory and click on them to use", "If you ever find any make sure to try them out! they can be very helpful!"])
