@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://oo5rtgn88nui"]
+[gd_scene load_steps=16 format=3 uid="uid://oo5rtgn88nui"]
 
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="1_2j0oh"]
 [ext_resource type="Texture2D" uid="uid://usy1lv4nqova" path="res://Art/awesomeCavePixelArt.png" id="1_u8msu"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://chv2bq7qykksp" path="res://health_flute.tscn" id="6_nke6d"]
 [ext_resource type="Script" path="res://LevelTransitionArea.gd" id="7_gso8k"]
 [ext_resource type="Script" path="res://SummonTimerLabel.gd" id="8_feafo"]
+[ext_resource type="AudioStream" uid="uid://bq3km38g1edga" path="res://Sound/FinalBossMusic.mp3" id="10_7cphs"]
+[ext_resource type="Script" path="res://ClosetSensitiveMusic.gd" id="11_yqeep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tw0c8"]
 texture = ExtResource("2_5ro1l")
@@ -674,9 +676,14 @@ text = "5"
 script = ExtResource("8_feafo")
 
 [node name="ClosetSensitiveMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_7cphs")
+volume_db = -0.7
+script = ExtResource("11_yqeep")
 
 [connection signal="doneZooming" from="Camera2D" to="ClosetDoor/Boss" method="_on_camera_2d_done_zooming"]
+[connection signal="doneZooming" from="Camera2D" to="ClosetSensitiveMusic" method="_on_camera_2d_done_zooming"]
 [connection signal="closed" from="ClosetDoor" to="LevelTransitionArea" method="_on_closet_door_closed"]
+[connection signal="closed" from="ClosetDoor" to="ClosetSensitiveMusic" method="_on_closet_door_closed"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="Camera2D" method="_on_monster_closet_detector_body_exited"]
 [connection signal="body_exited" from="ClosetDoor/monster_closet_detector" to="ClosetDoor" method="_on_monster_closet_detector_body_exited"]
 [connection signal="zoomOut" from="ClosetDoor/Boss" to="Camera2D" method="_on_boss_zoom_out"]
