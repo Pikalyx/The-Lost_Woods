@@ -19,7 +19,7 @@ var reachVertex = false
 var hostBody = Node2D
 var copierCount : int
 var unfilteredChildren : int
-@export var maxCopierCount = 10
+@export var maxCopierCount = 8
 @onready var oldModulate = $Sprite2D.modulate
 @export var inCloset : bool
 @export var closetStinkOffset : Vector2
@@ -76,9 +76,9 @@ func _physics_process(delta):
 								#print(childName)
 								if "Copier" in childName or childName.begins_with("@CharacterBody2D"):
 									copierCount += 1
-							print(get_parent().get_children())
+							#print(get_parent().get_children())
 							print("CopierCount is ", copierCount)
-						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false and $RecoilTimer.is_stopped() == true and copierCount <= maxCopierCount:
+						if velocity.y >= 0 and cooldown == false and copier != null and health > 0 and shakeCooldown == false and $RecoilTimer.is_stopped() == true and copierCount < maxCopierCount:
 							var copy = copier.instantiate()
 							if closetStink == true:
 								copy.closet_child()

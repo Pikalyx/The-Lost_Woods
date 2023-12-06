@@ -52,7 +52,7 @@ func _process(delta):
 		#var player = get_parent().get_node("Player")
 		elif entering == false:
 			#print(is_on_wall())
-			if (not is_on_floor_only() and not is_on_ceiling_only()) or is_on_wall() or (player.is_on_floor() and $Timer.is_stopped() == true):
+			if (not is_on_floor_only() and not is_on_ceiling_only()) or (player.is_on_floor() and $Timer.is_stopped() == true):
 				if player.sprite.flip_h == false and not player.is_on_wall():
 					stalkOffset = (player.get_position().x - 25)
 				elif player.sprite.flip_h == true and not player.is_on_wall():

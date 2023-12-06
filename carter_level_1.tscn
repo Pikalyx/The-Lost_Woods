@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://oo5rtgn88nui"]
+[gd_scene load_steps=14 format=3 uid="uid://oo5rtgn88nui"]
 
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="1_2j0oh"]
+[ext_resource type="Texture2D" uid="uid://usy1lv4nqova" path="res://Art/awesomeCavePixelArt.png" id="1_u8msu"]
 [ext_resource type="Script" path="res://FinalBossCam.gd" id="2_2yv34"]
 [ext_resource type="Texture2D" uid="uid://bepiwx23qga2o" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/red.png" id="2_5ro1l"]
 [ext_resource type="Script" path="res://ClosetDoor.gd" id="4_tm4xm"]
@@ -587,6 +588,11 @@ radius = 27.0
 height = 80.0
 
 [node name="carter_level_1" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(746, -70)
+scale = Vector2(1.25469, 1.125)
+texture = ExtResource("1_u8msu")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nphd0")

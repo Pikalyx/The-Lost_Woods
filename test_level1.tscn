@@ -1700,7 +1700,7 @@ position = Vector2(-1056.48, 258.13)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("18_b4hh7")
-targetLevel = "res://carter_level_1.tscn"
+targetLevel = "res://levels/carter_level_2.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarterLevel1Transition"]
 position = Vector2(6.48083, 4.86987)

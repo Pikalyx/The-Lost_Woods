@@ -15,6 +15,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	animation_tree.active = true
+	if starting_move_direction.x > 0:
+		scale.x = -scale.x
 	if inCloset == true:
 		hide()
 		for i in get_parent().get_children().size():
