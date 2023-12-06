@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxxtanw42vdl4"]
+[gd_scene load_steps=20 format=3 uid="uid://dxxtanw42vdl4"]
 
 [ext_resource type="Texture2D" uid="uid://bauvmyixi15gs" path="res://level 3/background_layer_1.png" id="1_gafwj"]
 [ext_resource type="Texture2D" uid="uid://bacgojmsrws3p" path="res://level 3/oak_woods_tileset.png" id="1_hsu8m"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="13_agutb"]
 [ext_resource type="PackedScene" uid="uid://chu334tsngh43" path="res://NextLevel.tscn" id="14_67dxh"]
 [ext_resource type="PackedScene" uid="uid://0ewxb2415e8q" path="res://restartLevel.tscn" id="14_mvi7x"]
+[ext_resource type="Texture2D" uid="uid://bcvdvs0fyhcww" path="res://Art/Sprites/TransitionHole.png" id="16_w83b2"]
+[ext_resource type="AudioStream" uid="uid://1xvuljgu551s" path="res://Sound/Beacon Beach.mp3" id="17_mqao8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbpwq"]
 texture = ExtResource("1_hsu8m")
@@ -1449,3 +1451,13 @@ position = Vector2(1374, 1162)
 position = Vector2(2524, 624)
 collision_layer = 0
 collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="next level"]
+position = Vector2(-3.99988, 2)
+scale = Vector2(1.93333, 1.84375)
+texture = ExtResource("16_w83b2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_mqao8")
+volume_db = -9.035
+autoplay = true

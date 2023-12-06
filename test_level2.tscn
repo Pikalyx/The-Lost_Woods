@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://uo7hbmwy4l1r"]
+[gd_scene load_steps=21 format=3 uid="uid://uo7hbmwy4l1r"]
 
 [ext_resource type="Texture2D" uid="uid://c3to2nnxsjx6q" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_yie4n"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_mcw2p"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://38g7ge6orvdd" path="res://Parallax/Garden_s Forest/background1.png" id="11_rjfpu"]
 [ext_resource type="Script" path="res://NextLevel.gd" id="12_7ml3d"]
 [ext_resource type="PackedScene" uid="uid://0abdvjekaw6l" path="res://speedpot.tscn" id="12_etoe8"]
+[ext_resource type="Texture2D" uid="uid://bcvdvs0fyhcww" path="res://Art/Sprites/TransitionHole.png" id="16_a0b5j"]
+[ext_resource type="AudioStream" uid="uid://c1s1uk1y6x65t" path="res://Sound/Level2BGM.mp3" id="17_tljyg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wqln0"]
 texture = ExtResource("1_yie4n")
@@ -1577,5 +1579,14 @@ script = ExtResource("12_7ml3d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, -4)
 shape = SubResource("CircleShape2D_s8u3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(-1.49994, -3)
+scale = Vector2(2.9, 2.5)
+texture = ExtResource("16_a0b5j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_tljyg")
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

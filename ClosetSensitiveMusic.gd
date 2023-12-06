@@ -17,3 +17,11 @@ func _on_camera_2d_done_zooming():
 
 func _on_closet_door_closed():
 	stop() # Replace with function body.
+
+
+func _on_monster_closet_detector_body_exited(body):
+	if autoplay == true:
+		stop()
+	elif autoplay == false:
+		if playing == false:
+			play()
