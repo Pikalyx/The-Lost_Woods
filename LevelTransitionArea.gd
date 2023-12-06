@@ -16,7 +16,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	print("changing to ", targetLevel)
-	SceneTransition.change_scene_to_file("youWin.tscn")
+	SceneTransition.change_scene_to_file(targetLevel)
 	
 
 func _on_closet_door_closed():
