@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://62q6lqpn4mw0"]
 
 [ext_resource type="Script" path="res://Boss.gd" id="1_i7cuh"]
-[ext_resource type="Texture2D" uid="uid://dksmbh3rlsk3w" path="res://Art/Sprites/NightBorne.png" id="2_jxe08"]
-[ext_resource type="AudioStream" uid="uid://r45jceqrqf2y" path="res://Sound/223612__ctcollab__epic-sword-clash.wav" id="3_2pip8"]
+[ext_resource type="Texture2D" uid="uid://c6sqremsf0vpy" path="res://Art/Sprites/NightBorne.png" id="2_jxe08"]
+[ext_resource type="AudioStream" uid="uid://cnbq63y1v0qpf" path="res://Sound/223612__ctcollab__epic-sword-clash.wav" id="3_2pip8"]
 [ext_resource type="Script" path="res://Character/Damageable.gd" id="7_xgmsc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cow2o"]

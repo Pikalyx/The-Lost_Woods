@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var damageable = $Damageable
 var cooldown = false
 var speed = 0
-@export var ramSpeed = 200 * PlayerVars.esm
+@export var ramSpeed = 200 #* PlayerVars.esm
 var direction : Vector2
 @export var fuckRadius = 200
 @export var health = 40

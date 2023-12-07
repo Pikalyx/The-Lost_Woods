@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var movement_speed : float = 30.0 * PlayerVars.esm
+var movement_speed : float = 30.0 #* PlayerVars.esm
 @export var fuckRadius = 150
 @onready var player = get_parent().get_node("Player")
 # Get the gravity from the project settings to be synced with RigidBody nodes.

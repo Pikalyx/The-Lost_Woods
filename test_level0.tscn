@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvc57jsmfm5ka"]
+[gd_scene load_steps=16 format=3 uid="uid://dvc57jsmfm5ka"]
 
-[ext_resource type="Texture2D" uid="uid://d10y75u7kp4ct" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_20tu8"]
+[ext_resource type="Texture2D" uid="uid://c3to2nnxsjx6q" path="res://Art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_20tu8"]
 [ext_resource type="PackedScene" uid="uid://c06h0yv06ktmh" path="res://Character/player.tscn" id="2_ng5tn"]
+[ext_resource type="Script" path="res://CamShake.gd" id="3_kwfwv"]
 [ext_resource type="PackedScene" uid="uid://j2knar6p14kr" path="res://sign.tscn" id="3_y13tk"]
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="4_g58pd"]
 [ext_resource type="PackedScene" uid="uid://c8dfjty2mx5jh" path="res://Character/copier1.tscn" id="5_l12uy"]
@@ -1458,9 +1459,13 @@ layer_0/tile_data = PackedInt32Array(786436, 2, 0, 851972, 65538, 1, 917508, 655
 [node name="Player" parent="." instance=ExtResource("2_ng5tn")]
 position = Vector2(230, 178)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-visible = false
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(230, 178)
 zoom = Vector2(3, 3)
+script = ExtResource("3_kwfwv")
 
 [node name="Sign" parent="." instance=ExtResource("3_y13tk")]
 position = Vector2(249, 189)
