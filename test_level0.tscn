@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://da6eafhmdgdpx" path="res://Character/snail.tscn" id="4_g58pd"]
 [ext_resource type="PackedScene" uid="uid://c8dfjty2mx5jh" path="res://Character/copier1.tscn" id="5_l12uy"]
 [ext_resource type="PackedScene" uid="uid://wfo8feeh0wpi" path="res://hive.tscn" id="6_2qysk"]
-[ext_resource type="Script" path="res://Next Level.gd" id="7_avuh3"]
 [ext_resource type="AudioStream" uid="uid://cwe8ku24b6heg" path="res://Sound/Level0BGM.mp3" id="8_q0wdm"]
 [ext_resource type="PackedScene" uid="uid://o4tl2sknh1ud" path="res://Character/NewHomer.tscn" id="9_jjavl"]
 [ext_resource type="Script" path="res://NonReactiveMusic.gd" id="9_m34cg"]
+[ext_resource type="Script" path="res://LevelTransitionArea.gd" id="10_2pdau"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ek8l5"]
 
@@ -1446,8 +1446,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ek8l5")
 sources/2 = SubResource("TileSetAtlasSource_eo54k")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dh7j3"]
-radius = 126.036
+[sub_resource type="CircleShape2D" id="CircleShape2D_phi46"]
+radius = 73.2597
 
 [node name="Tutorial_level" type="Node2D"]
 
@@ -1522,16 +1522,6 @@ position = Vector2(3333, -136)
 position = Vector2(3873, 559)
 lines = Array[String](["Oh and quick tip", "Try not to fall from here on", "Not a good thing", "Dont worry, you can trust this fall this one time!", "Have fun!"])
 
-[node name="Next Level" type="Area2D" parent="."]
-position = Vector2(3728, 1603)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("7_avuh3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Next Level"]
-position = Vector2(4, 24)
-shape = SubResource("CircleShape2D_dh7j3")
-
 [node name="Sign11" parent="." instance=ExtResource("3_y13tk")]
 position = Vector2(1651, 193)
 lines = Array[String](["If you find any items you can collect them", "Use [E] to open the inventory and click on them to use", "If you ever find any make sure to try them out! they can be very helpful!"])
@@ -1544,4 +1534,15 @@ script = ExtResource("9_m34cg")
 [node name="HomerBody" parent="." instance=ExtResource("9_jjavl")]
 position = Vector2(2506, -114)
 
-[connection signal="body_entered" from="Next Level" to="Next Level" method="_on_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(3740.77, 1624.05)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_2pdau")
+targetLevel = "res://carter_level_1.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4, 8)
+shape = SubResource("CircleShape2D_phi46")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

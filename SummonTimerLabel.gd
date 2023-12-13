@@ -13,6 +13,6 @@ func _process(delta):
 			show()
 			var display = "{0}".format("%0.2f" % str(summonTimer.get_time_left()))
 			text = str(summonTimer.get_time_left())
-			print(text)
+			#print(text)
 		else:
 			hide()

@@ -265,7 +265,30 @@ func _physics_process(delta):
 					$SwordArea.monitoring = false
 				if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
 					choose_state("Random")
-					
+			
+			elif state == "Copy":
+				if entering == true:
+					var childName = str(get_parent().get_children())
+#					print(childName)
+					if "Copy" not in childName and $CopyTimer.is_stopped() == true:
+						if not is_on_floor():
+							velocity.y += gravity * delta
+						else:
+							entering = false
+							$AnimationPlayer.play("Boss/copy")
+					else:
+						choose_state("Random")
+				elif entering == false:
+					if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+							var copier = ResourceLoader.load("res://boss_copy.tscn")
+							var copy = copier.instantiate()
+							copy.set_position(self.get_position())
+							get_parent().add_child(copy)
+							print(get_parent().get_children())
+							$CopyTimer.start()
+							choose_state("Random")
+						
+						
 			elif state == "HitHome":
 				velocity.x = 0
 				if not is_on_floor():
@@ -371,7 +394,7 @@ func choose_state(next):
 			scale.x = -scale.x
 			facing_left = false
 	var rng = RandomNumberGenerator.new()
-	var stateNumber = rng.randi_range(0, 4)
+	var stateNumber = rng.randi_range(0, 5)
 	if next == "Random":
 		if stateNumber == 0:
 			state = "Pig"
@@ -385,6 +408,8 @@ func choose_state(next):
 			state = "Jumping"
 		elif stateNumber == 4:
 			state = "Dash"
+		elif stateNumber == 5:
+			state = "Copy"
 	else:
 		state = next
 	print(state)
@@ -412,6 +437,9 @@ func _on_damageable_on_hit(node, damage_taken, knockback_direction):
 	elif state == "Slump":
 		$AnimationPlayer.play("slumphit")
 		health -= damage_taken
+	elif state == "Copy" and $StateInvulnTimer.is_stopped():
+		health -= damage_taken
+		choose_state("Hit")
 	
 func _on_monster_closet_detector_body_exited(body):
 	show()
